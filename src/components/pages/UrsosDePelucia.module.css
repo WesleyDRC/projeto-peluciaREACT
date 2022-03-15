@@ -1,0 +1,8 @@
+.container {
+    width: 100%;
+    background-color: red;
+    height: 100%;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,45 @@
+.social_list {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    color: black;
+}
+
+.social_list li {
+    margin: 0 1em;
+}
+
+.social_list svg {
+    font-size: 1.5em;
+    color: black;
+}
+.social_list svg:hover {
+    cursor: pointer;
+    color: rgb(110, 109, 109);
+}
+
+.social {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+}
+
+.contato h1 {
+    margin-bottom: 20px;
+}
+
+.contato p {
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: green;
+}
+.contato p span {
+    font-size: 23px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}

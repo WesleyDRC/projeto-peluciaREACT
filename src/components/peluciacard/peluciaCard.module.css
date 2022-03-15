@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box1 {
+    display: table;
+    background-color: #de99f98c;
+    width: 413px;
+    height: 250px;
+}
+.box2 {
+    display: table;
+    background-color: rgba(207, 73, 73, 0.281);
+    width: 413px;
+    height: 250px;
+}
+.box3{
+    display: table;
+    background-color: rgba(228, 67, 67, 0.411);
+    width: 413px;
+    height: 250px;
+}
+
+.imagem {
+    float: right;
+    display: table-cell;
+    width: 250px;
+    height: 250px;
+    align-items: center;
+}
+
+.text {
+    display: table-cell;
+    width: 163px;
+    vertical-align: middle;
+    padding: 0px 10px;
+}
+.text h2 {
+    font-size: 1.27em;
+    color: rgb(94, 94, 94);
+}
+.text p {
+    font-size: 2.2em;
+    font-family: 'Fredoka One', cursive;
+    padding: 20px 0px;
+}
+
+/* container coelho */
+.box1 .text p {
+    color:rgb(178, 125, 189);
+}
+.box1 .btn {
+    padding: 10px;
+    background-color: rgb(178, 125, 189);
+    text-align: center;
+    border-radius: 25px;
+}
+.box1 .btn a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+/* container urso */
+.box2 .text p {
+    color:rgba(194, 41, 21, 0.733);
+}
+.box2 .btn {
+    padding: 10px;
+    background-color: rgba(194, 41, 21, 0.733);
+    text-align: center;
+    border-radius: 25px;
+}
+.box2 .btn a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* container mickey */
+.box3 .text p {
+    color:rgb(156, 42, 34);
+}
+.box3 .btn {
+    padding: 10px;
+    background-color: rgb(156, 42, 34);
+    text-align: center;
+    border-radius: 25px;
+}
+.box3 .btn a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+/* .box3 .text h2 {
+    font-size: 1.26em;
+} */

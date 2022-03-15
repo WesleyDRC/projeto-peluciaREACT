@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  background: white;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a, ul, li {
+  list-style: none;
+  text-decoration: none;
+}

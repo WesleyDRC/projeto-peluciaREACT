@@ -1,0 +1,85 @@
+.firstNavbar {
+    display: flex;
+    align-items: center;
+    width: 1240px;
+    background-color: rgb(130, 188, 253);
+    margin: 0 auto;
+    height: 45px;
+}
+
+.firstList {
+    display: flex;
+    padding: 20px;
+}
+.firstList a{
+    color: white;
+}
+.item {
+    margin-right: 15%;
+}
+
+.secondNavBar {
+    display: flex;
+    width: 1170px;
+    height: 165px;
+    margin: 0 auto;
+    align-items: center;
+    
+}
+
+.logo {
+    padding-right: 40px;
+}
+.logo img {
+    width: 150px;
+    height: 150px;
+}
+
+.conteinerNavBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 15px;
+    line-height: 24px;
+}
+
+.svg {
+    text-align: center;
+    font-size: 5.4em;
+    color: black;
+    transition: transform 0.3s ease-out;
+}
+.svg:hover {
+    
+    cursor: pointer;
+    color: rgba(50, 62, 95, 0.432);
+    transform: translateY(10px);
+}
+.conteinerNavBar a{
+    color: rgb(50, 62, 95);
+    font-weight: bold;
+}
+
+.conteinerNavBar a:hover {
+    color: rgba(50, 62, 95, 0.432);
+}
+
+.aviso {
+    position: fixed;
+    z-index: 50;
+    height: auto;
+    width: auto;
+    background-color: rgb(195, 195, 250);
+    color: rgb(74, 74, 77);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    top: 0;
+    right: 0;
+    border-radius: 15px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.aviso span {
+    font-weight: 900;
+}
