@@ -2,7 +2,7 @@ import styles from "./PeluciaCard.module.css";
 import Urso from "../../img/urso1.png";
 import Urso1 from '../../img/urso2.png';
 import Urso2 from '../../img/mickey.png';
-function PeluciaCard() {
+function peluciaCard() {
   return (
     <div className={styles.container}>
       <div className={styles.box1}>
@@ -47,4 +47,4 @@ function PeluciaCard() {
   );
 }
 
-export default PeluciaCard;
+export default peluciaCard;
