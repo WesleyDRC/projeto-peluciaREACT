@@ -1,5 +1,5 @@
 import ChangeImage from '../layout/ChangeImage';
-import PeluciaCard from '../PeluciaCard/PeluciaCard.js';
+import PeluciaCard from '../PeluciaCard/PeluciaCard';
 import styles from './Home.module.css';
 
 function Home (){
