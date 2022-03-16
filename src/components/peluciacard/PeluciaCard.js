@@ -1,4 +1,4 @@
-import styles from "./peluciaCard.module.css";
+import styles from "./PeluciaCard.module.css";
 import Urso from "../../img/urso1.png";
 import Urso1 from '../../img/urso2.png';
 import Urso2 from '../../img/mickey.png';
@@ -10,11 +10,11 @@ function PeluciaCard() {
           <h2> Coelho - 30cm</h2>
           <p> R$ 39,90 </p>
           <div className={styles.btn}>
-            <a href="#"> COMPRAR </a>
+            <a href="/"> COMPRAR </a>
           </div>
         </div>
         <div className={styles.imagem}>
-          <img src={Urso} />
+          <img src={Urso} alt="Coelho"/>
         </div>
       </div>
 
@@ -23,11 +23,11 @@ function PeluciaCard() {
           <h2> Urso - 30cm</h2>
           <p> R$ 39,90 </p>
           <div className={styles.btn}>
-            <a href="#"> COMPRAR </a>
+            <a href="/"> COMPRAR </a>
           </div>
         </div>
         <div className={styles.imagem}>
-          <img src={Urso1} />
+          <img src={Urso1} alt="Urso" />
         </div>
       </div>
 
@@ -36,11 +36,11 @@ function PeluciaCard() {
           <h2> Mickey - 30cm</h2>
           <p> R$ 39,90 </p>
           <div className={styles.btn}>
-            <a href="#"> COMPRAR </a>
+            <a href="/"> COMPRAR </a>
           </div>
         </div>
         <div className={styles.imagem}>
-          <img src={Urso2} />
+          <img src={Urso2} alt="Mickey" />
         </div>
       </div>
     </div>
