@@ -2,6 +2,7 @@ import styles from "./PeluciaCard.module.css";
 import Urso from "../../img/urso1.png";
 import Urso1 from '../../img/urso2.png';
 import Urso2 from '../../img/mickey.png';
+
 function PeluciaCard() {
   return (
     <div className={styles.container}>

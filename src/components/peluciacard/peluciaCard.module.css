@@ -10,7 +10,9 @@
     background-color: #de99f98c;
     width: 413px;
     height: 250px;
+    
 }
+
 .box2 {
     display: table;
     background-color: rgba(207, 73, 73, 0.281);
@@ -96,6 +98,23 @@
     font-weight: bold;
     color: white;
     text-transform: uppercase;
+}
+
+.imagem img {
+    transition: all 0.4s;
+}
+.imagem img:hover {
+    transform: scale(1.1);
+}
+
+.box1 .btn:hover {
+    background-color: rgba(178, 125, 189, 0.493);
+}
+.box2 .btn:hover {
+    background-color: rgba(194, 41, 21, 0.404);
+}
+.box3 .btn:hover{
+    background-color: rgba(156, 42, 34, 0.521);
 }
 /* .box3 .text h2 {
     font-size: 1.26em;
