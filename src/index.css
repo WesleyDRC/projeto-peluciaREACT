@@ -2,15 +2,42 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  left: 0;
+  right: 0;
 }
 
 html, body, #root {
   background: white;
-  height: 100%;
   font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+html {
+  font-size: 62.5%;
 }
 
 a, ul, li {
   list-style: none;
   text-decoration: none;
+}
+
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
 }

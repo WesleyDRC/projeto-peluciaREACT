@@ -9,10 +9,8 @@ export const Item = styled.div`
   color: #fff;
   margin: 0 15px;
   font-size: 4em;
-
+ 
   img {
-    width: 1240px;
-    height: 500px;
     object-fit: cover;
     width: 100%;
     height: 100%;

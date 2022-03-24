@@ -1,16 +1,14 @@
 import ChangeImage from '../layout/ChangeImage';
-import PeluciaCard from '../PeluciaCard/PeluciaCard';
-import styles from './Home.module.css';
+import PeluciaCard from '../PeluciaCard/PeluciaCard'
 
 function Home (){
     return(
-        <section className={styles.home_container}>
-            <ChangeImage />
-            <PeluciaCard />
-        </section>
-        
+        <>
+        <ChangeImage />
+        <PeluciaCard />
+        </>
     )
 }
 
 
-export default Home
+export default Home;

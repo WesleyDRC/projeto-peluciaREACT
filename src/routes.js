@@ -16,10 +16,7 @@ function Rotas() {
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/contact" element={<Contato />}></Route>
           <Route path="/ursos-de-pelucia" element={<UrsosDePelucia />}></Route>
-          <Route
-            path="/coracoes-de-pelucia"
-            element={<CoracoesDePelucia />}
-          ></Route>
+          <Route path="/coracoes-de-pelucia" element={<CoracoesDePelucia />}></Route>
         </Routes>
       </Container>
       <Footer />
