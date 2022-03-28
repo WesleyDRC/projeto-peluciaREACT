@@ -1,10 +1,33 @@
 .container {
-    width: 1200px;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    background-color: #EFF2F1;
+    padding: 1em;
+    padding-bottom: 6em;
+}
+
+.title{
+    text-align: center;
+    color: rgba(13, 13, 24, 0.966);
+    border-bottom: 1px solid rgba(13, 13, 24, 0.966);
+    margin: 0 auto;
+    max-width: 300px;
+    font-size: 1.6em;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.box {
+    max-width: 1170px;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-gap: 4rem;
     margin: 0 auto;
     flex-wrap: wrap;
     justify-content: flex-start;
+    
 }
+
 

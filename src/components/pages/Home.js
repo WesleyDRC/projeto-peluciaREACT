@@ -21,16 +21,21 @@ function Home() {
     <>
       <ChangeImage />
       <div className={styles.container}>
-        {card.length > 0 &&
-          card.map((card) => (
-            <PeluciaCard
-              name={card.name}
-              price={card.price}
-              imageUrl={card.imageUrl}
-              size={card.size}
-              measure={card.measure}
-            />
-          ))}
+        <div className={styles.title}>
+          <h2> NOVAS PELÚCIAS </h2>
+        </div>
+        <div className={styles.box}>
+          {card.length > 0 &&
+            card.map((card) => (
+              <PeluciaCard
+                name={card.name}
+                price={card.price}
+                imageUrl={card.imageUrl}
+                size={card.size}
+                measure={card.measure}
+              />
+            ))}
+        </div>
       </div>
     </>
   );
