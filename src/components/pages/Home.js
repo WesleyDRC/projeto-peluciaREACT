@@ -9,12 +9,12 @@ function Home() {
   const [card, setCard] = useState([]);
 
   useEffect(() => {
-    const getPets = async () => {
+    const getPlush = async () => {
       const response = await api.get("/products");
 
       setCard(response.data);
     };
-    getPets();
+    getPlush();
   }, []);
 
   return (
