@@ -4,68 +4,17 @@ import Urso1 from "../../img/coelho2.png";
 import Urso2 from "../../img/coelho3.png";
 
 
-
-
-function PeluciaCard() {
-
-  const imagens = () => {
-    const getImagemUrl = `https://9qz2iwilyc.execute-api.sa-east-1.amazonaws.com/dev/products`
-    
-    const imagensPromises = []
-
-
-  }
-  imagens()
-
+function PeluciaCard({ name, price, imageUrl, size,measure }) {
   return (
     <div className={styles.container}>
-
-        <div className={styles.box1}>
-          <div className={styles.text}>
-            <h2> Coelho - 30cm</h2>
-            <p> R$ 39,90 </p>
-            <div className={styles.btn}>
-              <a href="/"> COMPRAR </a>
-            </div>
-          </div>
-          <div className={styles.imagem}>
-            <img src={Urso} alt="Coelho" />
-          </div>
-        </div>
-
-
-
-        <div className={styles.box2}>
-          <div className={styles.text}>
-            <h2> Urso - 30cm</h2>
-            <p> R$ 39,90 </p>
-            <div className={styles.btn}>
-              <a href="/"> COMPRAR </a>
-            </div>
-          </div>
-          <div className={styles.imagem}>
-            <img src={Urso1} alt="Urso" />
-          </div>
-        </div>
-
-
-
-        <div className={styles.box3}>
-          <div className={styles.text}>
-            <h2> Mickey - 30cm</h2>
-            <p> R$ 39,90 </p>
-            <div className={styles.btn}>
-              <a href="/"> COMPRAR </a>
-            </div>
-          </div>
-          <div className={styles.imagem}>
-            <img src={Urso2} alt="Mickey" />
-          </div>
-        </div>
-
+      <div className={styles.box} id="box1">
+        <h4>{name}</h4>
+        <p> {price} </p>
+        <img src={imageUrl} />
+        <p> {size} <span> {measure} </span></p>
+      </div>
     </div>
   );
 }
 
 export default PeluciaCard;
-
