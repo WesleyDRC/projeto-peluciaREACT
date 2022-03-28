@@ -1,38 +1,51 @@
-import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { IoLocationOutline } from 'react-icons/io5';
 import { ImWhatsapp } from "react-icons/im";
+import { HiOutlineMail } from "react-icons/hi";
 import styles from "./Contato.module.css";
 
 function Contato() {
   return (
-    <>
-      <div className={styles.contato}>
+    <div className={styles.container}>
+      <div className={styles.title}>
         <h1> Contatos </h1>
-        <Link to="/">
-          <p>
-            <ImWhatsapp /> <span> (12) 98835-7075 </span>{" "}
-          </p>
-        </Link>
       </div>
-
-      <div className={styles.social}>
-        <p> Mídias Socias</p>
-        <div className={styles.container}>
-          <ul className={styles.social_list}>
-            <li>
-              <Link to="/">
-                <FaFacebook />
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-                <FaInstagram />
-              </Link>
-            </li>
-          </ul>
-        </div>
+      <div className={styles.contato}>
+        <ul className={styles.listInfo}>
+          <li className={styles.item}>
+            <div className={styles.content}>
+              <div className={styles.svg}>
+                <ImWhatsapp />
+              </div>
+              <div className={styles.info}>
+                <h3> WHATSAPP</h3>
+                <p> Luciene <span>(12) 98835-7075</span> </p>
+              </div>
+            </div>
+          </li>
+          <li className={styles.item}>
+            <div className={styles.content}>
+              <div className={styles.svg}>
+                <HiOutlineMail />
+              </div>
+              <div className={styles.info}>
+                <h3> EMAIL </h3>
+                <p> wesleymiranda04b@gmail.com </p>
+              </div>
+            </div>
+          </li>
+          <li className={styles.item}>
+            <div className={styles.content}>
+              <div className={styles.svg}>
+              <IoLocationOutline />
+              </div>
+              <div className={styles.info}>
+                <h3> LOCALIZAÇÃO </h3>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </>
+    </div>
   );
 }
 

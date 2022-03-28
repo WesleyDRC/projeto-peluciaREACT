@@ -1,45 +1,43 @@
-.social_list {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    color: black;
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: center;
 }
 
-.social_list li {
-    margin: 0 1em;
+.title {
+  font-family: "Fredoka", sans-serif;
+  text-align: center;
+  font-size: 3em;
+  color: rgb(26, 26, 46);
+  margin-bottom: 2em;
+}
+.contato {
+  width: 90%;
+  margin: 0 auto;
+}
+.listInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 2em;
 }
 
-.social_list svg {
-    font-size: 1.5em;
-    color: black;
-}
-.social_list svg:hover {
-    cursor: pointer;
-    color: rgb(110, 109, 109);
+.content {
+  display: flex;
 }
 
-.social {
-    position: fixed;
-    top: 100px;
-    right: 20px;
+.info {
+  font-size: 1.6em;
 }
-
-.contato h1 {
-    margin-bottom: 20px;
-}
-
-.contato p {
-    font-size: 30px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    color: green;
-}
-.contato p span {
-    font-size: 23px;
-    color: black;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+.info span {
     font-weight: bold;
+}
+
+.svg svg {
+  display: inline-block;
+  font-size: 50px;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  color: rgb(130, 188, 253);
 }

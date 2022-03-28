@@ -13,7 +13,7 @@ function Footer () {
                 </li>
             </ul>
             <p className={styles.copyright}>
-                <span> Pelucias Online </span> &copy;2022
+                <span> Louco por Pelúcias </span> &copy;2022
             </p>
         </footer>
     )
