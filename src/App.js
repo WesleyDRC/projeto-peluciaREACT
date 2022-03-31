@@ -1,7 +1,14 @@
+import WhatsApp from "./components/layout/WhatsApp";
 import Rotas from "./routes";
 
+
 function App() {
-  return <Rotas />;
+  return (
+    <>
+      <WhatsApp />
+      <Rotas />
+    </>
+  );
 }
 
 export default App;

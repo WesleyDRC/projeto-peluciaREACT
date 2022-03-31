@@ -1,3 +1,4 @@
+
 .float {
   position: fixed;
   width: 60px;
@@ -14,5 +15,6 @@
 }
 
 .my_float {
+  font-size: 1.6rem;
   margin-top: 16px;
 }

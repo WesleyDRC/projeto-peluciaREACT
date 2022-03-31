@@ -6,9 +6,7 @@
 .firstNavbar {
     width: 100%;
     display: flex;
-    align-items: center; 
     background-color: rgb(130, 188, 253);
-    margin: 0 auto;
 }
 
 .firstList {
@@ -17,7 +15,7 @@
 }
 .firstList a{
     display: block;
-    font-size: 2em;
+    font-size: 1.8em;
     padding: 1em;
     color: white;
     font-weight: bold;
@@ -42,7 +40,6 @@
 
 .conteinerNavBar a{
     display: flex;
-    font-size: 2em;
     align-items: center;
     justify-content: center;
     margin-right: 1em;
@@ -53,10 +50,15 @@
 }
 
 .svg {
-    font-size: 5em;
+    font-size: 6em;
     transition: transform 0.3s ease-out;
 }
 .conteinerNavBar a:hover {
     transform: translateY(10px);
     color: gray;
 }
+
+.nameP {
+    font-size: 1.6em;
+}
+
