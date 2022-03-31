@@ -139,4 +139,23 @@ body {
   font-size: 62.5%;
 }
 
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  body{
+    font-size: 60%;
+  }
+}
 
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  body{
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  body {
+    font-size: 55%;
+  }
+}
