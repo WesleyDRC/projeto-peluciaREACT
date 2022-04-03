@@ -2,19 +2,21 @@ import ChangeImage from "../layout/ChangeImage";
 import PeluciaCard from "../PeluciaCard/PeluciaCard";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
-
 import styles from "./Home.module.css";
+import Loading from "../layout/Loading";
 
 function Home() {
   const [card, setCard] = useState([]);
-
+  const [removeLoading, setRemoveLoading] = useState(false);
   useEffect(() => {
-    const getPlush = async () => {
-      const response = await api.get("/products");
 
-      setCard(response.data);
-    };
-    getPlush();
+      const getPlush = async () => {
+        const response = await api.get("/products");
+        setCard(response.data);
+        setRemoveLoading(true);
+      };
+      getPlush();
+
   }, []);
 
   return (
@@ -35,6 +37,10 @@ function Home() {
                 measure={card.measure}
               />
             ))}
+          {!removeLoading && <Loading />}
+          {removeLoading && card.length === 0 && (
+            <p> Não há novas pelucias. </p>
+          )}
         </div>
       </div>
     </>
@@ -42,12 +48,3 @@ function Home() {
 }
 
 export default Home;
-
-// fetch("https://9qz2iwilyc.execute-api.sa-east-1.amazonaws.com/dev/products", {
-//             method: "GET",
-//           })
-//             .then((response) => response.json())
-//             .then((data) => {
-//               setCard(data);
-//             })
-//             .catch((error) => console.log(error));
