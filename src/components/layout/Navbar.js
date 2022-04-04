@@ -4,6 +4,7 @@ import logo from "../../img/ursologo1.jpg";
 import { Link } from "react-router-dom";
 import { RiBearSmileLine } from "react-icons/ri";
 import { IoIosHeartEmpty } from "react-icons/io";
+
 function Navbar() {
   return (
     <header>
@@ -18,6 +19,9 @@ function Navbar() {
                 <Link to="/contact"> Contato </Link>
               </li>
             </ul>
+            {/* <div className={styles.search}>
+              <Search />
+            </div> */}
           </nav>
         </div>
       </div>
@@ -37,7 +41,7 @@ function Navbar() {
                   <div className={styles.svg}>
                     <RiBearSmileLine />
                   </div>
-                  <p className={styles.nameP}>  Ursos de Pelucia </p>
+                  <p className={styles.nameP}> Ursos de Pelucia </p>
                 </div>
               </Link>
             </div>
@@ -49,7 +53,6 @@ function Navbar() {
                     <IoIosHeartEmpty />
                   </div>
                   <p className={styles.nameP}> Corações de Pelucia </p>
-                  
                 </div>
               </Link>
             </div>

@@ -18,7 +18,7 @@
     margin-top: 40px;
 }
 
-.box {
+.container_list {
     max-width: 1170px;
     width: 100%;
     display: grid;
@@ -26,8 +26,18 @@
     grid-gap: 4rem;
     margin: 0 auto;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    
+    justify-content: flex-start;   
 }
 
+.container_input {
+    padding-bottom: 1em;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+}
+.container_input input {
+    width: 300px;
+    color:rgba(66, 66, 68, 0.966);
+    font-weight: bold;
+}
 

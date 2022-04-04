@@ -137,7 +137,12 @@ a {
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 62.5%;
+  
 }
+
+html, body, #root {
+  height: 100%;
+} 
 
 /* 1200px / 16px = 75em */
 @media (max-width: 75em) {

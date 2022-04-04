@@ -6,19 +6,34 @@ import styles from "./Home.module.css";
 import Loading from "../layout/Loading";
 
 function Home() {
+  const [initialCard, setInitialCard] = useState([]);
   const [card, setCard] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
   useEffect(() => {
-
-      const getPlush = async () => {
+    const getPlush = async () => {
+      try {
         const response = await api.get("/products");
         setCard(response.data);
+        setInitialCard(response.data);
         setRemoveLoading(true);
-      };
-      getPlush();
-
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPlush();
   }, []);
 
+  const handleChange = ({ target }) => {
+    if (!target.value) {
+      setCard(initialCard);
+      return;
+    }
+
+    const filterCard = card.filter(({ name }) =>
+      name.toLowerCase().includes(target.value.toLowerCase())
+    );
+    setCard(filterCard);
+  };
   return (
     <>
       <ChangeImage />
@@ -26,17 +41,25 @@ function Home() {
         <div className={styles.title}>
           <h2> NOVAS PELÚCIAS </h2>
         </div>
-        <div className={styles.box}>
-          {card.length > 0 &&
-            card.map((card) => (
-              <PeluciaCard
-                name={card.name}
-                price={card.price}
-                imageUrl={card.imageUrl}
-                size={card.size}
-                measure={card.measure}
-              />
-            ))}
+        <div className={styles.container_input}>
+          <input placeholder="Procurar pelúcias"type="text" onChange={handleChange} />
+        </div>
+        <div>
+          <ul className={styles.container_list}>
+            {card.length > 0 &&
+              card.map((card) => (
+                <li key={card.id}>
+                  <PeluciaCard
+                    name={card.name}
+                    price={card.price}
+                    imageUrl={card.imageUrl}
+                    size={card.size}
+                    measure={card.measure}
+                  />
+                </li>
+              ))}
+          </ul>
+
           {!removeLoading && <Loading />}
           {removeLoading && card.length === 0 && (
             <p> Não há novas pelucias. </p>
