@@ -1,5 +1,6 @@
 
 .float {
+  display: grid;
   position: fixed;
   width: 60px;
   height: 60px;
@@ -12,11 +13,14 @@
   font-size: 30px;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
+  justify-items: center;
+  align-items: center;
 }
 
 .my_float {
+  width: 90%;
+  height: 70%;
   font-size: 1.6rem;
-  margin-top: 16px;
 }
 
 a:hover {
