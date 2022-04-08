@@ -22,7 +22,7 @@
     max-width: 1170px;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     grid-gap: 4rem;
     margin: 0 auto;
     flex-wrap: wrap;
