@@ -4,9 +4,10 @@ import api from "../../services/api";
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import Loading from "../layout/Loading";
+import SearchInput from "../layout/SearchInput";
 
 function Home() {
-  const [initialCard, setInitialCard] = useState([]);
+  const [text, setText] = useState("");
   const [card, setCard] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
   useEffect(() => {
@@ -14,7 +15,6 @@ function Home() {
       try {
         const response = await api.get("/products");
         setCard(response.data);
-        setInitialCard(response.data);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error);
@@ -23,17 +23,15 @@ function Home() {
     getPlush();
   }, []);
 
-  const handleChange = ({ target }) => {
-    if (!target.value) {
-      setCard(initialCard);
-      return;
-    }
+  const lowerText = text.toLowerCase();
+  const filtrar = card.filter(({ name }) =>
+    name.toLowerCase().includes(lowerText)
+  );
 
-    const filterCard = card.filter(({ name }) =>
-      name.toLowerCase().includes(target.value.toLowerCase())
-    );
-    setCard(filterCard);
+  let handleChange = (e) => {
+    setText(e.target.value);
   };
+
   return (
     <>
       <ChangeImage />
@@ -42,12 +40,12 @@ function Home() {
           <h2> NOVAS PELÚCIAS </h2>
         </div>
         <div className={styles.container_input}>
-          <input placeholder="Procurar pelúcias"type="text" onChange={handleChange} />
+          <SearchInput value={text} onChange={handleChange} />
         </div>
         <div>
           <ul className={styles.container_list}>
             {card.length > 0 &&
-              card.map((card) => (
+              filtrar.map((card) => (
                 <li key={card.id}>
                   <PeluciaCard
                     name={card.name}
