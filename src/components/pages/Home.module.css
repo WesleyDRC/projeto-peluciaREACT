@@ -36,7 +36,8 @@
     font-size: 2em;
 }
 .container_input input {
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     color:rgba(66, 66, 68, 0.966);
     font-weight: bold;
     border: 1px solid rgba(90, 87, 87, 0.521);
@@ -45,4 +46,16 @@
 .container_input input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
+}
+
+@media (max-width: 540px) {
+ .container_list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;   
+ }   
 }

@@ -91,17 +91,26 @@ start newNavBar
   }
 
   .search.searchClose {
-    border: 1px solid black;
     display: flex;
     justify-content: end;
     align-items: end;
-    margin-left: 50px;
     padding: 0.5em 0.2em;
     border-radius: 15px;
     font-size: 1.6em;
     transition: 0.5s;
+    width: 100%;
+    height: auto;
   }
-
+  .search.searchClose .btnSearch {
+    max-width: 60px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 25px;
+    text-align: end;
+    font-size: 1.6em;
+    padding: 0 0.23em;
+  }
+  
   .search.searchActive {
     position: absolute;
     top: 0;

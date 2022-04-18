@@ -5,7 +5,7 @@ function PeluciaCard({ name, price, imageUrl, size, measure }) {
     <div className={styles.container}>
       <div className={styles.box} >
         <img src={imageUrl} alt="pelucia" />
-        <h4 className={styles.name}>{name} - {size} <span> {measure} </span></h4>
+        <a className={styles.name}>{name} - <span>{size}  {measure} </span></a>
         <p className={styles.price}>R$ {price} </p>
       </div>
     </div>
