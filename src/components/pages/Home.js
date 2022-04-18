@@ -40,7 +40,7 @@ function Home() {
           <h2> NOVAS PELÚCIAS </h2>
         </div>
         <div className={styles.container_input}>
-          <SearchInput value={text} onChange={handleChange} />
+          <SearchInput value={text} onChange={handleChange} placeholder="Procurar pelúcia..."/>
         </div>
         <div>
           <ul className={styles.container_list}>

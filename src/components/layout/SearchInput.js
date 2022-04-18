@@ -1,9 +1,9 @@
 import React from 'react'
 
-function SearchInput({value, onChange}) {
+function SearchInput({value, onChange, placeholder}) {
     
     return (
-        <input placeholder="Procurar pelúcia..." type="search" value={value} onChange={onChange} />
+        <input placeholder={placeholder} type="search" value={value} onChange={onChange} />
     )
 }
 

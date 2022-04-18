@@ -1,64 +1,110 @@
-
 .container {
-    margin: 0 auto;
-    max-width: 1240px;
+  margin: 0 auto;
+  max-width: 1240px;
 }
 .firstNavbar {
-    width: 100%;
-    display: flex;
-    background-color: rgb(130, 188, 253);
+  width: 100%;
+  display: flex;
+  background-color: rgb(130, 188, 253);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .firstList {
-    display: flex;
-    margin-right: 2rem;
+  display: flex;
+  margin-right: 2rem;
 }
-.firstList a{
-    display: block;
-    font-size: 1.8em;
-    padding: 1em;
-    color: white;
-    font-weight: bold;
+.firstList a {
+  display: block;
+  font-size: 1.8em;
+  padding: 1em;
+  color: white;
+  font-weight: bold;
 }
 .firstList a:hover {
-    background-color: rgba(75, 155, 247, 0.788);
+  background-color: rgba(75, 155, 247, 0.788);
 }
 
 .secondNavBar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-    padding-right: 4em;
-    width: 300px;
+  padding-right: 4em;
+  width: 300px;
 }
 .logo img {
-   width: 100%;
-   height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.conteinerNavBar a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1em;
-    text-align: center;
-    line-height: 2em;
-    color: black;
-    transition: transform 0.3s ease-out;
+.conteinerNavBar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1em;
+  text-align: center;
+  line-height: 2em;
+  color: black;
+  transition: transform 0.3s ease-out;
+  
 }
 
 .svg {
-    font-size: 6em;
-    transition: transform 0.3s ease-out;
+  font-size: 6em;
+  transition: transform 0.3s ease-out;
 }
 .conteinerNavBar a:hover {
-    transform: translateY(10px);
-    color: gray;
+  transform: translateY(10px);
+  color: gray;
 }
 
 .nameP {
-    font-size: 1.6em;
+  font-size: 1.6em;
 }
 
+.newNavBar{ display: none;}
+
+
+
+@media (max-width: 900px) {
+  .firstNavbar, .secondNavBar {
+    display: none;
+  }
+  
+  /* =============
+start newNavBar
+============= */
+.newNavBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: black;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.newNavBar nav {
+  display: none;
+}
+.newNavBar .logo {
+  max-width: 200px;
+  display: block;
+  margin: auto;
+
+}
+.newNavBar .logo img{
+  height: 100%;
+  width: 100%;
+}
+
+.conteinerNavBar {
+  display: flex;
+  justify-content: flex-start;
+  padding: 3px;
+}
+
+/* =============
+end newNavBar
+============= */
+}

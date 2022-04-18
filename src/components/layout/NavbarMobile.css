@@ -1,0 +1,160 @@
+/* =============
+start newNavBar
+============= */
+@media (max-width: 900px) {
+  .menu_section.menuActive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(50, 92, 139, 0.836);
+    z-index: 5;
+    opacity: 1;
+    overflow-y: auto;
+  }
+
+  .menu_section.menuActive .menu_toggle {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    z-index: 6;
+  }
+  .menu_section.menuActive .hamburguer {
+    display: block;
+    width: 70%;
+    height: 60px;
+    background-color: white;
+    box-shadow: 7px 5px 20px 1px rgba(0, 0, 0, 0.47);
+    border-bottom: 1px solid rgba(107, 107, 107, 0.24);
+  }
+  .menu_toggle {
+    width: 40px;
+    height: 30px;
+    margin-right: 20px;
+  }
+  .one,
+  .two,
+  .three {
+    background-color: black;
+    height: 5px;
+    width: 100%;
+    margin: 6px auto;
+    transition-duration: 0.3s;
+  }
+
+  .menu_section.menuActive .one {
+    transform: rotate(45deg) translate(7px, 7px);
+    background-color: rgb(50, 92, 139);
+  }
+  .menu_section.menuActive .two {
+    opacity: 0;
+    background-color: rgb(50, 92, 139);
+  }
+  .menu_section.menuActive .three {
+    transform: rotate(-45deg) translate(7px, -9px);
+    background-color: rgb(50, 92, 139);
+  }
+  .menu_section {
+    cursor: pointer;
+  }
+  .menu.menuOpen {
+    display: block;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .menu.menuOpen {
+    width: 70%;
+    height: 100vh;
+    box-shadow: 7px 5px 20px 1px rgba(0, 0, 0, 0.47);
+    background-color: white;
+  }
+
+  .items_navbar {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .list {
+    display: flex;
+    padding-top: 40px;
+    flex-direction: column;
+  }
+  .list .item a {
+    margin-left: 10px;
+    font-size: 1.9em;
+    font-weight: bold;
+    color: rgb(50, 92, 139);
+  }
+
+  .search.searchClose {
+    border: 1px solid black;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-left: 50px;
+    padding: 0.5em 0.2em;
+    border-radius: 15px;
+    font-size: 1.6em;
+    transition: 0.5s;
+  }
+
+  .search.searchActive {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(50, 92, 139, 0.836);
+    z-index: 5;
+    opacity: 1;
+    overflow-y: auto;
+    transition: 0.5s;
+  }
+
+  .search.searchActive .btnSearch {
+    display: none;
+  }
+  .search.searchClose .contentSearch {
+    display: none;
+  }
+  .search.searchActive .contentSearch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: white;
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 70px;
+    height: 100%;
+  }
+  .search.searchActive .contentSearch .inputSearch {
+    width: 60%;
+  }
+  .search.searchActive .contentSearch .btnSearch2 {
+    display: block;
+    font-size: 3em;
+    width: 15%;
+  }
+  .inputSearch input {
+    border: white;
+    font-size: 1.8em;
+  }
+  .inputSearch input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
+  .close {
+    width: 15%;
+    font-size: 3em;
+  }
+}
+
+/* =============
+end newNavBar
+============= */
