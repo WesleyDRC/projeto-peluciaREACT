@@ -24,7 +24,7 @@
     font-weight: bold;
     color: rgb(15, 15, 34);
     margin-bottom: 0.8em;
-    line-height: 0.1;
+    word-wrap: break-word;
 }
 
 

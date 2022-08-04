@@ -137,13 +137,14 @@ start newNavBar
     align-items: center;
     justify-content: flex-end;
     background-color: white;
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     max-height: 70px;
     height: 100%;
   }
   .search.searchActive .contentSearch .inputSearch {
     width: 60%;
+    padding: 2em;
   }
   .search.searchActive .contentSearch .btnSearch2 {
     display: block;
@@ -153,6 +154,7 @@ start newNavBar
   .inputSearch input {
     border: white;
     font-size: 1.8em;
+    height: 2em;
   }
   .inputSearch input:focus {
     box-shadow: 0 0 0 0;
@@ -161,6 +163,12 @@ start newNavBar
   .close {
     width: 15%;
     font-size: 3em;
+  }
+
+  .container_listOn {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 }
 

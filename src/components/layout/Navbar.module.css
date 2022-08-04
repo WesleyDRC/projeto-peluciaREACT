@@ -25,6 +25,43 @@
   background-color: rgba(75, 155, 247, 0.788);
 }
 
+.inputsearch {
+  align-items: center;
+  text-align: center;
+  font-size: 2em;
+}
+
+.inputsearch input {
+  max-width: 300px;
+  width: 100%;
+  color: rgba(66, 66, 68, 0.966);
+  font-weight: bold;
+  border: 1px solid rgba(90, 87, 87, 0.521);
+  border-radius: 15px;
+  height: 2em;
+}
+
+.inputsearch input:focus {
+  box-shadow: 0;
+  outline: 0;
+}
+
+.itemWanted {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+.container_listOn{
+  border: 1px solid rgba(75, 155, 247, 0.788);
+  width: 250px;
+}
+.container_listOff {
+  display: none;
+}
 .secondNavBar {
   display: flex;
   align-items: center;
@@ -48,7 +85,6 @@
   line-height: 2em;
   color: black;
   transition: transform 0.3s ease-out;
-  
 }
 
 .svg {
@@ -64,47 +100,48 @@
   font-size: 1.6em;
 }
 
-.newNavBar{ display: none;}
-
+.newNavBar {
+  display: none;
+}
 
 
 @media (max-width: 900px) {
-  .firstNavbar, .secondNavBar {
+  .firstNavbar,
+  .secondNavBar {
     display: none;
   }
-  
+
   /* =============
 start newNavBar
 ============= */
-.newNavBar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  color: black;
-  align-items: center;
-  padding: 0 10px;
-}
+  .newNavBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: black;
+    align-items: center;
+    padding: 0 10px;
+  }
 
-.newNavBar nav {
-  display: none;
-}
-.newNavBar .logo {
-  max-width: 200px;
-  display: block;
-  margin: auto;
+  .newNavBar nav {
+    display: none;
+  }
+  .newNavBar .logo {
+    max-width: 200px;
+    display: block;
+    margin: auto;
+  }
+  .newNavBar .logo img {
+    height: 100%;
+    width: 100%;
+  }
 
-}
-.newNavBar .logo img{
-  height: 100%;
-  width: 100%;
-}
+  .conteinerNavBar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 3px;
+  }
 
-.conteinerNavBar {
-  display: flex;
-  justify-content: flex-start;
-  padding: 3px;
-}
-
-/* =============
+  /* =============
 end newNavBar
 ============= */
 }
