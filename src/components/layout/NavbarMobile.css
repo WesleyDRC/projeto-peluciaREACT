@@ -172,6 +172,10 @@ start newNavBar
   }
 }
 
+.btnSearch2 a{
+  color: black;
+}
+
 /* =============
 end newNavBar
 ============= */

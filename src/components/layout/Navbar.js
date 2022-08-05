@@ -1,11 +1,11 @@
 import styles from "./Navbar.module.css";
 import logo from "../../img/ursologo1.jpg";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RiBearSmileLine } from "react-icons/ri";
-import { IoIosHeartEmpty } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
+import { GiRabbitHead } from 'react-icons/gi'
 
 import { useEffect, useState } from "react";
 import api from "../../services/api";
@@ -20,17 +20,21 @@ function Navbar() {
   const [activatedButton, setActivatedButton] = useState(false);
   const [searchButton, setSearchButton] = useState(false);
 
-  const toggleSearch = () => {
+  const toggleOpenClosed = () => {
     setSearchButton(!searchButton);
-
-    document.body.style.overflow = show ? "hidden" : "initial";
-    setShow(!show);
-    setText("")
+    setText("");
   };
+
+  const toggleSearchBar = () => {
+     setSearchButton(!searchButton);
+  }
+
+  const toggleSearchButton = () => {
+    setSearchButton(!searchButton)
+  }
 
   const toggleActive = () => {
     setActivatedButton(!activatedButton);
-
     document.body.style.overflow = show ? "hidden" : "initial";
     setShow(!show);
   };
@@ -56,6 +60,11 @@ function Navbar() {
     setText(e.target.value);
   };
 
+  let { filtro } = useParams()
+  let ssfiltro = filtro
+  
+  
+  
   return (
     <header>
       <div className={styles.container}>
@@ -112,7 +121,7 @@ function Navbar() {
             </div>
 
             <div className={styles.conteinerNavBar}>
-              <Link to="/ursos-de-pelucia">
+              <Link to="/filtro/urso">
                 <div>
                   <div className={styles.svg}>
                     <RiBearSmileLine />
@@ -123,12 +132,12 @@ function Navbar() {
             </div>
 
             <div className={styles.conteinerNavBar}>
-              <Link to="/coracoes-de-pelucia">
+              <Link to="/filtro/coelho">
                 <div>
                   <div className={styles.svg}>
-                    <IoIosHeartEmpty />
+                    <GiRabbitHead />
                   </div>
-                  <p className={styles.nameP}> Corações de Pelucia </p>
+                  <p className={styles.nameP}> Coelhos de Pelucia </p>
                 </div>
               </Link>
             </div>
@@ -141,7 +150,9 @@ function Navbar() {
           <nav className={styles.newNavBar}>
             <div
               id="menuSection"
-              className={activatedButton ? "menu_section menuActive" : "menu_section"}
+              className={
+                activatedButton ? "menu_section menuActive" : "menu_section"
+              }
               onClick={toggleActive}
             >
               <div className="hamburguer">
@@ -152,9 +163,11 @@ function Navbar() {
                 </div>
               </div>
 
-              <nav className={activatedButton ? "menu menuOpen" : "menu menuClose"}>
+              <nav
+                className={activatedButton ? "menu menuOpen" : "menu menuClose"}
+              >
                 <div className={styles.conteinerNavBar}>
-                  <Link to="/ursos-de-pelucia">
+                  <Link to="/filtro/urso">
                     <div className="items_navbar">
                       <div className={styles.svg}>
                         <RiBearSmileLine />
@@ -167,13 +180,13 @@ function Navbar() {
                 </div>
 
                 <div className={styles.conteinerNavBar}>
-                  <Link to="/coracoes-de-pelucia">
+                  <Link to="/filtro/coelho">
                     <div className="items_navbar">
                       <div className={styles.svg}>
-                        <IoIosHeartEmpty />
+                        <GiRabbitHead />
                       </div>
                       <div>
-                        <p className={styles.nameP}> Corações de Pelucia </p>
+                        <p className={styles.nameP}> Coelho de Pelucia </p>
                       </div>
                     </div>
                   </Link>
@@ -197,14 +210,16 @@ function Navbar() {
             </div>
 
             <div
-              className={searchButton ? "search searchActive" : "search searchClose"}
+              className={
+                searchButton ? "search searchActive" : "search searchClose"
+              }
+              
             >
-              <div className="btnSearch" onClick={toggleSearch}>
+              <div className="btnSearch" onClick={toggleSearchBar}>
                 <BsSearch />
               </div>
 
               <div className="containerButtonSearch">
-
                 <div className="contentSearch">
                   <div className="inputSearch">
                     <input
@@ -214,20 +229,20 @@ function Navbar() {
                       onChange={debounce(handleChange, 600)}
                     />
                   </div>
-                  <div className="btnSearch2">
-                    <BsSearch />
+                  <div className="btnSearch2" onClick={toggleSearchButton}>
+                    <Link to={`filtro/${ssfiltro}`}>
+                      <BsSearch />
+                    </Link>
                   </div>
-                  <div className="close" onClick={toggleSearch}>
+                  <div className="close" onClick={toggleOpenClosed}>
                     <AiOutlineClose />
                   </div>
                 </div>
 
-                <div className="itemWantedMobile" >
+                <div className="itemWantedMobile">
                   <ul
                     className={
-                      text === ""
-                        ? "container_listOff"
-                        : "container_listOn"
+                      text === "" ? "container_listOff" : "container_listOn"
                     }
                   >
                     {text.length > 0 &&
@@ -242,10 +257,7 @@ function Navbar() {
                       ))}
                   </ul>
                 </div>
-
               </div>
-
-
             </div>
           </nav>
         </div>

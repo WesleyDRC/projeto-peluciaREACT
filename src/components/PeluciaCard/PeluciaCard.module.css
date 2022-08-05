@@ -2,12 +2,15 @@
 .container {
     padding: 1em;
     border-radius: 15px;
-    margin: 0.5%;
     background-color: white;
-    border: 1px solid rgba(223, 220, 220, 0.479);
+    border: 1px solid #EAEAEA;
     height: 100%;
+    max-width: 290px;
+    width: 100%;
 }
-
+.box {
+    padding: 25px;
+}
 .box img{
     display: block;
     margin: auto;
