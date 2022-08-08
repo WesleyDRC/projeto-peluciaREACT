@@ -16,3 +16,16 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 790px) {
+    .container_list  {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
+@media (max-width: 555px) {
+    .container_list  {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr)
+    }
+}

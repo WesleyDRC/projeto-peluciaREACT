@@ -37,3 +37,9 @@
     font-size: 3em;
     color: rgb(130, 188, 253);
 } 
+
+@media (max-width: 790px) {
+    .box {
+        padding: 10px;
+    }
+}

@@ -1,19 +1,21 @@
 import styles from "./Navbar.module.css";
 import logo from "../../img/ursologo1.jpg";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RiBearSmileLine } from "react-icons/ri";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-import { GiRabbitHead } from 'react-icons/gi'
+import { GiRabbitHead } from "react-icons/gi";
 
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import "./NavbarMobile.css";
-import debounce from "lodash/debounce";
+
 import PlushWanted from "../PeluciaCard/PlushWanted";
 
+
 function Navbar() {
+
   const [text, setText] = useState("");
   const [plush, setPlush] = useState([]);
   const [show, setShow] = useState(true);
@@ -22,16 +24,9 @@ function Navbar() {
 
   const toggleOpenClosed = () => {
     setSearchButton(!searchButton);
-    setText("");
+    document.body.style.overflow = show ? "hidden" : "initial";
+    setShow(!show);
   };
-
-  const toggleSearchBar = () => {
-     setSearchButton(!searchButton);
-  }
-
-  const toggleSearchButton = () => {
-    setSearchButton(!searchButton)
-  }
 
   const toggleActive = () => {
     setActivatedButton(!activatedButton);
@@ -60,11 +55,13 @@ function Navbar() {
     setText(e.target.value);
   };
 
-  let { filtro } = useParams()
-  let ssfiltro = filtro
-  
-  
-  
+  const pesquisarIsso = (e) => {
+    if (e.charCode === 13) {
+      const btn = document.querySelector("#searchInput");
+      btn.click();
+    }
+  };
+
   return (
     <header>
       <div className={styles.container}>
@@ -79,12 +76,16 @@ function Navbar() {
               </li>
             </ul>
             <div className={styles.inputsearch}>
-              <input
-                type="search"
-                placeholder="Procurar pelúcia"
-                id="searchInput"
-                onChange={debounce(handleChange, 600)}
-              ></input>
+              <form action={`/filtro/${text}`}>
+                <input
+                  type="search"
+                  placeholder="Procurar pelúcia"
+                  id="searchInput"
+                  onChange={handleChange}
+                  required
+                  onKeyPress={pesquisarIsso}
+                ></input>
+              </form>
 
               <div className={styles.itemWanted} id="itemWanted">
                 <ul
@@ -213,24 +214,23 @@ function Navbar() {
               className={
                 searchButton ? "search searchActive" : "search searchClose"
               }
-              
             >
-              <div className="btnSearch" onClick={toggleSearchBar}>
+              <div className="btnSearch" onClick={toggleOpenClosed}>
                 <BsSearch />
               </div>
 
-              <div className="containerButtonSearch">
+              <div className="containerButtonSearchActive">
                 <div className="contentSearch">
                   <div className="inputSearch">
                     <input
                       type="search"
                       placeholder="Procurar pelúcia"
                       id="searchInput"
-                      onChange={debounce(handleChange, 600)}
+                      onChange={handleChange}
                     />
                   </div>
-                  <div className="btnSearch2" onClick={toggleSearchButton}>
-                    <Link to={`filtro/${ssfiltro}`}>
+                  <div className="btnSearch2" onClick={toggleOpenClosed}>
+                    <Link to={`filtro/${text}`}>
                       <BsSearch />
                     </Link>
                   </div>
@@ -242,7 +242,9 @@ function Navbar() {
                 <div className="itemWantedMobile">
                   <ul
                     className={
-                      text === "" ? "container_listOff" : "container_listOn"
+                      text === "" || !searchButton
+                        ? "container_listOff"
+                        : "container_listOn"
                     }
                   >
                     {text.length > 0 &&
