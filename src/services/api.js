@@ -1,12 +1,12 @@
 import axios from "axios";
 
+const baseURL = "https://plush-backend-dev.herokuapp.com";
+
 const api = axios.create({
-    baseURL: 'https://9qz2iwilyc.execute-api.sa-east-1.amazonaws.com/dev',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
+  baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-export default api    
-
-
+export default api;
