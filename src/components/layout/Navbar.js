@@ -7,15 +7,14 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiRabbitHead } from "react-icons/gi";
 
-import { useEffect, useState } from "react";
-import api from "../../services/api";
+import { useState } from "react";
 import "./NavbarMobile.css";
 
 import PlushWanted from "../PeluciaCard/PlushWanted";
 
+import { gql, useQuery } from "@apollo/client";
 
 function Navbar() {
-
   const [text, setText] = useState("");
   const [plush, setPlush] = useState([]);
   const [show, setShow] = useState(true);
@@ -34,17 +33,26 @@ function Navbar() {
     setShow(!show);
   };
 
-  useEffect(() => {
-    const getPlush = async () => {
-      try {
-        const response = await api.get("/products");
-        setPlush(response.data);
-      } catch (error) {
-        console.log(error);
+  const GET_PLUSH = gql`
+    query {
+      findAll {
+        name
+        imageUrl
       }
-    };
-    getPlush();
-  }, []);
+    }
+  `;
+
+  const { data } = useQuery(GET_PLUSH);
+
+  const getPlush = async () => {
+    try {
+      const response = await data.findAll;
+      setPlush(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getPlush();
 
   const lowerText = text.toLowerCase();
   const filtrar = plush.filter(({ name }) =>
@@ -55,7 +63,7 @@ function Navbar() {
     setText(e.target.value);
   };
 
-  const pesquisarIsso = (e) => {
+  const searchNow = (e) => {
     if (e.charCode === 13) {
       const btn = document.querySelector("#searchInput");
       btn.click();
@@ -83,7 +91,7 @@ function Navbar() {
                   id="searchInput"
                   onChange={handleChange}
                   required
-                  onKeyPress={pesquisarIsso}
+                  onKeyPress={searchNow}
                 ></input>
               </form>
 

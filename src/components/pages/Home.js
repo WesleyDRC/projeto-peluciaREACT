@@ -1,27 +1,38 @@
 import ChangeImage from "../layout/ChangeImage";
 import PeluciaCard from "../PeluciaCard/PeluciaCard";
-import api from "../../services/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Home.module.css";
 import Loading from "../layout/Loading";
 import SearchInput from "../layout/SearchInput";
+import { gql, useQuery } from "@apollo/client";
 
 function Home() {
   const [text, setText] = useState("");
   const [card, setCard] = useState([]);
-  const [removeLoading, setRemoveLoading] = useState(false);
-  useEffect(() => {
-    const getPlush = async () => {
-      try {
-        const response = await api.get("/products");
-        setCard(response.data);
-        setRemoveLoading(true);
-      } catch (error) {
-        console.log(error);
+
+  const GET_PLUSH = gql`
+    query {
+      findAll {
+        name
+        price
+        size
+        measure
+        imageUrl
       }
-    };
-    getPlush();
-  }, []);
+    }
+  `;
+  const { loading, data } = useQuery(GET_PLUSH);
+
+  const getPlush = async () => {
+    try {
+      const response = await data.findAll;
+      setCard(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getPlush();
+
 
   const lowerText = text.toLowerCase();
   const filtrar = card.filter(({ name }) =>
@@ -40,7 +51,11 @@ function Home() {
           <h2> NOVAS PELÚCIAS </h2>
         </div>
         <div className={styles.container_input}>
-          <SearchInput value={text} onChange={handleChange} placeholder="Procurar pelúcia..."/>
+          <SearchInput
+            value={text}
+            onChange={handleChange}
+            placeholder="Procurar pelúcia..."
+          />
         </div>
         <div>
           <ul className={styles.container_list}>
@@ -57,10 +72,11 @@ function Home() {
                 </li>
               ))}
           </ul>
-
-          {!removeLoading && <Loading />}
-          {removeLoading && card.length === 0 && (
-            <p> Não há novas pelucias. </p>
+          {loading && <Loading />}
+          {!loading && card.length === 0 && (
+            <ul className={styles.container_list}>
+              <p> Não há novas pelucias. </p>
+            </ul>
           )}
         </div>
       </div>
