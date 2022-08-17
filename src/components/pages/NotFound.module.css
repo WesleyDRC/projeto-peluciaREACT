@@ -1,0 +1,50 @@
+.containerNotFound {
+  display: flex;
+  width: 100%;
+  max-width: 1240px;
+  background-color: #f7f7f7;
+  font-size: 3em;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+.text {
+  max-width: 400px;
+  max-height: 500px;
+  width: 100%;
+  height: 100%;
+  word-wrap: break-word;
+  text-align: justify;
+}
+.h1 {
+  max-width: 300px;
+  width: 100%;
+}
+.value {
+  font-weight: bold;
+  font-size: 1.7em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.box img {
+  display: block;
+  margin: auto;
+  max-width: 210px;
+  max-height: 210px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.8em;
+}
+
+@media (max-width: 900px) {
+  .box {
+    display: flex;
+    flex-direction: column;
+  }
+}

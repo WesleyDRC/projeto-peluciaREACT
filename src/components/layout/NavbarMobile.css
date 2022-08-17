@@ -170,6 +170,9 @@ start newNavBar
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
+    background-color: white;
+    -webkit-box-shadow: 0px 5px 15px 5px rgba(75, 155, 247, 0.788);
+    box-shadow: 0px 5px 15px 5px rgba(75, 155, 247, 0.788);
   }
   .container_listOff {
     display: none;
@@ -180,6 +183,11 @@ start newNavBar
   color: black;
 }
 
+.productNotFound {
+  padding: 3em;
+  text-align: center;
+  font-size: 2em;
+}
 /* =============
 end newNavBar
 ============= */

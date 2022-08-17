@@ -7,7 +7,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiRabbitHead } from "react-icons/gi";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./NavbarMobile.css";
 
 import PlushWanted from "../PeluciaCard/PlushWanted";
@@ -16,7 +16,8 @@ import { gql, useQuery } from "@apollo/client";
 
 function Navbar() {
   const [text, setText] = useState("");
-  const [plush, setPlush] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [erro, setErro] = useState(false);
   const [show, setShow] = useState(true);
   const [activatedButton, setActivatedButton] = useState(false);
   const [searchButton, setSearchButton] = useState(false);
@@ -36,26 +37,33 @@ function Navbar() {
   const GET_PLUSH = gql`
     query {
       findAll {
+        id
         name
         imageUrl
       }
     }
   `;
 
-  const { data } = useQuery(GET_PLUSH);
+  const { data, loading, error } = useQuery(GET_PLUSH);
 
-  const getPlush = async () => {
-    try {
-      const response = await data.findAll;
-      setPlush(response);
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    const onCompleted = (data) => {
+      setProduct(data.findAll);
+    };
+    const onError = (error) => {
+      setErro(!error);
+    };
+    if (onCompleted || onError) {
+      if (onCompleted && !loading && !error) {
+        onCompleted(data);
+      } else if (onError && !loading && error) {
+        onError(error);
+      }
     }
-  };
-  getPlush();
+  }, [data, loading, error]);
 
   const lowerText = text.toLowerCase();
-  const filtrar = plush.filter(({ name }) =>
+  const filtrar = product.filter(({ name }) =>
     name.toLowerCase().includes(lowerText)
   );
 
@@ -104,7 +112,7 @@ function Navbar() {
                   }
                 >
                   {text.length > 0 &&
-                    plush.length > 0 &&
+                    product.length > 0 &&
                     filtrar.map((plush) => (
                       <li key={plush.id}>
                         <PlushWanted
@@ -113,6 +121,10 @@ function Navbar() {
                         />
                       </li>
                     ))}
+                  {text.length > 0 && filtrar.length === 0 && (
+                    <p className={styles.productNotFound}> Produto não encontrado </p>
+                  )}
+                  {erro && <p> Algo deu errado! Tente novamente. </p>}
                 </ul>
               </div>
             </div>
@@ -256,7 +268,7 @@ function Navbar() {
                     }
                   >
                     {text.length > 0 &&
-                      plush.length > 0 &&
+                      product.length > 0 &&
                       filtrar.map((plush) => (
                         <li key={plush.id}>
                           <PlushWanted
@@ -265,6 +277,10 @@ function Navbar() {
                           />
                         </li>
                       ))}
+                    {text.length > 0 && filtrar.length === 0  && (
+                      <p className="productNotFound"> Produto não encontrado </p>
+                    )}
+                    {erro && <p> Algo deu errado! Tente novamente. </p>}
                   </ul>
                 </div>
               </div>

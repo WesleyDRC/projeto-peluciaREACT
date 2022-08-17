@@ -4,8 +4,6 @@
     align-items: center;
     color: black;
     text-align: justify;
-    border-bottom: 1px solid rgba(75, 155, 247, 0.788);
-    background-color: white;
 }
 .product img {
     width: 70px;

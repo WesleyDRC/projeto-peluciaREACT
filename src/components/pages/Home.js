@@ -1,6 +1,6 @@
 import ChangeImage from "../layout/ChangeImage";
 import PeluciaCard from "../PeluciaCard/PeluciaCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import Loading from "../layout/Loading";
 import SearchInput from "../layout/SearchInput";
@@ -8,11 +8,13 @@ import { gql, useQuery } from "@apollo/client";
 
 function Home() {
   const [text, setText] = useState("");
-  const [card, setCard] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [erro, setErro] = useState(false);
 
   const GET_PLUSH = gql`
     query {
       findAll {
+        id
         name
         price
         size
@@ -21,21 +23,27 @@ function Home() {
       }
     }
   `;
-  const { loading, data } = useQuery(GET_PLUSH);
 
-  const getPlush = async () => {
-    try {
-      const response = await data.findAll;
-      setCard(response);
-    } catch (error) {
-      console.log(error);
+  const { data, loading, error } = useQuery(GET_PLUSH);
+
+  useEffect(() => {
+    const onCompleted = (data) => {
+      setProduct(data.findAll);
+    };
+    const onError = (error) => {
+      setErro(!error);
+    };
+    if (onCompleted || onError) {
+      if (onCompleted && !loading && !error) {
+        onCompleted(data);
+      } else if (onError && !loading && error) {
+        onError(error);
+      }
     }
-  };
-  getPlush();
-
+  }, [data, loading, error]);
 
   const lowerText = text.toLowerCase();
-  const filtrar = card.filter(({ name }) =>
+  const filtrar = product.filter(({ name }) =>
     name.toLowerCase().includes(lowerText)
   );
 
@@ -59,25 +67,22 @@ function Home() {
         </div>
         <div>
           <ul className={styles.container_list}>
-            {card.length > 0 &&
-              filtrar.map((card) => (
-                <li key={card.id}>
+            {product.length > 0 &&
+              filtrar.map((plush) => (
+                <li key={plush.id}>
                   <PeluciaCard
-                    name={card.name}
-                    price={card.price}
-                    imageUrl={card.imageUrl}
-                    size={card.size}
-                    measure={card.measure}
+                    name={plush.name}
+                    price={plush.price}
+                    imageUrl={plush.imageUrl}
+                    size={plush.size}
+                    measure={plush.measure}
                   />
                 </li>
               ))}
           </ul>
           {loading && <Loading />}
-          {!loading && card.length === 0 && (
-            <ul className={styles.container_list}>
-              <p> Não há novas pelucias. </p>
-            </ul>
-          )}
+          {!loading && product.length === 0 && <p> Não há novas pelucias. </p>}
+          {erro && <p> Algo deu errado! Tente novamente. </p>}
         </div>
       </div>
     </>

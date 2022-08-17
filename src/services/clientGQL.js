@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 export const client = new ApolloClient({
-  uri: "https://plush-backend-dev.herokuapp.com/graphql",
+  uri: process.env.REACT_APP_BASE_URL_,
   cache: new InMemoryCache(),
 });

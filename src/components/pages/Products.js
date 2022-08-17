@@ -1,15 +1,18 @@
 import styles from "./Products.module.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PeluciaCard from "../PeluciaCard/PeluciaCard";
 import Loading from "../layout/Loading";
 import { gql, useQuery } from "@apollo/client";
+import NotFound from "./NotFound";
 
 function Products() {
-  const [card, setCard] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [erro, setErro] = useState(false);
   const GET_PLUSH = gql`
     query {
       findAll {
+        id
         name
         price
         size
@@ -19,45 +22,52 @@ function Products() {
     }
   `;
 
-  const { loading, data } = useQuery(GET_PLUSH);
+  const { data, loading, error } = useQuery(GET_PLUSH);
 
-  const getPlush = async () => {
-    try {
-      const response = await data.findAll;
-      setCard(response);
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    const onCompleted = (data) => {
+      setProduct(data.findAll);
+    };
+    const onError = (error) => {
+      setErro(!error);
+    };
+    if (onCompleted || onError) {
+      if (onCompleted && !loading && !error) {
+        onCompleted(data);
+      } else if (onError && !loading && error) {
+        onError(error);
+      }
     }
-  };
-  getPlush();
+  }, [data, loading, error]);
 
   let { filtro } = useParams();
-
   const lowerText = filtro.toLowerCase();
-  const filtrar = card.filter(({ name }) => {
+  const filtrar = product.filter(({ name }) => {
     return name.toLowerCase().includes(lowerText);
   });
 
   return (
     <div className={styles.container}>
       <ul className={styles.container_list}>
-        {card.length > 0 &&
-          filtrar.map((card) => {
+        {product.length > 0 &&
+          filtrar.map((plush) => {
             return (
-              <li key={card.id}>
+              <li key={plush.id}>
                 <PeluciaCard
-                  name={card.name}
-                  price={card.price}
-                  imageUrl={card.imageUrl}
-                  size={card.size}
-                  measure={card.measure}
+                  name={plush.name}
+                  price={plush.price}
+                  imageUrl={plush.imageUrl}
+                  size={plush.size}
+                  measure={plush.measure}
                 />
               </li>
             );
           })}
       </ul>
       {loading && <Loading />}
-      {!loading && card.length === 0 && <p> Não há novas pelucias. </p>}
+      {!loading && product.length === 0 && <p> Não há novas pelucias. </p>}
+      {erro && <p> Algo deu errado! Tente novamente. </p>}
+      {filtro.length > 0 && filtrar.length === 0  && <NotFound value={filtro}/>}
     </div>
   );
 }
