@@ -4,44 +4,25 @@ import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import Loading from "../layout/Loading";
 import SearchInput from "../layout/SearchInput";
-import { gql, useQuery } from "@apollo/client";
-
+import { useQuery } from "@apollo/client";
+import graphqlRepository from "../../repository/graphqlRepository";
 function Home() {
   const [text, setText] = useState("");
   const [product, setProduct] = useState([]);
   const [erro, setErro] = useState(false);
 
-  const GET_PLUSH = gql`
-    query {
-      findAll {
-        id
-        name
-        price
-        size
-        measure
-        imageUrl
-      }
-    }
-  `;
-
+  const GET_PLUSH = graphqlRepository.findAll();
   const { data, loading, error } = useQuery(GET_PLUSH);
 
   useEffect(() => {
-    const onCompleted = (data) => {
-      setProduct(data.findAll);
-    };
-    const onError = (error) => {
-      setErro(!error);
-    };
-    if (onCompleted || onError) {
-      if (onCompleted && !loading && !error) {
-        onCompleted(data);
-      } else if (onError && !loading && error) {
-        onError(error);
-      }
+    try {
+      if (data) setProduct(data.findAll)
+    } catch (e) {
+      console.log(e);
+      setErro(error)
     }
-  }, [data, loading, error]);
-
+  }, [data, error]);
+  
   const lowerText = text.toLowerCase();
   const filtrar = product.filter(({ name }) =>
     name.toLowerCase().includes(lowerText)

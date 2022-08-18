@@ -1,12 +1,11 @@
 import WhatsApp from "./components/layout/WhatsApp";
 import Rotas from "./routes";
-import { client } from "./services/clientGQL";
+import clientGQL from "./services/clientGQL";
 import { ApolloProvider } from "@apollo/client";
 function App() {
-
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={clientGQL}>
         <WhatsApp />
         <Rotas />
       </ApolloProvider>

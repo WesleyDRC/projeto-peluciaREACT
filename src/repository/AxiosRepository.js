@@ -1,16 +1,15 @@
-import { api } from '../services/api'
+import { api } from "../services/api";
 
 class AxiosRepository {
+  axiosClient;
 
-   axiosClient;
-  
-    constructor () {
-       this.axiosClient = api;
-    }
-  
-    async findAll() {
-       return this.axiosClient.get('/products');
-    }
+  constructor() {
+    this.axiosClient = api;
   }
-  
-  export default new AxiosRepository();
+
+  async findAll() {
+   return this.axiosClient.get("/products");
+  }
+}
+
+export default new AxiosRepository();

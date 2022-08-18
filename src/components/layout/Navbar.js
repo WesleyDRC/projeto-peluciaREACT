@@ -11,8 +11,9 @@ import { useEffect, useState } from "react";
 import "./NavbarMobile.css";
 
 import PlushWanted from "../PeluciaCard/PlushWanted";
+import graphqlRepository from "../../repository/graphqlRepository";
 
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 function Navbar() {
   const [text, setText] = useState("");
@@ -34,33 +35,17 @@ function Navbar() {
     setShow(!show);
   };
 
-  const GET_PLUSH = gql`
-    query {
-      findAll {
-        id
-        name
-        imageUrl
-      }
-    }
-  `;
-
-  const { data, loading, error } = useQuery(GET_PLUSH);
+  const GET_PLUSH = graphqlRepository.findAll();
+  const { data, error } = useQuery(GET_PLUSH);
 
   useEffect(() => {
-    const onCompleted = (data) => {
-      setProduct(data.findAll);
-    };
-    const onError = (error) => {
-      setErro(!error);
-    };
-    if (onCompleted || onError) {
-      if (onCompleted && !loading && !error) {
-        onCompleted(data);
-      } else if (onError && !loading && error) {
-        onError(error);
-      }
+    try {
+      if (data) setProduct(data.findAll);
+    } catch (e) {
+      console.log(e);
+      setErro(error);
     }
-  }, [data, loading, error]);
+  }, [data, error]);
 
   const lowerText = text.toLowerCase();
   const filtrar = product.filter(({ name }) =>
