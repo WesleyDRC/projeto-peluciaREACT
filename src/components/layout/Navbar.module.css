@@ -29,6 +29,7 @@
   align-items: center;
   text-align: center;
   font-size: 2em;
+  margin-left: auto;
 }
 
 .inputsearch input {
@@ -75,6 +76,13 @@
   text-align: center;
   white-space: nowrap;
 }
+
+.auth {
+  font-size: 1.6em;
+}
+
+
+
 
 .secondNavBar {
   display: flex;

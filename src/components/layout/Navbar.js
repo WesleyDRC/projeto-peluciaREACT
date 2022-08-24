@@ -6,6 +6,7 @@ import { RiBearSmileLine } from "react-icons/ri";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiRabbitHead } from "react-icons/gi";
+import { FaUser } from "react-icons/fa";
 
 import { useEffect, useState } from "react";
 import "./NavbarMobile.css";
@@ -107,11 +108,20 @@ function Navbar() {
                       </li>
                     ))}
                   {text.length > 0 && filtrar.length === 0 && (
-                    <p className={styles.productNotFound}> Produto não encontrado </p>
+                    <p className={styles.productNotFound}>
+                      Produto não encontrado
+                    </p>
                   )}
                   {erro && <p> Algo deu errado! Tente novamente. </p>}
                 </ul>
               </div>
+            </div>
+
+            <div className={styles.auth}>
+              <Link to="/my-account">
+                <FaUser />
+                <span> Entrar </span>
+              </Link>
             </div>
           </nav>
         </div>
@@ -262,8 +272,11 @@ function Navbar() {
                           />
                         </li>
                       ))}
-                    {text.length > 0 && filtrar.length === 0  && (
-                      <p className="productNotFound"> Produto não encontrado </p>
+                    {text.length > 0 && filtrar.length === 0 && (
+                      <p className="productNotFound">
+                        {" "}
+                        Produto não encontrado{" "}
+                      </p>
                     )}
                     {erro && <p> Algo deu errado! Tente novamente. </p>}
                   </ul>

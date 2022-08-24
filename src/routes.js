@@ -6,6 +6,7 @@ import Products from "./components/pages/Products";
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import NotFound from "./components/pages/NotFound";
+import Auth from './components/pages/Auth';
 
 function Rotas() {
   return (
@@ -17,6 +18,7 @@ function Rotas() {
           <Route path="/contact" element={<Contato />}></Route>
           <Route path="filtro/:filtro" element={<Products />}></Route>
           <Route path="*" element={<NotFound />} ></Route>
+          <Route path="/my-account" element={<Auth />}></Route>
         </Routes>
       </Container>
       <Footer />
