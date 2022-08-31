@@ -1,7 +1,7 @@
 import Banner1 from "../../img/banner1.jpg";
 import Banner2 from "../../img/banner2.jpg";
 import React from "react";
-import bootstrap from 'bootstrap';
+import 'bootstrap';
 
 function ChangeImage() {
   return (

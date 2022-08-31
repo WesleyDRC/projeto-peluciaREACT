@@ -1,8 +1,43 @@
 /* =============
 start newNavBar
 ============= */
+.container {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+.newNavBar {
+  display: none;
+}
+
 @media (max-width: 900px) {
-  .menu_section.menuActive {
+  .newNavBar {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    color: black;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .menu_menuClose {
+    display: none;
+  }
+  .newNavBar .logo {
+    max-width: 200px;
+    display: block;
+    margin: auto;
+  }
+  .newNavBar .logo img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .conteinerNavBar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 3px;
+  }
+
+  .menu_section_menuActive {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,13 +51,13 @@ start newNavBar
     overflow-y: auto;
   }
 
-  .menu_section.menuActive .menu_toggle {
+  .menu_section_menuActive .menu_toggle {
     position: absolute;
     left: 0;
     top: 15px;
     z-index: 6;
   }
-  .menu_section.menuActive .hamburguer {
+  .menu_section_menuActive .hamburguer {
     display: block;
     width: 70%;
     height: 60px;
@@ -35,6 +70,7 @@ start newNavBar
     height: 30px;
     margin-right: 20px;
   }
+
   .one,
   .two,
   .three {
@@ -45,31 +81,55 @@ start newNavBar
     transition-duration: 0.3s;
   }
 
-  .menu_section.menuActive .one {
+  .menu_section_menuActive .one {
     transform: rotate(45deg) translate(7px, 7px);
     background-color: rgb(50, 92, 139);
   }
-  .menu_section.menuActive .two {
+  .menu_section_menuActive .two {
     opacity: 0;
     background-color: rgb(50, 92, 139);
   }
-  .menu_section.menuActive .three {
+  .menu_section_menuActive .three {
     transform: rotate(-45deg) translate(7px, -9px);
     background-color: rgb(50, 92, 139);
   }
   .menu_section {
     cursor: pointer;
   }
-  .menu.menuOpen {
+  .menu_menuOpen {
     display: block;
     justify-content: flex-start;
     padding-top: 40px;
   }
-  .menu.menuOpen {
+  .menu_menuOpen {
     width: 70%;
     height: 100vh;
     box-shadow: 7px 5px 20px 1px rgba(0, 0, 0, 0.47);
     background-color: white;
+  }
+
+  .conteinerNavBar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+    text-align: center;
+    line-height: 2em;
+    color: black;
+    transition: transform 0.3s ease-out;
+  }
+
+  .svg {
+    font-size: 6em;
+    transition: transform 0.3s ease-out;
+  }
+  .conteinerNavBar a:hover {
+    transform: translateY(10px);
+    color: gray;
+  }
+
+  .nameP {
+    font-size: 1.6em;
   }
 
   .items_navbar {
@@ -90,7 +150,7 @@ start newNavBar
     color: rgb(50, 92, 139);
   }
 
-  .search.searchClose {
+  .search_searchClose {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -101,7 +161,7 @@ start newNavBar
     width: 100%;
     height: auto;
   }
-  .search.searchClose .btnSearch {
+  .search_searchClose .btnSearch {
     max-width: 60px;
     width: 100%;
     border: 1px solid black;
@@ -110,8 +170,8 @@ start newNavBar
     font-size: 1.6em;
     padding: 0 0.23em;
   }
-  
-  .search.searchActive {
+
+  .search_searchActive {
     position: absolute;
     top: 0;
     right: 0;
@@ -126,13 +186,13 @@ start newNavBar
     transition: 0.5s;
   }
 
-  .search.searchActive .btnSearch {
+  .search_searchActive .btnSearch {
     display: none;
   }
-  .search.searchClose .contentSearch {
+  .search_searchClose .contentSearch {
     display: none;
   }
-  .search.searchActive .contentSearch {
+  .search_searchActive .contentSearch {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -142,11 +202,11 @@ start newNavBar
     max-height: 70px;
     height: 100%;
   }
-  .search.searchActive .contentSearch .inputSearch {
+  .search_searchActive .contentSearch .inputSearch {
     width: 60%;
     padding: 2em;
   }
-  .search.searchActive .contentSearch .btnSearch2 {
+  .search_searchActive .contentSearch .btnSearch2 {
     display: block;
     font-size: 3em;
     width: 15%;
@@ -177,9 +237,18 @@ start newNavBar
   .container_listOff {
     display: none;
   }
+  .auth {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .auth a {
+    color: black;
+    font-size: 1.9em;
+  }
 }
 
-.btnSearch2 a{
+.btnSearch2 a {
   color: black;
 }
 

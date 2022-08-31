@@ -1,13 +1,17 @@
 import WhatsApp from "./components/layout/WhatsApp";
-import Rotas from "./routes";
+import Routes from "./routes/index";
 import clientGQL from "./services/clientGQL";
 import { ApolloProvider } from "@apollo/client";
+import { AuthProvider } from "./contexts/auth";
+
 function App() {
   return (
     <>
       <ApolloProvider client={clientGQL}>
-        <WhatsApp />
-        <Rotas />
+        <AuthProvider>
+          <WhatsApp />
+          <Routes />
+        </AuthProvider>
       </ApolloProvider>
     </>
   );
