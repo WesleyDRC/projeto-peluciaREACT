@@ -11,19 +11,17 @@ function GetForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  function submit(e) {
+  const submit = async (e) => {
     e.preventDefault();
     if (!email | !password) {
       setError("Preencha todos os campos");
       return;
     }
-    const res = SignIn(email, password);
-
-    if (res) {
-      setError(res);
+    const response = await SignIn(email, password);
+    if (response) {
+      setError(response);
       return;
     }
-
     navigate("/");
   }
 
@@ -59,7 +57,7 @@ function GetForm() {
           </label>
         </div>
 
-        <label> {error} </label>
+        <label className={styles.labelError}> {error} </label>
         <button type="submit" className={styles.btn}>
           Entrar
         </button>

@@ -24,8 +24,6 @@
   user-select: none;
   word-wrap: break-word;
 }
-
-
 .authUserActive {
   color: #404e65;
   transition: 0.4s;
@@ -111,4 +109,9 @@ input{
     display: block;
     word-wrap: break-word;
   }
+}
+
+.labelError {
+  font-size: 1.4em;
+  font-weight: bold;
 }

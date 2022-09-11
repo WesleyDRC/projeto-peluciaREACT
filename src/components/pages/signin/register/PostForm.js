@@ -15,7 +15,8 @@ function PostForm() {
   const [error, setError] = useState("");
   const { SignUp } = useAuth();
   const navigate = useNavigate();
-  function submit(e) {
+
+  async function submit(e) {
     e.preventDefault();
 
     if (!name | !email | !password) {
@@ -23,20 +24,14 @@ function PostForm() {
       return;
     }
 
-    const res = SignUp(email, password);
+    const response = await SignUp(name, email, password) ;
 
-    if (res) {
-      setError(res);
+    if (response) {
+      setError(response);
       return;
     }
 
     alert("Usuário cadastrado com sucesso!");
-
-    api.post("/users", {
-      name,
-      email,
-      password,
-    });
 
     navigate("/");
   }
@@ -90,7 +85,7 @@ function PostForm() {
           </label>
         </div>
 
-        <label> {error} </label>
+        <label className={styles.labelError}> {error} </label>
         <button type="submit" className={styles.btn}>
           Cadastrar-se
         </button>
