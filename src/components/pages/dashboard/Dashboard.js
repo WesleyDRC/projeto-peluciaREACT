@@ -12,7 +12,7 @@ function DashBoard() {
         <div className={styles.title}>
           <h1> Minha conta </h1>
         </div>
-        <p>Você está lógado como: </p>
+        <p>Você está lógado como:  </p>
 
         <button
           title="SignOut"
