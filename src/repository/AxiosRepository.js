@@ -1,6 +1,7 @@
 import { api } from "../services/api";
 
 class AxiosRepository {
+
   axiosClient;
 
   constructor() {
@@ -8,7 +9,7 @@ class AxiosRepository {
   }
 
   async findAll() {
-   return this.axiosClient.get("/products");
+   return this.axiosClient.get("/products")
   }
 
 }

@@ -1,6 +1,6 @@
 import ProductInformation from "../layout/ProductInformation";
 
-// import AxiosRepository from '../../repository/AxiosRepository'
+import AxiosRepository from '../../repository/AxiosRepository'
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -12,9 +12,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     try {
-      axios
-        .get("https://plush-backend-dev.herokuapp.com/products")
-        .then((resp) => setProduct(resp.data));
+      AxiosRepository.findAll().then((resp) => setProduct(resp.data));
     } catch (error) {
       console.log(error);
     }
