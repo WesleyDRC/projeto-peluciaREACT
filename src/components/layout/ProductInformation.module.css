@@ -1,0 +1,131 @@
+main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+}
+.product {
+	display: flex;
+	height: 100%;
+}
+.productImage{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+.productImage div{
+	display: flex;
+	justify-content: center;
+	max-width: 450px;
+	max-height: 450px;
+}
+.productImage div img {
+	width: 100%;
+	height: 250px;
+}
+
+.productInfo {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	max-height: 450px;
+}
+.title {
+	color: #404E65;
+	font-weight: bold;
+	font-size: 3.6em;
+	font-family: 'Fredoka', sans-serif;
+}
+.price {
+	color: #16A3E0;
+	font-weight: bold;
+	font-size: 3.6em;
+	font-family: 'Fredoka', sans-serif;
+}
+.discount{
+	color: #FF7373;
+	font-weight: bold;
+	font-size: 3em;
+	font-family: 'Fredoka', sans-serif;
+}
+.discount span {
+	color: #16A3E0
+}
+
+.cart {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.quantity {
+	display: flex;
+	align-items: center;
+}
+.quantityWantBuy {
+	display: flex;
+	border: 1px solid #D5E0EC;
+	border-radius: 4px;
+	font-size: 1.6em;
+	width: fit-content;
+	padding: 13px 0;
+	margin-right: 10px;
+}
+.quantity button {
+	border: none;
+	background-color: #F7F7F7;
+}
+.quantity input[type="number"]::-webkit-outer-spin-button,
+.quantity input[type="number"]::-webkit-inner-spin-button, .quantity input {
+    -webkit-appearance: none;
+    margin: 0;
+		border: none;
+		text-align: center;
+		background-color: #F7F7F7;
+}
+.quantity input:focus {
+	box-shadow: 0 0 0 0;
+	outline: 0;
+	background-color: #F7F7F7;
+}
+.availableQuantity {
+	font-size: 1.6em;
+	color:#757575;
+}
+
+.addToCartOrBuy {
+	display: flex;
+	gap: 3px;
+	align-items: center;
+}
+
+.buy {
+	width: fit-content;
+	border-radius: 4px;
+}
+.buy button {
+	border-radius: 4px;
+	border: none;
+	background-color: #FF7373;
+	color: white;
+	font-weight: bold;
+	font-size: 1.4em;
+	padding: 13px 24px;
+}
+
+.addCart {
+	width: fit-content;
+	border-radius: 4px;
+	border: 1px solid #FF7373;;
+}
+.addCart button {
+	border-radius: 4px;
+	border: none;
+	background-color: #F7F7F7;
+	color: #FF7373;;
+	font-weight: bold;
+	font-size: 1.4em;
+	padding: 13px 24px;
+	white-space: nowrap;
+}

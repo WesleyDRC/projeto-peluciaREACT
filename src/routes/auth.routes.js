@@ -7,6 +7,7 @@ import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/navbar/index";
 import NotFound from "../components/pages/NotFound";
 import Auth from '../components/pages/signin/Auth';
+import ProductPage from "../components/pages/ProductPage";
 
 function AuthRoutes() {
   return (
@@ -19,6 +20,7 @@ function AuthRoutes() {
           <Route path="filtro/:filtro" element={<Products />}></Route>
           <Route path="*" element={<NotFound />} ></Route>
           <Route path="/my-account" element={<Auth />}></Route>
+          <Route path="/produto/:id" element={<ProductPage />}></Route>
         </Routes>
       </Container>
       <Footer />

@@ -10,6 +10,7 @@ class AxiosRepository {
   async findAll() {
    return this.axiosClient.get("/products");
   }
+
 }
 
 export default new AxiosRepository();

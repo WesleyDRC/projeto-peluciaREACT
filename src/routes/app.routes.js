@@ -8,6 +8,8 @@ import NotFound from "../components/pages/NotFound";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/navbarprivate/index";
 import DashBoard from "../components/pages/dashboard/Dashboard";
+import ProductPage from "../components/pages/ProductPage";
+import CartPage from "../components/pages/CartPage";
 
 function AppRoutes() {
   return (
@@ -20,6 +22,8 @@ function AppRoutes() {
           <Route exact path="filtro/:filtro" element={<Products />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route exact path="/my-account" element={<DashBoard />}></Route>
+          <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/cart" element={<CartPage />}></Route>
         </Routes>
       </Container>
       <Footer />

@@ -1,8 +1,9 @@
 import styles from "./PeluciaCard.module.css";
 import {Link} from 'react-router-dom';
-function PeluciaCard({ name, price, imageUrl, size, measure }) {
+
+function PeluciaCard({ id, name, price, imageUrl, size, measure }) {
   return (
-    <Link to="/" >
+    <Link to={`/product/${id}`} >
       <div className={styles.container}>
         <div className={styles.box} >
           <img src={imageUrl} alt="pelucia" />
