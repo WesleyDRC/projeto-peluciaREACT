@@ -4,9 +4,11 @@ import styles from "./ProductInformation.module.css";
 
 import { RiSubtractFill } from "react-icons/ri";
 import { IoAddOutline } from "react-icons/io5";
-import { IoMdCart } from 'react-icons/io';
+import { IoMdCart } from "react-icons/io";
 
 import useBuy from "../../hooks/useBuyFlow";
+
+import Warning from "./Warning";
 
 export default function ProductInformation({
   imageUrl,
@@ -14,7 +16,7 @@ export default function ProductInformation({
   size,
   measure,
   price,
-  id
+  id,
 }) {
   const desconto = price * (3 / 100);
   const newPrice = (price - desconto).toLocaleString("pt-br", {
@@ -22,9 +24,9 @@ export default function ProductInformation({
     currency: "BRL",
   });
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
-  const {handleAddItemToCard, availableProducts} = useBuy();
+  const { handleAddItemToCard, availableProducts, messageWarning, errorMessage} = useBuy();
 
   return (
     <main>
@@ -53,38 +55,29 @@ export default function ProductInformation({
           <form className={styles.cart} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.quantity}>
               <div className={styles.quantityWantBuy}>
-              <button
-                className={styles.decrease}
-                onClick={() =>
-                  quantity > 1
-                    ? setQuantity(quantity - 1)
-                    : setQuantity(quantity)
-                }
-              >
-                <RiSubtractFill />
-              </button>
-              <input
-                name="quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                title="Qtd"
-                inputMode="numeric"
-                type="number"
-                step="1"
-                min="1"
-                max={availableProducts}
-              />
-              <button
-                className={styles.add}
-                onClick={() =>
-                  quantity < availableProducts
-                    ? setQuantity(quantity + 1)
-                    : setQuantity(quantity)
-                }
-              >
-                <IoAddOutline />
-              </button>
-
+                <button
+                  className={styles.decrease}
+                  onClick={ () => quantity > 1 &&setQuantity(quantity - 1)}
+                >
+                  <RiSubtractFill />
+                </button>
+                <input
+                  name="quantity"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                  title="Qtd"
+                  inputMode="numeric"
+                  type="number"
+                  step="1"
+                  min="1"
+                  max={availableProducts}
+                />
+                <button
+                  className={styles.add}
+                  onClick={() => quantity < availableProducts &&setQuantity(quantity + 1)}
+                >
+                  <IoAddOutline />
+                </button>
               </div>
               <div className={styles.availableQuantity}>
                 <p>{availableProducts} produtos disponíveis</p>
@@ -97,11 +90,27 @@ export default function ProductInformation({
               </div>
 
               <div className={styles.addCart}>
-                <button onClick={() => quantity > 0 && handleAddItemToCard(id, name, price, imageUrl, size, measure, quantity)}> <IoMdCart /> Adicionar ao carrinho</button>
+                <button
+                  onClick={() =>
+                    quantity > 0 &&
+                    handleAddItemToCard(
+                      id,
+                      name,
+                      price,
+                      imageUrl,
+                      size,
+                      measure,
+                      quantity
+                    )
+                  }
+                >
+                  <IoMdCart /> Adicionar ao carrinho
+                </button>
               </div>
             </div>
           </form>
         </section>
+        <Warning message={messageWarning} error={errorMessage}/>
       </div>
     </main>
   );

@@ -1,18 +1,22 @@
 import ProductInformation from "../layout/ProductInformation";
+import Loading from '../layout/Loading'
 
 import AxiosRepository from '../../repository/AxiosRepository'
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import { useParams } from "react-router-dom";
+
+import useBuy from "../../hooks/useBuyFlow";
 
 export default function ProductPage() {
 
   const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     try {
       AxiosRepository.findAll().then((resp) => setProduct(resp.data));
+      setLoading(false)
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +43,7 @@ export default function ProductPage() {
             id={plush.id}
           />
         ))}
+      {loading && <Loading />}
     </>
   );
 }

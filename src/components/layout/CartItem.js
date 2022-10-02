@@ -1,7 +1,5 @@
 import styles from './CartItem.module.css';
 
-import { useState } from 'react';
-
 import {Link} from 'react-router-dom'
 
 import { RiSubtractFill } from 'react-icons/ri';
@@ -9,11 +7,9 @@ import { IoAddOutline } from 'react-icons/io5';
 
 import useBuy from '../../hooks/useBuyFlow';
 
-export default function CartItem({id, name, price, imageUrl, size, measure, quantity}) {
+export default function CartItem({id, name, price, imageUrl, size, measure, quantity, handleProductDecrement,handleProductIncrement }) {
 
 	const { handleRemoveItemFromCart, availableProducts} = useBuy()
-
-	const [quantityInCart,setQuantityInCart] = useState(quantity)
 
 	return (
 		<li className={styles.cartItem} key={id}>
@@ -29,29 +25,21 @@ export default function CartItem({id, name, price, imageUrl, size, measure, quan
 				<div className={styles.quantityWantBuy}>
 						<button
 							className={styles.decrease}
-							onClick={() =>
-								quantityInCart > 1
-									? setQuantityInCart(quantityInCart - 1)
-									: setQuantityInCart(quantityInCart)
-							}
+							onClick={handleProductDecrement}
 						>
 							<RiSubtractFill />
 						</button>
-							{quantityInCart}
+						{quantity}
 						<button
 							className={styles.add}
-							onClick={() =>
-								quantityInCart < availableProducts
-									? setQuantityInCart(quantityInCart + 1)
-									: setQuantityInCart(quantityInCart)
-							}
+							onClick={handleProductIncrement}
 						>
 							<IoAddOutline />
 						</button>
 					</div>
 					<div className={styles.availableQuantity}>
-                <p>{availableProducts} produtos disponíveis</p>
-            </div>
+            <p>{availableProducts} produtos disponíveis</p>
+          </div>
 			</div>
 			<div className={styles.price}>
 				<p> {price} </p>

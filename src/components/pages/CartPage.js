@@ -9,11 +9,25 @@ import {Link} from 'react-router-dom';
 
 import useBuy from '../../hooks/useBuyFlow';
 
-import CartItem from '../layout/CartItem'
+import CartItem from '../layout/CartItem';
+import Warning from '../layout/Warning';
 
 export default function CartPage () {
 
-	const {cart, handleRemoveAll} = useBuy()
+	const {cart, handleRemoveAll, updateProductAmount, messageWarning, errorMessage} = useBuy()
+
+	function handleProductDecrement(product) {
+    const { id, quantity } = product;
+
+    updateProductAmount({ id: id, quantity: quantity - 1 });
+  }
+
+	function handleProductIncrement(product) {
+    const { id, quantity } = product;
+
+    updateProductAmount({ id: id, quantity: quantity + 1 });
+  }
+
 
 	return (
 		<div className={styles.cart}>
@@ -51,7 +65,7 @@ export default function CartPage () {
 						key={cartItem.id}
 						id={cartItem.id}
 						name={cartItem.name}
-						price={cartItem.price.toLocaleString("pt-br", {
+						price={(cartItem.price * cartItem.quantity).toLocaleString("pt-br", {
 							style: "currency",
 							currency: "BRL",
 						})}
@@ -59,6 +73,8 @@ export default function CartPage () {
 						size={cartItem.size}
 						measure={cartItem.measure}
 						quantity={cartItem.quantity}
+						handleProductDecrement={() => handleProductDecrement(cartItem)}
+						handleProductIncrement={() => handleProductIncrement(cartItem)}
 					/>
 				)
 				}
@@ -67,6 +83,7 @@ export default function CartPage () {
 				<div className={styles.trash}>
 					<button onClick={() => handleRemoveAll()}> <BsTrash /> Apagar tudo</button>
 				</div>
+				<Warning message={messageWarning} error={errorMessage}/>
 		</div>
 	)
 }
