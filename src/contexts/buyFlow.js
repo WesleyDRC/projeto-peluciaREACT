@@ -45,7 +45,9 @@ export const BuyProvider = ({ children }) => {
         setErrorMessage(false)
         setMessageWarning("Produto adicionado com sucesso ao carrinho!");
         visibleToast()
+        return
       }
+
       if((item.quantity + quantity) > availableProducts) {
         setErrorMessage(true)
         setMessageWarning("Não é possível adicionar essa quantidade ao carrinho!");
@@ -58,14 +60,13 @@ export const BuyProvider = ({ children }) => {
         setErrorMessage(false)
         setMessageWarning("Produto adicionado com sucesso ao carrinho!");
         visibleToast()
+        return
       } else{
         setErrorMessage(true)
         setMessageWarning("Quantidade solicitada fora de estoque");
         visibleToast()
+        return
       }
-
-
-
     } catch(error){
       console.log(error)
     }
