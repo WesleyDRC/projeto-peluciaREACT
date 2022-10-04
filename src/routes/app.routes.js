@@ -10,23 +10,25 @@ import Navbar from "../components/layout/navbarprivate/index";
 import DashBoard from "../components/pages/dashboard/Dashboard";
 import ProductPage from "../components/pages/ProductPage";
 import CartPage from "../components/pages/CartPage";
+import FinalizeOrder from "../components/pages/FinalizeOrder";
 
 function AppRoutes() {
   return (
     <Router>
-      <Navbar />
-      <Container customClass="min-height">
-        <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/contact" element={<Contato />}></Route>
-          <Route exact path="filtro/:filtro" element={<Products />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-          <Route exact path="/my-account" element={<DashBoard />}></Route>
-          <Route path="/product/:id" element={<ProductPage />}></Route>
-          <Route path="/cart" element={<CartPage />}></Route>
-        </Routes>
-      </Container>
-      <Footer />
+          <Navbar />
+          <Container customClass="min-height">
+            <Routes>
+              <Route exact path="/" element={<Home />}></Route>
+              <Route exact path="/contact" element={<Contato />}></Route>
+              <Route exact path="filtro/:filtro" element={<Products />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+              <Route exact path="/my-account" element={<DashBoard />}></Route>
+              <Route path="/product/:id" element={<ProductPage />}></Route>
+              <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="/finalize-order" element={<FinalizeOrder />}></Route>
+            </Routes>
+          </Container>
+          <Footer />
     </Router>
   );
 }

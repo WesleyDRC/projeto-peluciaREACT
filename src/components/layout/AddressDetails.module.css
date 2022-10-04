@@ -1,0 +1,23 @@
+.addressDetails {
+	display: flex;
+	gap: 10px;
+}
+.values {
+	width: 100%;
+	font-size: 1.6em;
+	color:  #9A9A9A;
+}
+.values p span {
+	color: red;
+}
+
+.values p input {
+	font-size: 1.5em;
+	border: 1px solid  #D5E0EC;
+	color:  #404E65
+}
+.values p input:focus {
+	border: 1px solid  #A1A1A1;
+	border-radius: 4px;
+	outline: none;
+}

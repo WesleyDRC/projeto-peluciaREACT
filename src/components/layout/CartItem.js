@@ -1,6 +1,6 @@
 import styles from './CartItem.module.css';
 
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import { RiSubtractFill } from 'react-icons/ri';
 import { IoAddOutline } from 'react-icons/io5';
@@ -9,7 +9,18 @@ import useBuy from '../../hooks/useBuyFlow';
 
 export default function CartItem({id, name, price, imageUrl, size, measure, quantity, handleProductDecrement,handleProductIncrement }) {
 
-	const { handleRemoveItemFromCart, availableProducts} = useBuy()
+	const { handleRemoveItemFromCart, availableProducts, selectedItemToBuy} = useBuy()
+
+	const navigate = useNavigate()
+
+	async function handleSubmit(id) {
+		const item =  await selectedItemToBuy(id)
+		console.log(item)
+		if(item){
+			navigate('/finalize-order')
+		}
+
+	}
 
 	return (
 		<li className={styles.cartItem} key={id}>
@@ -51,7 +62,10 @@ export default function CartItem({id, name, price, imageUrl, size, measure, quan
 				>
 					Apagar
 				</button>
-				<button className={styles.buy}> Comprar </button>
+				<button
+					className={styles.buy}
+					onClick={() => handleSubmit(id)}
+				> Comprar </button>
 			</div>
 		</li>
 	)

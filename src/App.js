@@ -8,14 +8,14 @@ import { BuyProvider } from "./contexts/buyFlow";
 function App() {
   return (
     <>
-      <ApolloProvider client={clientGQL}>
-        <AuthProvider>
-          <BuyProvider>
-            <WhatsApp />
-            <Routes />
-          </BuyProvider>
-        </AuthProvider>
-      </ApolloProvider>
+        <ApolloProvider client={clientGQL}>
+          <AuthProvider>
+            <BuyProvider>
+              <WhatsApp />
+              <Routes />
+            </BuyProvider>
+          </AuthProvider>
+        </ApolloProvider>
     </>
   );
 }

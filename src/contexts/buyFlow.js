@@ -4,10 +4,12 @@ export const BuyContext = createContext({});
 
 export const BuyProvider = ({ children }) => {
 
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
+  const [selectedItem, setSelectedItem] = useState([]);
   const [messageWarning, setMessageWarning] = useState('');
   const [activity, setActivity] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+
 
   const availableProducts = 10;
 
@@ -105,6 +107,12 @@ export const BuyProvider = ({ children }) => {
     setCart(filteredCart)
   }
 
+  async function selectedItemToBuy(id) {
+    const item = cart.find((product) => product.id === id);
+    setSelectedItem(item)
+    return item
+  }
+
   function handleRemoveAll() {
     setCart([])
     localStorage.removeItem("list_cart")
@@ -113,7 +121,7 @@ export const BuyProvider = ({ children }) => {
 
 	return (
     <BuyContext.Provider
-      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage}}
+      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage, selectedItemToBuy, selectedItem}}
     >
       {children}
     </BuyContext.Provider>
