@@ -9,8 +9,6 @@ export const BuyProvider = ({ children }) => {
   const [messageWarning, setMessageWarning] = useState('');
   const [activity, setActivity] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
-
   const availableProducts = 10;
 
   useEffect(() => {
@@ -117,7 +115,6 @@ export const BuyProvider = ({ children }) => {
     setCart([])
     localStorage.removeItem("list_cart")
   }
-
 
 	return (
     <BuyContext.Provider

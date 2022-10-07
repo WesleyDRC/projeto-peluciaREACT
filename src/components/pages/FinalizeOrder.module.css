@@ -24,7 +24,32 @@
 .address h2 svg {
 	color: rgb(130, 188, 253);
 }
+.warningAddres {
+	font-size: 1.4em;
+	font-family: 'Fredoka', sans-serif;
+	color: #404E65;
+	font-weight: bold;
+	text-align: justify;
+}
+.warningAddres svg {
+	color: red;
+	font-size: 1.7em;
+}
+.addressDetails {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+.loading {
+	grid-column-start: 1;
+  grid-column-end: span col4-start;
+}
 
+
+.numberAndComplement {
+	display: flex;
+	gap: 10px;
+}
 
 .order {
 	width: 30%;
@@ -177,5 +202,5 @@ thead, tbody, tfoot {
 }
 .btn:hover {
 	background-color: rgba(255, 1, 1, 0.281);
-	
+
 }

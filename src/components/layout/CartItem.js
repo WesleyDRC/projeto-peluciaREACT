@@ -15,7 +15,6 @@ export default function CartItem({id, name, price, imageUrl, size, measure, quan
 
 	async function handleSubmit(id) {
 		const item =  await selectedItemToBuy(id)
-		console.log(item)
 		if(item){
 			navigate('/finalize-order')
 		}
