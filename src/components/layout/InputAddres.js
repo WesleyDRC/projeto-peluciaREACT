@@ -2,7 +2,7 @@ import styles from "./InputAddres.module.css";
 import { DebounceInput } from "react-debounce-input";
 
 export default function InputAddres({
-  text, name, value, onChange, placeholder, readOnly, id, autoFocus, inputRef, max, type
+  text, name, value, onChange, placeholder, readOnly, id, autoFocus, inputRef, max, type,onKeyPress
 }) {
   return (
       <div className={styles.values}>
@@ -21,6 +21,7 @@ export default function InputAddres({
             autoFocus={autoFocus}
             min='1'
             maxLength={max}
+            onKeyPress={onKeyPress}
             required
           />
         </p>

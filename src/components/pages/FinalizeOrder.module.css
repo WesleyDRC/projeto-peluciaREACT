@@ -40,11 +40,6 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 10px;
 }
-.loading {
-	grid-column-start: 1;
-  grid-column-end: span col4-start;
-}
-
 
 .numberAndComplement {
 	display: flex;

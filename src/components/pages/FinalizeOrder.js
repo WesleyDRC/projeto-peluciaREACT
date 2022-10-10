@@ -8,7 +8,7 @@ import Loading from '../layout/Loading'
 
 import useBuy from '../../hooks/useBuyFlow';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 import axios from 'axios'
 
@@ -22,20 +22,20 @@ export default function FinalizeOrder() {
 	const [complement, setComplement] = useState('')
 	const [dataCEP, setDataCEP] = useState([])
 	const [loadingDataCep, setLoadingDataCep] = useState(true);
-
-
-
+	const [dataFrete, setDataFrete] = useState([])
+	const [loadingDataFrete, setLoadingDataFrete] = useState(true);
 
 	useEffect( () => {
 		async function searchCEP(valueCep) {
 			try {
-				const cep = parseInt(valueCep.replace(/\D/g, ''));
-				if( cep !== '') {
+				const numberCep = parseInt(valueCep.replace(/\D/g, ''));
+				if( numberCep !== '') {
 					var validateCep = /^[0-9]{8}$/;
-					if(validateCep.test(cep)) {
-						const response = await axios.post( 'http://localhost:3333/cep', {valueCep})
+					if(validateCep.test(numberCep)) {
+						const response = await axios.post( 'http://localhost:3333/cep', {valueCep: numberCep})
 						setDataCEP(response.data)
 						setLoadingDataCep(false)
+						return
 					}
 				}
 			} catch(error) {
@@ -45,12 +45,67 @@ export default function FinalizeOrder() {
 		searchCEP(cep)
 	}, [cep])
 
-	function onlynumber(evt) {
+	useEffect(() => {
+		async function frete(
+			sCepOrigem,
+			sCepDestino,
+			nVlPeso,
+			nCdFormato,
+			nVlComprimento,
+			nVlAltura,
+			nVlLargura,
+			nCdServico,
+			nVlDiametro
+		)
+		{
+			try {
+				const response = await axios.post('http://localhost:3333/calcularFrete', {
+					sCepOrigem,
+					sCepDestino,
+					nVlPeso,
+					nCdFormato,
+					nVlComprimento,
+					nVlAltura,
+					nVlLargura,
+					nCdServico,
+					nVlDiametro
+				})
+				setDataFrete(response.data)
+				setLoadingDataFrete(false)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		if(Object.keys(dataCEP).length > 0){
+			const sCepOrigem = "12248503"
+			const sCepDestino = (dataCEP.cep).toString()
+			const nVlPeso = "1"
+			const nCdFormato = "1"
+			const nVlComprimento = "20"
+			const nVlAltura = "20"
+			const nVlLargura = "20"
+			const nCdServico = ["04510", "04014"]
+			const nVlDiametro = "0"
+			frete(
+				sCepOrigem,
+				sCepDestino,
+				nVlPeso,
+				nCdFormato,
+				nVlComprimento,
+				nVlAltura,
+				nVlLargura,
+				nCdServico,
+				nVlDiametro
+			)
+		}
+	}, [dataCEP])
+
+	function onlyNumber(evt) {
 		var theEvent = evt || window.event;
 		var key = theEvent.keyCode || theEvent.which;
 		key = String.fromCharCode( key );
 		//var regex = /^[0-9.,]+$/;
-		var regex = /^[0-9.,]+$/;
+		var regex = /^[0-9]+$/;
 		if( !regex.test(key) ) {
 			 theEvent.returnValue = false;
 			 if(theEvent.preventDefault) theEvent.preventDefault();
@@ -69,18 +124,18 @@ export default function FinalizeOrder() {
 							<InputAddres
 								id="Cep"
 								text="Cep"
-								type='number'
+								type='text'
 								value={cep}
 								onChange={(e) => setCEP(e.target.value)}
 								readOnly={false}
 								autoFocus={true}
 								max={8}
+								onKeyPress={(e) => onlyNumber(e)}
 							/>
 							<InputAddres
 								text="Estado"
 								readOnly={true}
 								value={dataCEP.state}
-
 							/>
 							<InputAddres
 								text="Cidade"
@@ -114,7 +169,7 @@ export default function FinalizeOrder() {
 
 							</div>
 						</div>
-						<div className={styles.loading}>
+						<div>
 								{loadingDataCep && <Loading />}
 						</div>
 				</div>
@@ -167,21 +222,33 @@ export default function FinalizeOrder() {
 										<h2 className={styles.sectionTitle}> ENTREGA </h2>
 										<ul>
 											<li>
-												<input name="optionShipping" value="method1"type="radio" id="method1"  className={styles.inputRadio}/>
-												<label htmlFor="method1" className={styles.labelShipping}> Correios <span className={styles.priceMethodShipping}>R$ 20,90 </span> </label>
+												<input name="optionShipping" value="method04510" type="radio" id="method04510"  className={styles.inputRadio}/>
+												<label htmlFor="method04510" className={styles.labelShipping}> Correios PAC
+													<span className={styles.priceMethodShipping}>
+														{dataFrete.length === 0 ? '' : parseInt(dataFrete[0].Valor).toLocaleString("pt-br", {
+														style: "currency",
+														currency: "BRL",
+															})}
+													</span>
+												</label>
 											</li>
 											<li>
-												<input name="optionShipping" value="method2" type="radio" id="method2" className={styles.inputRadio}/>
-												<label htmlFor="method2" className={styles.labelShipping}> Correios <span className={styles.priceMethodShipping}>R$ 20,90 </span> </label>
-											</li>
-											<li>
-												<input name="optionShipping" value="method3" type="radio" id="method3" className={styles.inputRadio}/>
-												<label htmlFor="method3" className={styles.labelShipping}> Correios <span className={styles.priceMethodShipping}>R$ 20,90 </span> </label>
+												<input name="optionShipping" value="method04014" type="radio" id="method04014" className={styles.inputRadio}/>
+												<label htmlFor="method04014" className={styles.labelShipping}> Correios SEDEX
+												<span className={styles.priceMethodShipping}>
+												{dataFrete.length === 0 ? '' : parseInt(dataFrete[1].Valor).toLocaleString("pt-br", {
+											style: "currency",
+											currency: "BRL",
+												})}
+												</span> </label>
 											</li>
 											<li>
 												<input name="optionShipping" value="method4" type="radio" id="method4" className={styles.inputRadio}/>
-												<label htmlFor="method4" className={styles.labelShipping}> Retirar na loja <span className={styles.priceMethodShipping}>R$ 20,90 </span> </label>
+												<label htmlFor="method4" className={styles.labelShipping}> Retirar na loja <span className={styles.priceMethodShipping}>R$ 00,00 </span> </label>
 											</li>
+											<div>
+													{loadingDataFrete && <Loading />}
+											</div>
 										</ul>
 									</td>
 								</tr>
@@ -201,11 +268,11 @@ export default function FinalizeOrder() {
 							<ul>
 								<li>
 									<input type="radio" name="paymentMethods" id="PIX" className={styles.inputRadio}/>
-									<label htmlFor="PIX"> Pagar com PIX (10% de desconto)</label>
+									<label htmlFor="PIX"> Pagar com PIX ( 3% de desconto )</label>
 								</li>
 								<li>
 									<input type="radio" name="paymentMethods" id="ticket" className={styles.inputRadio}/>
-									<label htmlFor="ticket"> Boleto (10% de desconto)</label>
+									<label htmlFor="ticket"> Boleto ( 3% de desconto )</label>
 								</li>
 								<li>
 									<input type="radio" name="paymentMethods" id="creditCard" className={styles.inputRadio}/>
