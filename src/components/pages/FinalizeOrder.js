@@ -112,7 +112,7 @@ export default function FinalizeOrder() {
 
 	let freteOpcao = '';
 	let options = document.getElementsByName('optionShipping')
-
+	console.log(options)
 	function shippingOption () {
 		if(dataFrete.length === 0) {
 			setError('Por favor, insira o seu CEP!')
@@ -138,22 +138,26 @@ export default function FinalizeOrder() {
 		shippingOptionSelected()
 	}
 
-
-	let subTotalProducts = selectedItem.price * selectedItem.quantity
-	let total = 0;
-	total = subTotalProducts + parseFloat(valueFrete);
-	let desconto = total - (total * (3/100))
-
 	function onlyNumber(evt) {
 		var theEvent = evt || window.event;
 		var key = theEvent.keyCode || theEvent.which;
 		key = String.fromCharCode( key );
 		var regex = /^[0-9]+$/;
 		if( !regex.test(key) ) {
-			 theEvent.returnValue = false;
-			 if(theEvent.preventDefault) theEvent.preventDefault();
+				theEvent.returnValue = false;
+				if(theEvent.preventDefault) theEvent.preventDefault();
 		}
-  }
+	}
+
+	let subTotalProducts = selectedItem.price * selectedItem.quantity
+	let total = 0;
+
+	if(valueFrete.length > 0) {
+		total = subTotalProducts + parseFloat(valueFrete);
+	}
+
+	let desconto = total - (total * (3/100))
+
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}> Finalizar Pedido </h1>
@@ -173,27 +177,32 @@ export default function FinalizeOrder() {
 								autoFocus={true}
 								max={8}
 								onKeyPress={(e) => onlyNumber(e)}
+								required={true}
 							/>
 							<InputAddres
 								text="Estado"
 								readOnly={true}
 								value={dataCEP.state}
+								required={true}
 							/>
 							<InputAddres
 								text="Cidade"
 								readOnly={true}
 								value={dataCEP.city}
+								required={true}
 							/>
 							<InputAddres
 								text="Bairro"
 								id="neigh"
 								value={dataCEP.neighborhood}
 								readOnly={true}
+								required={true}
 							/>
 							<InputAddres
 								text="Rua"
 								value={dataCEP.street}
 								readOnly={true}
+								required={true}
 							/>
 							<div className={styles.numberAndComplement}>
 							<InputAddres
@@ -201,12 +210,14 @@ export default function FinalizeOrder() {
 								value={number}
 								onChange={(e) => setNumber(e.target.value)}
 								readOnly={false}
+								required={true}
 							/>
 							<InputAddres
 								text="Complemento"
 								value={complement}
 								onChange={(e) => setComplement(e.target.value)}
 								readOnly={false}
+								required={false}
 							/>
 
 							</div>
@@ -296,7 +307,7 @@ export default function FinalizeOrder() {
 								</tr>
 								<tr className={styles.discount}>
 									<th> Desconto pagando com PIX </th>
-									<td> <span> {desconto.toLocaleString("pt-br", {
+									<td> <span> { desconto.toLocaleString("pt-br", {
 											style: "currency",
 											currency: "BRL",
 												})}</span> </td>
