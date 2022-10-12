@@ -155,7 +155,6 @@ export default function FinalizeOrder() {
 			 if(theEvent.preventDefault) theEvent.preventDefault();
 		}
   }
-	console.log(error.length)
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}> Finalizar Pedido </h1>
