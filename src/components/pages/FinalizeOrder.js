@@ -5,16 +5,18 @@ import { AiOutlineWarning } from 'react-icons/ai'
 
 import InputAddres from '../layout/InputAddres';
 import Loading from '../layout/Loading'
+import Warning from '../layout/Warning'
 
 import useBuy from '../../hooks/useBuyFlow';
 
 import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 import axios from 'axios'
 
 export default function FinalizeOrder() {
 
-	const {selectedItem} = useBuy()
+	const {selectedItem, visibleToast} = useBuy()
 
 	const [cep, setCEP] = useState('')
 
@@ -24,6 +26,10 @@ export default function FinalizeOrder() {
 	const [loadingDataCep, setLoadingDataCep] = useState(true);
 	const [dataFrete, setDataFrete] = useState([])
 	const [loadingDataFrete, setLoadingDataFrete] = useState(true);
+	const [valueFrete, setValueFrete] = useState('');
+	const [error, setError] = useState('');
+
+	const navigate = useNavigate()
 
 	useEffect( () => {
 		async function searchCEP(valueCep) {
@@ -100,6 +106,44 @@ export default function FinalizeOrder() {
 		}
 	}, [dataCEP])
 
+	if(selectedItem.length === 0){
+		navigate('/cart')
+	}
+
+	let freteOpcao = '';
+	let options = document.getElementsByName('optionShipping')
+
+	function shippingOption () {
+		if(dataFrete.length === 0) {
+			setError('Por favor, insira o seu CEP!')
+			visibleToast()
+			return;
+		}
+		function shippingOptionSelected (){
+			for(var index of options){
+				if(index.checked){
+					freteOpcao = index.value
+				}
+				if(freteOpcao === "methodShipping04510"){
+					setValueFrete(dataFrete[0].Valor)
+				}
+				if(freteOpcao === "methodShipping04014"){
+					setValueFrete(dataFrete[1].Valor)
+				}
+				if(freteOpcao === "methodPickUpInStore" && dataFrete.length === 0 ){
+					setValueFrete ('0')
+				}
+			}
+		}
+		shippingOptionSelected()
+	}
+
+
+	let subTotalProducts = selectedItem.price * selectedItem.quantity
+	let total = 0;
+	total = subTotalProducts + parseFloat(valueFrete);
+	let desconto = total - (total * (3/100))
+
 	function onlyNumber(evt) {
 		var theEvent = evt || window.event;
 		var key = theEvent.keyCode || theEvent.which;
@@ -110,8 +154,8 @@ export default function FinalizeOrder() {
 			 theEvent.returnValue = false;
 			 if(theEvent.preventDefault) theEvent.preventDefault();
 		}
- }
-
+  }
+	console.log(error.length)
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}> Finalizar Pedido </h1>
@@ -197,7 +241,7 @@ export default function FinalizeOrder() {
 										<p> {selectedItem.quantity}x</p>
 									</td>
 									<td className={styles.productTotal}>
-										<span> {(selectedItem.price * selectedItem.quantity).toLocaleString("pt-br", {
+										<span> {subTotalProducts.toLocaleString("pt-br", {
 											style: "currency",
 											currency: "BRL",
 												})}
@@ -222,8 +266,8 @@ export default function FinalizeOrder() {
 										<h2 className={styles.sectionTitle}> ENTREGA </h2>
 										<ul>
 											<li>
-												<input name="optionShipping" value="method04510" type="radio" id="method04510"  className={styles.inputRadio}/>
-												<label htmlFor="method04510" className={styles.labelShipping}> Correios PAC
+												<input name="optionShipping" value="methodShipping04510" type="radio" id="methodShipping04510" onClick={shippingOption} className={styles.inputRadio}/>
+												<label htmlFor="methodShipping04510" className={styles.labelShipping}> Correios PAC
 													<span className={styles.priceMethodShipping}>
 														{dataFrete.length === 0 ? '' : parseInt(dataFrete[0].Valor).toLocaleString("pt-br", {
 														style: "currency",
@@ -233,8 +277,8 @@ export default function FinalizeOrder() {
 												</label>
 											</li>
 											<li>
-												<input name="optionShipping" value="method04014" type="radio" id="method04014" className={styles.inputRadio}/>
-												<label htmlFor="method04014" className={styles.labelShipping}> Correios SEDEX
+												<input name="optionShipping" value="methodShipping04014" type="radio" id="methodShipping04014" onClick={shippingOption} className={styles.inputRadio}/>
+												<label htmlFor="methodShipping04014" className={styles.labelShipping}> Correios SEDEX
 												<span className={styles.priceMethodShipping}>
 												{dataFrete.length === 0 ? '' : parseInt(dataFrete[1].Valor).toLocaleString("pt-br", {
 											style: "currency",
@@ -243,8 +287,8 @@ export default function FinalizeOrder() {
 												</span> </label>
 											</li>
 											<li>
-												<input name="optionShipping" value="method4" type="radio" id="method4" className={styles.inputRadio}/>
-												<label htmlFor="method4" className={styles.labelShipping}> Retirar na loja <span className={styles.priceMethodShipping}>R$ 00,00 </span> </label>
+												<input name="optionShipping" value="methodPickUpInStore" type="radio" id="methodPickUpInStore" onClick={shippingOption} className={styles.inputRadio}/>
+												<label htmlFor="methodPickUpInStore" className={styles.labelShipping}> Retirar na loja <span className={styles.priceMethodShipping}>R$ 00,00 </span> </label>
 											</li>
 											<div>
 													{loadingDataFrete && <Loading />}
@@ -254,11 +298,17 @@ export default function FinalizeOrder() {
 								</tr>
 								<tr className={styles.discount}>
 									<th> Desconto pagando com PIX </th>
-									<td> <span> R$ -20,70</span> </td>
+									<td> <span> {desconto.toLocaleString("pt-br", {
+											style: "currency",
+											currency: "BRL",
+												})}</span> </td>
 								</tr>
 								<tr className={styles.orderTotal}>
 									<th> Total </th>
-									<td> <span>R$ -20,70 </span> </td>
+									<td> <span>{total.toLocaleString("pt-br", {
+											style: "currency",
+											currency: "BRL",
+												})}</span> </td>
 								</tr>
 							</tfoot>
 						</table>
@@ -285,6 +335,7 @@ export default function FinalizeOrder() {
 					</div>
 				</div>
 			</div>
+			<Warning message={error} error={true} />
 		</div>
 
 	)
