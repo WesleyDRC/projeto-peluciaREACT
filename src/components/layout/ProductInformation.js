@@ -10,6 +10,8 @@ import useBuy from "../../hooks/useBuyFlow";
 
 import Warning from "./Warning";
 
+import priceBRL from '../../utils/formatPrice'
+
 export default function ProductInformation({
   imageUrl,
   name,
@@ -19,10 +21,7 @@ export default function ProductInformation({
   id,
 }) {
   const desconto = price * (3 / 100);
-  const newPrice = (price - desconto).toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
+  const newPrice = priceBRL((price - desconto));
 
   const [quantity, setQuantity] = useState(1);
 
@@ -43,10 +42,7 @@ export default function ProductInformation({
           </h1>
           <div className={styles.prices}>
             <p className={styles.price}>
-              {price.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
+              {priceBRL(price)}
             </p>
             <p className={styles.discount}>
               Ou <span>{newPrice}</span> no PIX ou Boleto

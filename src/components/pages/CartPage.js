@@ -11,6 +11,7 @@ import useBuy from '../../hooks/useBuyFlow';
 
 import CartItem from '../layout/CartItem';
 import Warning from '../layout/Warning';
+import priceBRL from '../../utils/formatPrice';
 
 export default function CartPage () {
 
@@ -64,10 +65,7 @@ export default function CartPage () {
 						key={cartItem.id}
 						id={cartItem.id}
 						name={cartItem.name}
-						price={(cartItem.price * cartItem.quantity).toLocaleString("pt-br", {
-							style: "currency",
-							currency: "BRL",
-						})}
+						price={priceBRL((cartItem.price * cartItem.quantity))}
 						imageUrl={cartItem.imageUrl}
 						size={cartItem.size}
 						measure={cartItem.measure}

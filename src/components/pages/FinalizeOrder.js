@@ -270,10 +270,7 @@ export default function FinalizeOrder() {
                   </td>
                   <td className={styles.productTotal}>
                     <span>
-                      {subTotalProducts.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
+                      {priceBRL(subTotalProducts)}
                     </span>
                   </td>
                 </tr>
@@ -285,10 +282,8 @@ export default function FinalizeOrder() {
                   <td>
                     <span>
                       {
-                        subTotalProducts.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
+                        priceBRL(subTotalProducts)
+                      }
                     </span>
                   </td>
                 </tr>
