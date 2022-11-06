@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-import useBuy from "../../hooks/useBuyFlow";
-
 export default function ProductPage() {
 
   const [product, setProduct] = useState([]);

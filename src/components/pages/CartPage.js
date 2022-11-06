@@ -12,13 +12,9 @@ import useBuy from '../../hooks/useBuyFlow';
 import CartItem from '../layout/CartItem';
 import Warning from '../layout/Warning';
 
-import { useNavigate } from "react-router-dom";
-
 export default function CartPage () {
 
 	const {cart, handleRemoveAll, updateProductAmount, messageWarning, errorMessage} = useBuy()
-
-  const navigate = useNavigate()
 
 	function handleProductDecrement(product) {
     const { id, quantity } = product;
@@ -30,11 +26,6 @@ export default function CartPage () {
     const { id, quantity } = product;
 
     updateProductAmount({ id: id, quantity: quantity + 1 });
-  }
-
-
-  function buyItem() {
-    navigate('/finalize-order');
   }
 
 	return (

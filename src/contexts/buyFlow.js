@@ -9,7 +9,11 @@ export const BuyProvider = ({ children }) => {
   const [messageWarning, setMessageWarning] = useState('');
   const [activity, setActivity] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const [valueFrete, setValueFrete] = useState(0);
+  const [total, setTotal] = useState(0);
   const availableProducts = 10;
+
+
 
   useEffect(() => {
     const listCart = localStorage.getItem("list_cart");
@@ -19,6 +23,11 @@ export const BuyProvider = ({ children }) => {
     }
   }, [])
 
+  let subTotalProducts = selectedItem.price * selectedItem.quantity;
+  function priceTotalOrder(subTotal, valueFrete ) {
+    setValueFrete(valueFrete)
+    setTotal(subTotal + parseFloat(valueFrete))
+  }
 
   function visibleToast() {
     setActivity(true)
@@ -118,7 +127,7 @@ export const BuyProvider = ({ children }) => {
 
 	return (
     <BuyContext.Provider
-      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage, selectedItemToBuy, selectedItem}}
+      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage, selectedItemToBuy, selectedItem, total, priceTotalOrder, subTotalProducts, valueFrete}}
     >
       {children}
     </BuyContext.Provider>
