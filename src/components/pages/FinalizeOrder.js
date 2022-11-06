@@ -132,18 +132,19 @@ export default function FinalizeOrder() {
     }
   }, [selectedItem, navigate]);
 
-  // let options = document.getElementsByName("optionShipping");
-  let methodShipping = "";
+  let optionShipping = document.getElementsByName("optionShipping");
+  let methodShipping = ""
 
   function shippingOption() {
     if(dataFrete.length === 0) {
       setError('Por favor, insira o seu CEP!')
       visibleToast()
+      for(var index of optionShipping) {
+        index.checked = false;
+      }
       return;
     }
-
     methodShipping = document.querySelector('input[name="optionShipping"]:checked').value;
-
     if(methodShipping === "methodShipping04510"){
       priceTotalOrder(subTotalProducts, dataFrete[0].Valor)
     }
