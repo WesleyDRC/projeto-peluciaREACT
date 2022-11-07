@@ -11,6 +11,7 @@ import DashBoard from "../components/pages/dashboard/Dashboard";
 import ProductPage from "../components/pages/ProductPage";
 import CartPage from "../components/pages/CartPage";
 import FinalizeOrder from "../components/pages/FinalizeOrder";
+import Success from "../components/pages/Success";
 
 function AppRoutes() {
   return (
@@ -26,6 +27,7 @@ function AppRoutes() {
               <Route path="/product/:id" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/finalize-order" element={<FinalizeOrder />}></Route>
+              <Route path="/ordersuccess" element={<Success />}></Route>
             </Routes>
           </Container>
           <Footer />

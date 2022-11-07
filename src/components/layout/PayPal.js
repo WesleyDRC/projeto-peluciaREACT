@@ -1,12 +1,24 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+import Warning from '../layout/Warning'
 
 import useBuy from "../../hooks/useBuyFlow"
 
 export default function PayPal() {
 
 	const {selectedItem, total} = useBuy()
+	const [payment, setPayment] = useState(false)
+
+	const navigate = useNavigate()
 	const paypal = useRef()
 
+	function handleApprove() {
+		setPayment(true)
+	}
+	if(payment) {
+		alert('ae caralho')
+	}
 	useEffect(() => {
 		window.paypal.Buttons({
 			createOrder: (data, actions, err) => {
@@ -25,7 +37,7 @@ export default function PayPal() {
 			},
 			onApprove: async (data, actions) => {
 				const order = await actions.order.capture();
-				console.log(order)
+				navigate('/ordersuccess')
 			},
 			onError: (err) => {
 				console.log(err)
@@ -33,7 +45,6 @@ export default function PayPal() {
 		}).render(paypal.current)
 	}, [])
 	return (
-
 		<div>
 			<div ref={paypal}></div>
 		</div>
