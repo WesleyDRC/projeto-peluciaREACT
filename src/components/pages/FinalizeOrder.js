@@ -16,90 +16,20 @@ import { useNavigate } from "react-router-dom";
 
 import priceBRL from "../../utils/formatPrice";
 
-import axios from "axios";
 
 export default function FinalizeOrder() {
-  const { subTotalProducts, selectedItem, visibleToast, total, priceTotalOrder } = useBuy();
+  const { subTotalProducts, selectedItem, total, shippingOption, finalizingOrder, checkout, messageWarning, searchCEP,  dataCEP, loadingDataCep, loadingDataFrete, frete, dataFrete } = useBuy();
 
   const [cep, setCEP] = useState("");
-
   const [number, setNumber] = useState("");
   const [complement, setComplement] = useState("");
-  const [dataCEP, setDataCEP] = useState([]);
-  const [loadingDataCep, setLoadingDataCep] = useState(true);
-  const [dataFrete, setDataFrete] = useState([]);
-  const [loadingDataFrete, setLoadingDataFrete] = useState(true);
-  const [error, setError] = useState("");
-  const [checkout, setCheckout] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function searchCEP(valueCep) {
-      try {
-        const numberCep = parseInt(valueCep.replace(/\D/g, ""));
-        if (numberCep !== "") {
-          var validateCep = /^[0-9]{8}$/;
-          if (validateCep.test(numberCep)) {
-            await axios
-              .post("http://localhost:3333/cep", { valueCep: numberCep })
-              .then(
-                (response) => {
-                  setDataCEP(response.data);
-                  setLoadingDataCep(false);
-                },
-                (error) => {
-                  console.log(error);
-                }
-              );
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
     searchCEP(cep);
   }, [cep]);
 
   useEffect(() => {
-    async function frete(
-      sCepOrigem,
-      sCepDestino,
-      nVlPeso,
-      nCdFormato,
-      nVlComprimento,
-      nVlAltura,
-      nVlLargura,
-      nCdServico,
-      nVlDiametro
-    ) {
-      try {
-        await axios
-          .post("http://localhost:3333/calcularFrete", {
-            sCepOrigem,
-            sCepDestino,
-            nVlPeso,
-            nCdFormato,
-            nVlComprimento,
-            nVlAltura,
-            nVlLargura,
-            nCdServico,
-            nVlDiametro,
-          })
-          .then(
-            (response) => {
-              setDataFrete(response.data);
-              setLoadingDataFrete(false);
-            },
-            (error) => {
-              console.log(error);
-            }
-          );
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     const objectKeysDataCEP = Object.keys(dataCEP);
 
     if (objectKeysDataCEP.length > 0) {
@@ -131,42 +61,6 @@ export default function FinalizeOrder() {
       navigate("/cart");
     }
   }, [selectedItem, navigate]);
-
-  let optionShipping = document.getElementsByName("optionShipping");
-  let methodShipping = ""
-
-  function shippingOption() {
-    if(dataFrete.length === 0) {
-      setError('Por favor, insira o seu CEP!')
-      visibleToast()
-      for(var index of optionShipping) {
-        index.checked = false;
-      }
-      return;
-    }
-    methodShipping = document.querySelector('input[name="optionShipping"]:checked').value;
-    if(methodShipping === "methodShipping04510"){
-      priceTotalOrder(subTotalProducts, dataFrete[0].Valor)
-    }
-    if(methodShipping === "methodShipping04014"){
-      priceTotalOrder(subTotalProducts, dataFrete[1].Valor)
-    }
-    if(methodShipping === "methodPickUpInStore"){
-      priceTotalOrder(subTotalProducts, 0)
-    }
-  }
-
-
-
-  function finalizarPedido() {
-    if (methodShipping === "") {
-      setError("Por favor, selecione um método de envio!");
-      visibleToast();
-      return;
-    } else {
-      setCheckout(true);
-    }
-  }
 
   function onlyNumber(evt) {
     var theEvent = evt || window.event;
@@ -394,7 +288,7 @@ export default function FinalizeOrder() {
               <button
                 type="submit"
                 className={styles.btn}
-                onClick={finalizarPedido}
+                onClick={finalizingOrder}
               >
                 Finalizar pedido
               </button>
@@ -402,7 +296,7 @@ export default function FinalizeOrder() {
           </div>
         </div>
       </div>
-      <Warning message={error} error={true} />
+      <Warning message={messageWarning} error={true} />
     </div>
   );
 }
