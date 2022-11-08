@@ -1,3 +1,7 @@
+.container {
+	width: 100%;
+	display: flex;
+}
 .btn {
 	display: block;
 	padding: 1em;
