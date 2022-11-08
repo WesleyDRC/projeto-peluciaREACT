@@ -1,0 +1,44 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+}
+
+.boxUser {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	padding: 25px 0 25px 0;
+}
+
+.peluciaAvatar {
+	width: 50px;
+	height: 50px;
+}
+
+.peluciaAvatar img {
+	width: 100%;
+	height: 100%;
+}
+
+.profile a {
+	color: gray;
+	font-size: 1.5em;
+}
+
+.username {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+.item {
+	cursor: pointer;
+}
+.item svg{
+	font-size: 1.6em;
+}
+
+.sectionName {
+	font-weight: bold;
+	font-size: 1.6em;
+}

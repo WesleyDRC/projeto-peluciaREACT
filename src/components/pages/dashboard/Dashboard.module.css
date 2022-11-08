@@ -2,6 +2,9 @@
 	width: 100%;
 	display: flex;
 }
+.paginas {
+	width: 100%;
+}
 .btn {
 	display: block;
 	padding: 1em;
