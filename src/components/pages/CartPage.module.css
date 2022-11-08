@@ -1,0 +1,75 @@
+.cart {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items:center;
+	justify-content: flex-start;
+	font-family: 'Fredoka', sans-serif;
+}
+
+.cart h1 {
+	align-self: flex-start;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.info{
+	width: 100%;
+	background-color: #404E65;
+	color: white;
+	display: flex;
+	align-items: center;
+	font-size: 2em;
+}
+.info .name{
+	width: 40%;
+}
+.info .quantity {
+	width: 30%;
+}
+.info .price {
+	width: 10%;
+}
+.info .action {
+	width: 20%;
+}
+
+.emptyCart {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.emptyCart p {
+	font-weight: bold;
+	font-size: 1.6em;
+}
+.emptyCart a {
+	border: none;
+	color: white;
+	font-weight: 300;
+	background-color: red;
+	border-radius: 4px;
+	font-size: 1.7em;
+	padding: 0.5em;
+}
+
+.listCart {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	width: 100%;
+}
+
+.trash {
+	display: flex;
+	align-self: flex-end;
+	width: fit-content;
+}
+.trash button {
+	border: 1px solid #404E65;
+	border-radius: 4px;
+	font-size: 1.6em;
+	font-weight: bold;
+	color:#404E65;
+}

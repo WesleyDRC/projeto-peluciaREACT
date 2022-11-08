@@ -87,6 +87,7 @@ function NavbarDesktop() {
                         <PlushWanted
                           name={plush.name}
                           imageUrl={plush.imageUrl}
+                          id={plush.id}
                         />
                       </li>
                     ))}

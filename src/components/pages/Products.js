@@ -37,6 +37,7 @@ function Products() {
             return (
               <li key={plush.id}>
                 <PeluciaCard
+                  id={plush.id}
                   name={plush.name}
                   price={plush.price}
                   imageUrl={plush.imageUrl}

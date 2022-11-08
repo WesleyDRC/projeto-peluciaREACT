@@ -167,6 +167,7 @@ function NavbarMobile() {
                     filtrar.map((plush) => (
                       <li key={plush.id}>
                         <PlushWanted
+                          id={plush.id}
                           name={plush.name}
                           imageUrl={plush.imageUrl}
                         />

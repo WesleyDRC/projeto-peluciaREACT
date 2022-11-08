@@ -1,0 +1,61 @@
+.container{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 900px;
+}
+.container h1 {
+	align-self: flex-start;
+	font-size: 2em;
+	font-weight: bold;
+	color: gray;
+}
+.order {
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(0, 128, 0, 0.233);
+	width: 100%;
+	padding: 20px;
+	border-radius: 10px;
+}
+.warningOrder {
+	font-size: 1.6em;
+	color: green;
+}
+.warningOrder h2 {
+	font-weight: bold;
+}
+.ApprovedPaymentBox {
+	padding: 2em;
+	background-color: green;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	border-radius: 10px;
+}
+.ApprovedPaymentBox p{
+	font-size: 1.6em;
+	color: white;
+	font-weight: bold;
+}
+
+.svg{
+	color: white;
+	font-size: 3em;
+}
+
+.productInformation {
+	margin-top: 10px;
+	align-self: flex-start;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	font-size: 1.6em;
+	width: 100%;
+}
+.productInformation h2 {
+	font-weight: bold;
+}

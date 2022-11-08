@@ -22,7 +22,7 @@ function Home() {
       setErro(error)
     }
   }, [data, error]);
-  
+
   const lowerText = text.toLowerCase();
   const filtrar = product.filter(({ name }) =>
     name.toLowerCase().includes(lowerText)
@@ -52,6 +52,7 @@ function Home() {
               filtrar.map((plush) => (
                 <li key={plush.id}>
                   <PeluciaCard
+                    id={plush.id}
                     name={plush.name}
                     price={plush.price}
                     imageUrl={plush.imageUrl}

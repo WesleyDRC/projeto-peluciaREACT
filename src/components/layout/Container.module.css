@@ -3,10 +3,10 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    background-color: #F7F7F7;
     flex-wrap: wrap;
 }
 
 .min-height {
     min-height: 75%;
 }
-
