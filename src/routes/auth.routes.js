@@ -20,7 +20,7 @@ function AuthRoutes() {
               <Route path="filtro/:filtro" element={<Products />}></Route>
               <Route path="*" element={<NotFound />}></Route>
               <Route path="/my-account" element={<Auth />}></Route>
-              <Route path="/produto/:id" element={<ProductPage />}></Route>
+              <Route path="/product/:id" element={<ProductPage />}></Route>
             </Routes>
           </Container>
           <Footer />

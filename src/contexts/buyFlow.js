@@ -152,7 +152,7 @@ export const BuyProvider = ({ children }) => {
         var validateCep = /^[0-9]{8}$/;
         if (validateCep.test(numberCep)) {
           await axios
-            .post("http://localhost:3333/cep", { valueCep: numberCep })
+            .post(`${process.env.REACT_APP_CORREIOS}/cep`, { valueCep: numberCep })
             .then(
               (response) => {
                 setDataCEP(response.data);
@@ -182,7 +182,7 @@ export const BuyProvider = ({ children }) => {
   ) {
     try {
       await axios
-        .post("http://localhost:3333/calcularFrete", {
+        .post(`${process.env.REACT_APP_CORREIOS}/calcularFrete`, {
           sCepOrigem,
           sCepDestino,
           nVlPeso,

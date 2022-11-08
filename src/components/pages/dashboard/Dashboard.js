@@ -9,11 +9,16 @@ function DashBoard() {
   return (
     <>
       <div className={styles.container}>
+        <nav className={styles.navBar}>
+          <ul>
+            <li>Minha Conta</li>
+          </ul>
+        </nav>
         <div className={styles.title}>
           <h1> Minha conta </h1>
           <p>Você está lógado como:  </p>
         </div>
-    
+
 
         <button
           title="SignOut"
