@@ -29,6 +29,7 @@
   align-items: center;
   text-align: center;
   font-size: 2em;
+  margin-left: auto;
 }
 
 .inputsearch input {
@@ -76,6 +77,13 @@
   white-space: nowrap;
 }
 
+.auth {
+  font-size: 1.6em;
+}
+
+
+
+
 .secondNavBar {
   display: flex;
   align-items: center;
@@ -114,47 +122,9 @@
   font-size: 1.6em;
 }
 
-.newNavBar {
-  display: none;
-}
-
 @media (max-width: 900px) {
   .firstNavbar,
   .secondNavBar {
     display: none;
   }
-
-  /* =============
-start newNavBar
-============= */
-  .newNavBar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    color: black;
-    align-items: center;
-    padding: 0 10px;
-  }
-
-  .newNavBar nav {
-    display: none;
-  }
-  .newNavBar .logo {
-    max-width: 200px;
-    display: block;
-    margin: auto;
-  }
-  .newNavBar .logo img {
-    height: 100%;
-    width: 100%;
-  }
-
-  .conteinerNavBar {
-    display: flex;
-    justify-content: flex-start;
-    padding: 3px;
-  }
-
-  /* =============
-end newNavBar
-============= */
 }

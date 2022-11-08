@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  max-width: 1240px;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+.containerForm {
+  max-width: 500px;
+  width: 100%;
+}
+.titleForm {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  font-size: 5.5em;
+  font-family: "Fredoka", sans-serif;
+  font-weight: bold;
+  color: #cfd3d8;
+  user-select: none;
+  word-wrap: break-word;
+}
+.authUserActive {
+  color: #404e65;
+  transition: 0.4s;
+}
+.registerUserActive {
+  color: #404e65;
+  transition: 0.4s;
+}
+.containerForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  min-width: 300px;
+  width: 100%;
+}
+.formInput {
+  width: 100%;
+}
+.formInput label {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.formInput label span {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #9A9A9A;
+}
+.formInput input {
+  font-size: 1.6em;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.btn {
+  display: block;
+  padding: 1em;
+  font-size: 1.6em;
+  border: none;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+/* START LOGIN FORM */
+
+.loginActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loginDisabled {
+  display: none;
+}
+
+/* END LOGIN FORM */
+
+/* START REGISTER FORM */
+.registerFormDisabled {
+  display: none;
+}
+
+.registerFormActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* END REGISTER FORM */
+
+form,
+input{
+  width: 100%;
+}
+
+@media (max-width: 470px) {
+  .titleForm span {
+    display: block;
+    word-wrap: break-word;
+  }
+}
+
+.labelError {
+  font-size: 1.4em;
+  font-weight: bold;
+}

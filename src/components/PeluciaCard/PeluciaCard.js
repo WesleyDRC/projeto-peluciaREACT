@@ -1,8 +1,8 @@
 import styles from "./PeluciaCard.module.css";
-
+import {Link} from 'react-router-dom';
 function PeluciaCard({ name, price, imageUrl, size, measure }) {
   return (
-    <a href="#" >
+    <Link to="/" >
       <div className={styles.container}>
         <div className={styles.box} >
           <img src={imageUrl} alt="pelucia" />
@@ -10,8 +10,8 @@ function PeluciaCard({ name, price, imageUrl, size, measure }) {
           <p className={styles.price}>R$ {price} </p>
         </div>
       </div>
-    </a>
-    
+    </Link>
+
   );
 }
 

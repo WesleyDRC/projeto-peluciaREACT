@@ -1,11 +1,6 @@
 import axios from "axios";
 
-<<<<<<< Updated upstream
-const baseURL = process.env.REACT_APP_BASE_URL_
-=======
-// const baseURL = process.env.REACT_APP_BASE_URL;
-const baseURL = "http://localhost:3333"
->>>>>>> Stashed changes
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 export const api = axios.create({
   baseURL,
@@ -13,4 +8,3 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
-

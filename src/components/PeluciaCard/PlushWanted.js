@@ -1,13 +1,13 @@
 import styles from "./PlushWanted.module.css";
-
-function PlushWanted({ imageUrl, name }) {
+import {Link} from 'react-router-dom';
+function PlushWanted({ imageUrl, name, alt }) {
   return (
-    <a href="#">
+    <Link to="/">
       <div className={styles.product}>
-        <img src={imageUrl} />
+        <img alt={alt} src={imageUrl} />
         <p> {name} </p>
       </div>
-    </a>
+    </Link>
   );
 }
 

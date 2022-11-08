@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 
-import AxiosRepository from '../repository/AxiosRepository';
 import { api } from "../services/api";
 
 export const AuthContext = createContext({});
@@ -20,30 +19,29 @@ export const AuthProvider = ({ children }) => {
   // star login
   const SignIn = async (email, password) => {
     try {
-      const response = await AxiosRepository.signIn({ email, password });
+      const response = await api.post("/auth", { email, password });
       localStorage.setItem("user_token", JSON.stringify(response.data.token));
       api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
       setUser(response.data.token);
     } catch (error) {
-      if(error.response.status !== error.response.status.ok) {
-        return (error.response.data.message)
+      if (error.response.status !== error.response.status.ok) {
+        return error.response.data.message;
       }
     }
   };
   // end login
 
   const SignUp = async (name, email, password) => {
-
     try {
-      const response = await AxiosRepository.signUp({
+      const response = await api.post("/auth/signUp", {
         name,
         email,
         password,
       });
       localStorage.setItem("user_token", JSON.stringify(response.data.token));
     } catch (error) {
-      if(error.response.status !== error.response.status.ok) {
-        return (error.response.data.message)
+      if (error.response.status !== error.response.status.ok) {
+        return error.response.data.message;
       }
     }
   };

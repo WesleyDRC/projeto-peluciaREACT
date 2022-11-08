@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.46d01c0d.css",
+    "main.js": "/static/js/main.2155fdce.js",
+    "static/media/banner1.jpg": "/static/media/banner1.a69add94673a6b2fc6e6.jpg",
+    "static/media/banner2.jpg": "/static/media/banner2.5ec90ed3903b7d9fd49f.jpg",
+    "static/media/urso2.png": "/static/media/urso2.b9c82c823d30824853d4.png",
+    "static/media/ursologo1.jpg": "/static/media/ursologo1.5351301529a889f3fd32.jpg",
+    "static/media/mickey.png": "/static/media/mickey.e7ea465f4fc5a0cc9924.png",
+    "static/media/urso1.png": "/static/media/urso1.3a51d5abb912d9c7562a.png",
+    "index.html": "/index.html",
+    "main.46d01c0d.css.map": "/static/css/main.46d01c0d.css.map",
+    "main.2155fdce.js.map": "/static/js/main.2155fdce.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46d01c0d.css",
+    "static/js/main.2155fdce.js"
+  ]
+}
