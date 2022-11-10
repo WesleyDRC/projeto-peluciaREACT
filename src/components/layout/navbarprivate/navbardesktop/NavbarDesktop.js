@@ -107,7 +107,7 @@ function NavbarDesktop() {
               </Link>
             </div>
             <div className={styles.auth}>
-              <Link to="/my-account">
+              <Link to="/my-account/profile">
                 <FaUser />
                 <span> Minha conta </span>
               </Link>

@@ -2,8 +2,11 @@
 	width: 100%;
 	display: flex;
 }
-.paginas {
-	width: 100%;
+.navbarDashboard {
+	width: 30%;
+}
+.pages {
+	width: 70%;
 }
 .btn {
 	display: block;

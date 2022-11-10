@@ -1,7 +1,9 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	width: 200px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(206, 201, 201, 0.171);
 }
 
 .boxUser {
@@ -41,4 +43,31 @@
 .sectionName {
 	font-weight: bold;
 	font-size: 1.6em;
+}
+.sectionName:hover{
+	color:  #404E65;
+}
+.itemDashboard {
+	font-size: 1.6em;
+	color: rgba(128, 128, 128, 0.637);
+}
+
+.itemDashboard:hover {
+	color:  #404E65;
+}
+
+.itemDashboard_profile{
+	font-size: 1.6em;
+	margin-left: 25px;
+	color:  #404E65;
+}
+.itemDashboard_address {
+	font-size: 1.6em;
+	margin-left: 25px;
+	color:  #404E65;
+}
+.itemDashboard_password {
+	font-size: 1.6em;
+	margin-left: 25px;
+	color:  #404E65;
 }

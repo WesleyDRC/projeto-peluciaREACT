@@ -8,29 +8,23 @@ import { BsFillHandbagFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
-import { useState } from "react";
+import useDashboard from '../../hooks/useDashboard'
 
 export default function NavbarDashboard() {
-  const [myAccount, setMyAccount] = useState(false);
 
-  const triggerListProfile = () => {
-    setMyAccount(true);
-  };
-	const triggerMyShopping = () => {
-		setMyAccount(false)
-	}
+  const {myAccount, selectedProfile, selectedAdress, selectedChangePassword, triggerListProfile, triggerMyShopping, selectedItemDashboard} = useDashboard()
 
   return (
     <div className={styles.container}>
       <div className={styles.boxUser}>
-        <Link to="/">
+        <Link to="/my-account/profile">
           <div className={styles.peluciaAvatar}>
-            <img src={avatar} />
+            <img src={avatar} alt="imagem de perfil"/>
           </div>
         </Link>
         <div className={styles.profile}>
           <p className={styles.username}> Wesley Luis </p>
-          <Link to="/">
+          <Link to="/my-account/profile">
             <p>
               <AiOutlineEdit /> Editar perfil
             </p>
@@ -46,9 +40,25 @@ export default function NavbarDashboard() {
               <span className={styles.sectionName}> Minha Conta </span>
               {myAccount && (
                 <ol>
-                  <li>Perfil</li>
-                  <li>Endereços</li>
-                  <li>Trocar senha</li>
+                  <Link to="/my-account/profile">
+                    <li
+                      className={!selectedProfile ? styles.itemDashboard : styles.itemDashboard_profile}
+                      onClick={() => selectedItemDashboard("perfil")}> Perfil
+                    </li>
+                  </Link>
+                  <Link to="/my-account/address">
+                    <li
+                      className={!selectedAdress ? styles.itemDashboard : styles.itemDashboard_address}
+                      onClick={() => selectedItemDashboard("enderecos")}> Endereços
+                    </li>
+                  </Link>
+                  <Link to="/my-account/password">
+                    <li
+                      className={!selectedChangePassword ? styles.itemDashboard : styles.itemDashboard_password }
+                      onClick={() => selectedItemDashboard("trocarsenha")}> Trocar senha
+                    </li>
+                  </Link>
+
                 </ol>
               )}
             </li>
