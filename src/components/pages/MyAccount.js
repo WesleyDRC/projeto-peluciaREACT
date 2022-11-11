@@ -24,7 +24,7 @@ export default function MyAccount() {
 
       <div className={styles.pages}>
         <div className={styles.myAccount}>
-          <div>
+          <div className={styles.section}>
             <h1 className={styles.title}> Meu Perfil </h1>
             <p className={styles.description}>Gerencie sua conta</p>
           </div>

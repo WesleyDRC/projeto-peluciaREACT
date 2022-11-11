@@ -22,7 +22,7 @@ export default function Password() {
 
       <div className={styles.pages}>
         <div className={styles.password}>
-          <div>
+          <div className={styles.section}>
             <h1 className={styles.title}> Trocar senha </h1>
             <p className={styles.description}>
               Para a segurança da sua conta, não compartilhe sua senha com mais
