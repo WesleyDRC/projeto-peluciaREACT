@@ -36,7 +36,7 @@ export const DashboardProvider = ({ children }) => {
 
   return (
     <DashboardContext.Provider
-      value={{ myAccount, selectedProfile, selectedAdress, selectedChangePassword, triggerListProfile, triggerMyShopping, selectedItemDashboard}}
+      value={{ myAccount, selectedProfile, selectedAdress, selectedChangePassword, triggerListProfile, triggerMyShopping, selectedItemDashboard, setMyAccount, setSelectedProfile, setSelectedAdress, setSelectedChangePassword}}
     >
       {children}
     </DashboardContext.Provider>

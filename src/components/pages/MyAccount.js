@@ -9,10 +9,12 @@ import NavbarDashboard from "../layout/NavbarDashboard";
 import useDashboard from "../../hooks/useDashboard";
 
 export default function MyAccount() {
+  const { setMyAccount, setSelectedProfile } = useDashboard();
 
-  const {setMyAccount, setSelectedProfile} = useDashboard()
-
-
+  useEffect(() => {
+    setMyAccount(true);
+    setSelectedProfile(true);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -75,6 +77,15 @@ export default function MyAccount() {
                 <img src={avatar} alt="imagem de perfil" />
               </div>
               <div>
+                <label htmlFor="sendImage" className={styles.labelSendImage}>
+                  Selecionar a imagem
+                </label>
+                <input
+                  id="sendImage"
+                  className={styles.inputSendImage}
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                />
                 <div>Tamanho do arquivo: Máximo 1 MB</div>
                 <div>Extensão do arquivo: .JPEG, .PNG</div>
               </div>

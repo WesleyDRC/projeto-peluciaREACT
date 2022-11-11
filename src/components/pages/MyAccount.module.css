@@ -2,20 +2,22 @@
 	width: 100%;
 	display: flex;
 }
-.myAccount {
-	width: 100%;
-	height: 100%;
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	padding: 10px 30px;
-}
 .navbarDashboard {
 	width: 30%;
 }
 .pages {
 	width: 70%;
+	background-color: white;
 }
+
+.myAccount {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 30px;
+}
+
 .title {
 	font-size: 1.8em;
 	font-weight: bold;
@@ -51,6 +53,7 @@
 }
 .item {
 	display: flex;
+	align-items: center;
 	gap: 15px;
 	width: 100%;
 }
@@ -87,4 +90,20 @@
 .plushSkin img {
 	width: 100%;
 	height: 100%;
+}
+.inputSendImage {
+	display: none;
+}
+.labelSendImage {
+	display: block;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid rgb(141, 141, 141);
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 1.4em;
+	cursor: pointer;
+}
+.labelSendImage:hover {
+	background-color: rgba(163, 163, 163, 0.301);
 }

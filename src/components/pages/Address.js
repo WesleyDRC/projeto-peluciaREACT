@@ -7,7 +7,12 @@ import useDashboard from '../../hooks/useDashboard'
 
 export default function Address() {
 
-  const {setMyAccount, setSelectedProfileAddress} = useDashboard()
+  const {setMyAccount, setSelectedAdress} = useDashboard()
+
+  useEffect(() => {
+    setMyAccount(true)
+    setSelectedAdress(true)
+  }, [])
 
 	return (
 		<div className={styles.container}>
