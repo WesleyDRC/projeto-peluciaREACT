@@ -36,13 +36,11 @@
 .item {
 	cursor: pointer;
 }
-.item svg{
-	font-size: 1.6em;
-}
 
 .sectionName {
 	font-weight: bold;
 	font-size: 1.6em;
+	color: black;
 }
 .sectionName:hover{
 	color:  #404E65;

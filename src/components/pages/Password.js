@@ -7,11 +7,11 @@ import styles from "./Password.module.css";
 import useDashboard from "../../hooks/useDashboard";
 
 export default function Password() {
-  const { setMyAccount, setSelectedChangePassword } = useDashboard();
+  const { selectedItemDashboard, triggerListProfile} = useDashboard();
 
   useEffect(() => {
-    setMyAccount(true);
-    setSelectedChangePassword(true);
+    triggerListProfile()
+    selectedItemDashboard("password")
   }, []);
 
   return (

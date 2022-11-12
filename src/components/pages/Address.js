@@ -8,11 +8,11 @@ import styles from "./Address.module.css";
 import useDashboard from "../../hooks/useDashboard";
 
 export default function Address() {
-  const { setMyAccount, setSelectedAdress } = useDashboard();
+  const { selectedItemDashboard, triggerListProfile } = useDashboard();
 
   useEffect(() => {
-    setMyAccount(true);
-    setSelectedAdress(true);
+    triggerListProfile()
+    selectedItemDashboard("address")
   }, []);
 
   return (

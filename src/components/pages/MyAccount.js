@@ -9,11 +9,11 @@ import NavbarDashboard from "../layout/NavbarDashboard";
 import useDashboard from "../../hooks/useDashboard";
 
 export default function MyAccount() {
-  const { setMyAccount, setSelectedProfile } = useDashboard();
+  const {selectedItemDashboard, triggerListProfile} = useDashboard();
 
   useEffect(() => {
-    setMyAccount(true);
-    setSelectedProfile(true);
+    triggerListProfile()
+    selectedItemDashboard("profile")
   }, []);
 
   return (

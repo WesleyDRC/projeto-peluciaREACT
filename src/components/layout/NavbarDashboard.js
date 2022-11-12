@@ -8,18 +8,25 @@ import { BsFillHandbagFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
-import useDashboard from '../../hooks/useDashboard'
+import useDashboard from "../../hooks/useDashboard";
 
 export default function NavbarDashboard() {
-
-  const {myAccount, selectedProfile, selectedAdress, selectedChangePassword, triggerListProfile, triggerMyShopping, selectedItemDashboard} = useDashboard()
+  const {
+    myAccount,
+    selectedProfile,
+    selectedAdress,
+    selectedChangePassword,
+    triggerListProfile,
+    triggerMyShopping,
+    selectedItemDashboard,
+  } = useDashboard();
 
   return (
     <div className={styles.container}>
       <div className={styles.boxUser}>
         <Link to="/my-account/profile">
           <div className={styles.peluciaAvatar}>
-            <img src={avatar} alt="imagem de perfil"/>
+            <img src={avatar} alt="imagem de perfil" />
           </div>
         </Link>
         <div className={styles.profile}>
@@ -36,36 +43,55 @@ export default function NavbarDashboard() {
         <nav className={styles.navBar}>
           <ul className={styles.list}>
             <li className={styles.item} onClick={triggerListProfile}>
-              <BiUser />
-              <span className={styles.sectionName}> Minha Conta </span>
+
+              <span className={styles.sectionName}> <BiUser/> Minha Conta </span>
               {myAccount && (
                 <ol>
                   <Link to="/my-account/profile">
                     <li
-                      className={!selectedProfile ? styles.itemDashboard : styles.itemDashboard_profile}
-                      onClick={() => selectedItemDashboard("perfil")}> Perfil
+                      className={
+                        !selectedProfile
+                          ? styles.itemDashboard
+                          : styles.itemDashboard_profile
+                      }
+                      onClick={() => selectedItemDashboard("profile")}
+                    >
+                      Perfil
                     </li>
                   </Link>
                   <Link to="/my-account/address">
                     <li
-                      className={!selectedAdress ? styles.itemDashboard : styles.itemDashboard_address}
-                      onClick={() => selectedItemDashboard("enderecos")}> Endereços
+                      className={
+                        !selectedAdress
+                          ? styles.itemDashboard
+                          : styles.itemDashboard_address
+                      }
+                      onClick={() => selectedItemDashboard("address")}
+                    >
+                      Endereços
                     </li>
                   </Link>
                   <Link to="/my-account/password">
                     <li
-                      className={!selectedChangePassword ? styles.itemDashboard : styles.itemDashboard_password }
-                      onClick={() => selectedItemDashboard("trocarsenha")}> Trocar senha
+                      className={
+                        !selectedChangePassword
+                          ? styles.itemDashboard
+                          : styles.itemDashboard_password
+                      }
+                      onClick={() => selectedItemDashboard("password")}
+                    >
+                      Trocar senha
                     </li>
                   </Link>
-
                 </ol>
               )}
             </li>
 
             <li className={styles.item} onClick={triggerMyShopping}>
-              <BsFillHandbagFill />
-              <span className={styles.sectionName}> Minhas compras </span>
+
+              <Link to="/my-account/purchase">
+                <span className={styles.sectionName}> <BsFillHandbagFill /> Minhas compras </span>
+              </Link>
             </li>
           </ul>
         </nav>

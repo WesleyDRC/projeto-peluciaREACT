@@ -16,6 +16,9 @@ import MyAccount from "../components/pages/MyAccount";
 import Address from "../components/pages/Address";
 import Password from "../components/pages/Password";
 
+import Purchase from "../components/pages/Purchase";
+import PurchaseAll from "../components/pages/PurchaseAll";
+
 function AppRoutes() {
   return (
     <Router>
@@ -29,6 +32,8 @@ function AppRoutes() {
               <Route exact path="/my-account/profile" element={<MyAccount />}></Route>
               <Route exact path="/my-account/address" element={<Address />}></Route>
               <Route exact path="/my-account/password" element={<Password />}></Route>
+              <Route exact path="/my-account/purchase" element={<Purchase />}></Route>
+              <Route exact path="/my-account/purchase/all" element={<PurchaseAll />}></Route>
               <Route path="/product/:id" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/finalize-order" element={<FinalizeOrder />}></Route>
