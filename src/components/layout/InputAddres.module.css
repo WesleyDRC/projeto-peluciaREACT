@@ -18,3 +18,11 @@
 	border-radius: 4px;
 	outline: none;
 }
+
+.cursorBlock {
+	cursor: not-allowed;
+}
+.cursorLoading {
+	cursor: not-allowed;
+	filter: blur(02px);
+}

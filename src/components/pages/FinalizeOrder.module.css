@@ -1,201 +1,227 @@
 .container {
-	width: 100%;
+  width: 100%;
 }
 .title {
-	font-size: 5em;
-	font-weight: bold;
-	text-align: center;
-	font-family: 'Fredoka', sans-serif;
-	color: #404E65;
+  font-size: 5em;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+  color: #404e65;
 }
 .content {
-	display: flex;
-	gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 .address {
-	width: 70%;
-	background-color:#F4F8FF;
+  width: 70%;
+  background-color: #f4f8ff;
 }
 .address h2 {
-	font-size: 2em;
-	font-family: 'Fredoka', sans-serif;
-	color: #404E65;
+  font-size: 2em;
+  font-family: "Fredoka", sans-serif;
+  color: #404e65;
+	margin: 10px 0;
 }
 .address h2 svg {
-	color: rgb(130, 188, 253);
+  color: rgb(130, 188, 253);
 }
 .warningAddres {
-	font-size: 1.4em;
-	font-family: 'Fredoka', sans-serif;
-	color: #404E65;
-	font-weight: bold;
-	text-align: justify;
+  font-size: 1.4em;
+  font-family: "Fredoka", sans-serif;
+  color: #404e65;
+  font-weight: bold;
+  text-align: justify;
+	margin: 10px 0;
 }
 .warningAddres svg {
-	color: red;
-	font-size: 1.7em;
+  color: red;
+  font-size: 1.7em;
 }
 .addressDetails {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .numberAndComplement {
-	display: flex;
-	gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .order {
-	width: 30%;
-	background-color:   #F4F8FF;
-	color:  #404E65;
+  width: 30%;
+  background-color: #f4f8ff;
+  color: #404e65;
 }
 
 .order .sectionTitle {
-	font-size: 1.6em;
-	font-family: "Open Sans", sans-serif;
-	font-weight: 700;
-	color: #404E65;
-	padding: 15px 0;
+  font-size: 1.6em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #404e65;
+  padding: 15px 0;
 }
 .order .content {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .order span {
-	font-size: 1.5em;
-	color: rgb(130, 188, 253);
-	font-weight: bold;
+  font-size: 1.5em;
+  color: rgb(130, 188, 253);
+  font-weight: bold;
 }
 
 .tableOrder {
-	width: 100%;
+  width: 100%;
 }
 
-thead, tbody, tfoot {
-	width: 100%;
+thead,
+tbody,
+tfoot {
+  width: 100%;
 }
 
 .listProducts {
-	border-bottom: 1px solid  #9A9A9A;
+  border-bottom: 1px solid #9a9a9a;
 }
-.listProducts tr th{
-	padding: 15px 0;
+.listProducts tr th {
+  padding: 15px 0;
 }
 .listProducts .productName {
-	text-align: left;
-	color:  #9A9A9A;
-	font-size: 1.1em;
+  text-align: left;
+  color: #9a9a9a;
+  font-size: 1.1em;
 }
 .listProducts .productTotal {
-	text-align: right;
-	color:  #9A9A9A;
-	font-size: 1.1em;
+  text-align: right;
+  color: #9a9a9a;
+  font-size: 1.1em;
 }
 
 .cartItem {
-	border-bottom: 1px solid #9A9A9A;
-	font-size: 1.5em;
+  border-bottom: 1px solid #9a9a9a;
+  font-size: 1.5em;
 }
 .cartItem td {
-	padding: 15px 0;
+  padding: 15px 0;
 }
 .cartItem .productName {
-	font-family: "Open Sans", sans-serif;
-	font-weight: 700;
-	color: #404E65;
-	text-align: left;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #404e65;
+  text-align: left;
 }
-.cartItem .productTotal{
-	text-align: right;
+.cartItem .productTotal {
+  text-align: right;
 }
 
 .subtotal {
-	font-size: 1.5em;
-	color: #9A9A9A;
-	border-bottom: 1px solid #9A9A9A;
+  font-size: 1.5em;
+  color: #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
 }
-.subtotal td{
-	text-align: right;
-	padding: 15px 0;
+.subtotal td {
+  text-align: right;
+  padding: 15px 0;
 }
 
 .shipping {
-	width: 100%;
+  width: 100%;
 }
-.shipping td {
-	border-bottom: 1px solid #9A9A9A;
+.shippingLoading {
+  width: 100%;
+  filter: blur(02px);
 }
-.shipping ul li {
-	display: flex;
-	gap: 5px;
+.shipping td,
+.shippingLoading td {
+  border-bottom: 1px solid #9a9a9a;
 }
+.shipping ul li,
+.shippingLoading ul li {
+  display: flex;
+  gap: 5px;
+}
+
 .inputRadio {
-	width: 18px;
-	height: 18px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 .labelShipping {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	font-size: 1.5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
 }
 
 .discount {
-	font-size: 1.5em;
-	color: #9A9A9A;
-	text-align: left;
-	border-bottom: 1px solid #9A9A9A;
+  font-size: 1.5em;
+  color: #9a9a9a;
+  text-align: left;
+  border-bottom: 1px solid #9a9a9a;
 }
 .discount td {
-	text-align: right;
-	padding: 15px 0;
+  text-align: right;
+  padding: 15px 0;
 }
 
 .orderTotal {
-	font-size: 1.5em;
-	color: #9A9A9A;
-	text-align: left;
+  font-size: 1.5em;
+  color: #9a9a9a;
+  text-align: left;
 }
 .orderTotal td {
-	text-align: right;
-	padding: 15px 0;
+  text-align: right;
+  padding: 15px 0;
 }
 
-
-.payment h3{
-	font-size: 1.6em;
-	font-family: "Open Sans", sans-serif;
-	font-weight: 700;
-	color: #404E65;
-	margin-bottom: 15px;
+.payment h3 {
+  font-size: 1.6em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #404e65;
+  margin-bottom: 15px;
 }
 .payment ul li {
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
 }
 .payment ul li label {
-	font-family: "Open Sans", sans-serif;
-	color: #404E65;
-	font-size: 1.5em;
+  font-family: "Open Sans", sans-serif;
+  color: #404e65;
+  font-size: 1.5em;
 }
 
 .btn {
-	width: 100%;
-	border: none;
-	background-color: rgb(255, 0, 0);
-	color: white;
-	font-weight: bold;
-	font-size: 1.7em;
-	padding: 15px 0;
-	border-radius: 7px;
-	margin-bottom: 15px;
+  width: 100%;
+  border: none;
+  background-color: rgb(255, 0, 0);
+  color: white;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding: 15px 0;
+  border-radius: 7px;
+  margin-bottom: 15px;
 }
 .btn:hover {
-	background-color: rgba(255, 1, 1, 0.281);
+  background-color: rgba(255, 1, 1, 0.281);
+}
 
+@media (max-width: 920px) {
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.addressDetails {
+		display: flex;
+		flex-direction: column;
+	}
+	.order {
+		width: 70%;
+	}
 }

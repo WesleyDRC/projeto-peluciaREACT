@@ -17,8 +17,8 @@ export const BuyProvider = ({ children }) => {
   const [methodShipping, setMethodShipping] = useState("");
 
   const [dataCEP, setDataCEP] = useState([]);
-  const [loadingDataCep, setLoadingDataCep] = useState(true);
-  const [loadingDataFrete, setLoadingDataFrete] = useState(true);
+  const [loadingDataCep, setLoadingDataCep] = useState(false);
+  const [loadingDataFrete, setLoadingDataFrete] = useState(false);
   const [dataFrete, setDataFrete] = useState([]);
 
   const availableProducts = 10;
@@ -155,8 +155,11 @@ export const BuyProvider = ({ children }) => {
             .post(`${process.env.REACT_APP_CORREIOS}/cep`, { valueCep: numberCep })
             .then(
               (response) => {
+                setLoadingDataCep(true)
+                setTimeout(() => {
+                  setLoadingDataCep(false);
+                }, 1000)
                 setDataCEP(response.data);
-                setLoadingDataCep(false);
               },
               (error) => {
                 console.log(error);
@@ -195,8 +198,11 @@ export const BuyProvider = ({ children }) => {
         })
         .then(
           (response) => {
+            setLoadingDataFrete(true);
+            setTimeout(() => {
+              setLoadingDataFrete(false);
+            }, 1000)
             setDataFrete(response.data);
-            setLoadingDataFrete(false);
           },
           (error) => {
             console.log(error);

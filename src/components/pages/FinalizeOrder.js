@@ -16,9 +16,22 @@ import { useNavigate } from "react-router-dom";
 
 import priceBRL from "../../utils/formatPrice";
 
-
 export default function FinalizeOrder() {
-  const { subTotalProducts, selectedItem, total, shippingOption, finalizingOrder, checkout, messageWarning, searchCEP,  dataCEP, loadingDataCep, loadingDataFrete, frete, dataFrete } = useBuy();
+  const {
+    subTotalProducts,
+    selectedItem,
+    total,
+    shippingOption,
+    finalizingOrder,
+    checkout,
+    messageWarning,
+    searchCEP,
+    dataCEP,
+    loadingDataCep,
+    loadingDataFrete,
+    frete,
+    dataFrete,
+  } = useBuy();
 
   const [cep, setCEP] = useState("");
   const [number, setNumber] = useState("");
@@ -105,12 +118,14 @@ export default function FinalizeOrder() {
               readOnly={true}
               value={dataCEP.state}
               required={true}
+              customClass={!loadingDataCep ? "cursorBlock" : "cursorLoading"}
             />
             <InputAddres
               text="Cidade"
               readOnly={true}
               value={dataCEP.city}
               required={true}
+              customClass={!loadingDataCep ? "cursorBlock" : "cursorLoading"}
             />
             <InputAddres
               text="Bairro"
@@ -118,12 +133,14 @@ export default function FinalizeOrder() {
               value={dataCEP.neighborhood}
               readOnly={true}
               required={true}
+              customClass={!loadingDataCep ? "cursorBlock" : "cursorLoading"}
             />
             <InputAddres
               text="Rua"
               value={dataCEP.street}
               readOnly={true}
               required={true}
+              customClass={!loadingDataCep ? "cursorBlock" : "cursorLoading"}
             />
             <div className={styles.numberAndComplement}>
               <InputAddres
@@ -142,7 +159,6 @@ export default function FinalizeOrder() {
               />
             </div>
           </div>
-          <div>{loadingDataCep && <Loading />}</div>
         </div>
 
         <div className={styles.order}>
@@ -164,9 +180,7 @@ export default function FinalizeOrder() {
                     <p> {selectedItem.quantity}x</p>
                   </td>
                   <td className={styles.productTotal}>
-                    <span>
-                      {priceBRL(subTotalProducts)}
-                    </span>
+                    <span>{priceBRL(subTotalProducts)}</span>
                   </td>
                 </tr>
               </tbody>
@@ -175,14 +189,10 @@ export default function FinalizeOrder() {
                 <tr className={styles.subtotal}>
                   <th> Subtotal </th>
                   <td>
-                    <span>
-                      {
-                        priceBRL(subTotalProducts)
-                      }
-                    </span>
+                    <span>{priceBRL(subTotalProducts)}</span>
                   </td>
                 </tr>
-                <tr className={styles.shipping}>
+                <tr className={loadingDataFrete ? styles.shippingLoading : styles.shipping}>
                   <td colSpan="2">
                     <h2 className={styles.sectionTitle}> ENTREGA </h2>
                     <ul>
@@ -243,22 +253,17 @@ export default function FinalizeOrder() {
                         >
                           Retirar na loja
                           <span className={styles.priceMethodShipping}>
-                          {
-                            priceBRL(0)
-                          }
+                            {priceBRL(0)}
                           </span>
                         </label>
                       </li>
-                      <div>{loadingDataFrete && <Loading />}</div>
                     </ul>
                   </td>
                 </tr>
                 <tr className={styles.orderTotal}>
                   <th> Total </th>
                   <td>
-                    <span>
-                      {priceBRL(total)}
-                    </span>
+                    <span>{priceBRL(total)}</span>
                   </td>
                 </tr>
               </tfoot>
