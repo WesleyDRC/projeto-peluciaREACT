@@ -24,10 +24,10 @@ export default function Address() {
       <div className={styles.pages}>
         <div className={styles.address}>
           <div className={styles.section}>
-            <div>
+            <div className={styles.sectionTitle}>
               <h1 className={styles.title}> Meus endereços </h1>
             </div>
-            <div>
+            <div className={styles.sectionButton}>
               <button className={styles.btn}> <IoAddOutline className={styles.svg}/> Inserir novo endereço </button>
             </div>
           </div>

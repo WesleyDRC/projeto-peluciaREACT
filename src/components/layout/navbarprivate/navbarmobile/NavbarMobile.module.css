@@ -11,10 +11,10 @@ start newNavBar
 
 @media (max-width: 900px) {
   .newNavBar {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
-    color: black;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    color: black;
     padding: 0 10px;
   }
 
@@ -23,8 +23,8 @@ start newNavBar
   }
   .newNavBar .logo {
     max-width: 200px;
-    display: block;
-    margin: auto;
+    min-width: 180px;
+    width: 100%;
   }
   .newNavBar .logo img {
     height: 100%;
@@ -36,7 +36,9 @@ start newNavBar
     justify-content: flex-start;
     padding: 3px;
   }
-
+  .menu_section {
+    width: 100%;
+  }
   .menu_section_menuActive {
     position: absolute;
     top: 0;
@@ -236,15 +238,6 @@ start newNavBar
   }
   .container_listOff {
     display: none;
-  }
-  .auth {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-  .auth a {
-    color: black;
-    font-size: 1.9em;
   }
 }
 

@@ -55,7 +55,7 @@ export default function MyAccount() {
                 <div className={styles.item}>
                   <div className={styles.tag}>Email</div>
                   <div className={styles.contentTag}>
-                    wesleymiranda04b@gmail.com
+                    <span className={styles.email}> wesleymiranda04b@gmail.com </span>
                   </div>
                 </div>
 

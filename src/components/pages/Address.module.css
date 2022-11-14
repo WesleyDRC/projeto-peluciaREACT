@@ -49,3 +49,25 @@
 	margin-top: 30px;
 	font-size: 1.6em;
 }
+
+@media (max-width: 580px) {
+	.sectionTitle {
+		width: 50%;
+	}
+	.sectionButton {
+		width: 50%;
+		font-size: 0.7em;
+	}
+}
+@media (max-width: 540px) {
+	.section {
+		flex-direction: column;
+	}
+	.sectionTitle, .sectionButton {
+		width: 100%;
+		height: 100%;
+	}
+	.address .section .btn {
+		padding: 5px;
+	}
+}

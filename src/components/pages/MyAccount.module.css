@@ -72,7 +72,9 @@
 .contentTag {
 	width: 60%;
 	font-size: 1.5em;
+	word-wrap: break-word;
 }
+
 .btn {
 	display: block;
 	padding: 15px;
@@ -112,4 +114,23 @@
 }
 .labelSendImage:hover {
 	background-color: rgba(163, 163, 163, 0.301);
+}
+
+@media(max-width: 1030px) {
+	.profile {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.form {
+		width: 100%;
+	}
+	.skinUser {
+		margin-bottom: 30px;
+		width: 100%;
+	}
+}
+@media(max-width: 540px){
+	.tag {
+		text-align: left;
+	}
 }
