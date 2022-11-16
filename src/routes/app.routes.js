@@ -7,11 +7,17 @@ import Products from "../components/pages/Products";
 import NotFound from "../components/pages/NotFound";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/navbarprivate/index";
-import DashBoard from "../components/pages/dashboard/Dashboard";
 import ProductPage from "../components/pages/ProductPage";
 import CartPage from "../components/pages/CartPage";
 import FinalizeOrder from "../components/pages/FinalizeOrder";
 import Success from "../components/pages/Success";
+
+import MyAccount from "../components/pages/MyAccount";
+import Address from "../components/pages/Address";
+import Password from "../components/pages/Password";
+
+import Purchase from "../components/pages/Purchase";
+import PurchaseAll from "../components/pages/PurchaseAll";
 
 function AppRoutes() {
   return (
@@ -23,7 +29,11 @@ function AppRoutes() {
               <Route exact path="/contact" element={<Contato />}></Route>
               <Route exact path="filtro/:filtro" element={<Products />}></Route>
               <Route path="*" element={<NotFound />}></Route>
-              <Route exact path="/my-account" element={<DashBoard />}></Route>
+              <Route exact path="/my-account/profile" element={<MyAccount />}></Route>
+              <Route exact path="/my-account/address" element={<Address />}></Route>
+              <Route exact path="/my-account/password" element={<Password />}></Route>
+              <Route exact path="/my-account/purchase" element={<Purchase />}></Route>
+              <Route exact path="/my-account/purchase/all" element={<PurchaseAll />}></Route>
               <Route path="/product/:id" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/finalize-order" element={<FinalizeOrder />}></Route>

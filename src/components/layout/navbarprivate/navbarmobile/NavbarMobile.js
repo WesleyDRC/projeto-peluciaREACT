@@ -113,6 +113,9 @@ function NavbarMobile() {
                 <li className={styles.item}>
                   <Link to="/contact"> Contato </Link>
                 </li>
+                <li className={styles.item}>
+                  <Link to="/my-account/profile"> Minha conta </Link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -184,12 +187,7 @@ function NavbarMobile() {
             </div>
           </div>
 
-          <div className={styles.auth}>
-            <Link to="/my-account">
-              <FaUser />
-              <span> Minha conta </span>
-            </Link>
-          </div>
+
         </nav>
       </div>
     </div>

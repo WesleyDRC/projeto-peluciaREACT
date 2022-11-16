@@ -1,0 +1,136 @@
+.container {
+	width: 100%;
+	display: flex;
+}
+.navbarDashboard {
+	width: 30%;
+}
+.pages {
+	width: 70%;
+	background-color: white;
+}
+
+.myAccount {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 30px;
+}
+.section {
+	border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+	padding-bottom: 10px;
+	min-height: 60px;
+	max-height: 60px;
+  height: 100%;
+}
+.title {
+	font-size: 1.8em;
+	font-weight: bold;
+}
+.description {
+	font-size: 1.4em;
+}
+
+.profile {
+	margin-top: 30px;
+	display: flex;
+	width: 100%;
+}
+.form {
+	width: 60%;
+}
+.formUser {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 30px;
+	width: 100%;
+}
+.inputForm{
+	padding: 10px;
+	border: 1px solid gray;
+	outline: none;
+}
+.inputForm:hover {
+	border: 1px solid gray;
+	box-shadow: 0;
+}
+.item {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	width: 100%;
+}
+.tag {
+	width: 30%;
+	text-align: right;
+	font-size: 1.5em;
+	color: rgba(128, 128, 128, 0.63);
+}
+.contentTag {
+	width: 60%;
+	font-size: 1.5em;
+	word-wrap: break-word;
+}
+
+.btn {
+	display: block;
+	padding: 15px;
+	font-size: 1.6em;
+	border: none;
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+
+.skinUser {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.plushSkin {
+	width: 100px;
+	height: 100px;
+}
+.plushSkin img {
+	width: 100%;
+	height: 100%;
+}
+.inputSendImage {
+	display: none;
+}
+.labelSendImage {
+	display: block;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid rgb(141, 141, 141);
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 1.4em;
+	cursor: pointer;
+}
+.labelSendImage:hover {
+	background-color: rgba(163, 163, 163, 0.301);
+}
+
+@media(max-width: 1030px) {
+	.profile {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.form {
+		width: 100%;
+	}
+	.skinUser {
+		margin-bottom: 30px;
+		width: 100%;
+	}
+}
+@media(max-width: 540px){
+	.tag {
+		text-align: left;
+	}
+}

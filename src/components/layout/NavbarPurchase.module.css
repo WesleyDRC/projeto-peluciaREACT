@@ -1,0 +1,20 @@
+.list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.item, .itemSelected {
+	width: 100%;
+	padding: 10px;
+	color: black;
+	font-size: 1.6em;
+	text-align: center;
+}
+.item:hover, .itemSelected:hover {
+	color: #404E65;
+}
+
+.itemSelected {
+	border-bottom: 2px solid#404E65;
+}

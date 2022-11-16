@@ -14,12 +14,12 @@
 	align-items: center;
 }
 .product .imageProduct {
-	max-heigth: 80x;
+	max-height: 80x;
 	max-width: 80px;
 }
 .imageProduct img {
 	width: 100%;
-	heigth: 100%;
+	height: 100%;
 }
 .product p {
 	color:  #404E65;
