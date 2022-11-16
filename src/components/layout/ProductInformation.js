@@ -10,7 +10,7 @@ import useBuy from "../../hooks/useBuyFlow";
 
 import Warning from "./Warning";
 
-import priceBRL from '../../utils/formatPrice'
+import priceBRL from "../../utils/formatPrice";
 
 export default function ProductInformation({
   imageUrl,
@@ -21,93 +21,105 @@ export default function ProductInformation({
   id,
 }) {
   const desconto = price * (3 / 100);
-  const newPrice = priceBRL((price - desconto));
+  const newPrice = priceBRL(price - desconto);
 
   const [quantity, setQuantity] = useState(1);
 
-  const { handleAddItemToCard, availableProducts, messageWarning, errorMessage} = useBuy();
+  const {
+    handleAddItemToCard,
+    availableProducts,
+    messageWarning,
+    errorMessage,
+  } = useBuy();
 
   return (
     <main>
       <div className={styles.product}>
         <section className={styles.productImage}>
           <div>
-            <img src={imageUrl} alt="produto" />
+            <img src={imageUrl} alt={name} />
           </div>
         </section>
 
-        <section className={styles.productInfo}>
-          <h1 className={styles.title}>
-            {name} - {size + measure}
-          </h1>
-          <div className={styles.prices}>
-            <p className={styles.price}>
-              {priceBRL(price)}
-            </p>
-            <p className={styles.discount}>
-              Ou <span>{newPrice}</span> no PIX ou Boleto
-            </p>
+        <section className={styles.sectionInfo}>
+          <div className={styles.productInfo}>
+            <div className={styles.title}>
+              <h1>
+                {name} - {size + measure}
+              </h1>
+            </div>
+
+            <div className={styles.prices}>
+              <p className={styles.price}>{priceBRL(price)}</p>
+              <p className={styles.discount}>
+                Ou <span>{newPrice}</span> no PIX ou Boleto
+              </p>
+            </div>
+
+            <form className={styles.cart} onSubmit={(e) => e.preventDefault()}>
+              <div className={styles.quantity}>
+                <div className={styles.quantityWantBuy}>
+                  <button
+                    className={styles.decrease}
+                    onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+                  >
+                    <RiSubtractFill />
+                  </button>
+                  <input
+                    disabled
+                    name="quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    title="Qtd"
+                    inputMode="numeric"
+                    type="number"
+                    step="1"
+                    min="1"
+                    max={availableProducts}
+                  />
+                  <button
+                    className={styles.add}
+                    onClick={() =>
+                      quantity < availableProducts && setQuantity(quantity + 1)
+                    }
+                  >
+                    <IoAddOutline />
+                  </button>
+                </div>
+                <div className={styles.availableQuantity}>
+                  <p>{availableProducts} produtos disponíveis</p>
+                </div>
+              </div>
+
+              <div className={styles.addToCartOrBuy}>
+                <div className={styles.buy}>
+                  <button type="button">Comprar</button>
+                </div>
+
+                <div className={styles.addCart}>
+                  <button
+                    onClick={() =>
+                      quantity > 0 &&
+                      handleAddItemToCard(
+                        id,
+                        name,
+                        price,
+                        imageUrl,
+                        size,
+                        measure,
+                        quantity
+                      )
+                    }
+                  >
+                    <IoMdCart /> Adicionar ao carrinho
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <form className={styles.cart} onSubmit={(e) => e.preventDefault()}>
-            <div className={styles.quantity}>
-              <div className={styles.quantityWantBuy}>
-                <button
-                  className={styles.decrease}
-                  onClick={ () => quantity > 1 &&setQuantity(quantity - 1)}
-                >
-                  <RiSubtractFill />
-                </button>
-                <input
-                  name="quantity"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  title="Qtd"
-                  inputMode="numeric"
-                  type="number"
-                  step="1"
-                  min="1"
-                  max={availableProducts}
-                />
-                <button
-                  className={styles.add}
-                  onClick={() => quantity < availableProducts &&setQuantity(quantity + 1)}
-                >
-                  <IoAddOutline />
-                </button>
-              </div>
-              <div className={styles.availableQuantity}>
-                <p>{availableProducts} produtos disponíveis</p>
-              </div>
-            </div>
-
-            <div className={styles.addToCartOrBuy}>
-              <div className={styles.buy}>
-                <button type="submit">Comprar</button>
-              </div>
-
-              <div className={styles.addCart}>
-                <button
-                  onClick={() =>
-                    quantity > 0 &&
-                    handleAddItemToCard(
-                      id,
-                      name,
-                      price,
-                      imageUrl,
-                      size,
-                      measure,
-                      quantity
-                    )
-                  }
-                >
-                  <IoMdCart /> Adicionar ao carrinho
-                </button>
-              </div>
-            </div>
-          </form>
         </section>
-        <Warning message={messageWarning} error={errorMessage}/>
       </div>
+      <Warning message={messageWarning} error={errorMessage} />
     </main>
   );
 }
