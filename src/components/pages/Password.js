@@ -5,7 +5,9 @@ import NavbarDashboard from "../layout/NavbarDashboard";
 import styles from "./Password.module.css";
 
 import useDashboard from "../../hooks/useDashboard";
-
+const items = {
+  PASSWORD: "password"
+}
 export default function Password() {
   const { selectedItemDashboard, triggerListProfile} = useDashboard();
 
