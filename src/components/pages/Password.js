@@ -11,7 +11,7 @@ export default function Password() {
 
   useEffect(() => {
     triggerListProfile()
-    selectedItemDashboard("password")
+    selectedItemDashboard(items.PASSWORD)
   }, []);
 
   return (
