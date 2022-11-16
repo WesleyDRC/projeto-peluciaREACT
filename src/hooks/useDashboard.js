@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { DashboardContext } from "../contexts/dashboard";
 
 const useDashboard = () => {
-	const context = useContext(DashboardContext)
-	return context;
+	return useContext(DashboardContext);
 }
 
 export default useDashboard;
