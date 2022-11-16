@@ -9,10 +9,12 @@ import useDashboard from "../../hooks/useDashboard";
 
 export default function Address() {
   const { selectedItemDashboard, triggerListProfile } = useDashboard();
-
+  const items = {
+    ADDRESS: "address"
+  }
   useEffect(() => {
     triggerListProfile()
-    selectedItemDashboard("address")
+    selectedItemDashboard(items.ADDRESS)
   }, []);
 
   return (

@@ -10,9 +10,11 @@ import useDashboard from "../../hooks/useDashboard";
 export default function Purchase() {
 
   const {selectedItemPurchase} = useDashboard()
-
+  const items = {
+    ALL: "all"
+  }
   useEffect(() => {
-    selectedItemPurchase("all")
+    selectedItemPurchase(items.ALL)
   }, [selectedItemPurchase])
 
   return (
