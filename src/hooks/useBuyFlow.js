@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { BuyContext } from "../contexts/buyFlow";
 
 const useBuy = () => {
-  const context = useContext(BuyContext);
-  return context;
+  return useContext(BuyContext);
 };
 
 export default useBuy;
