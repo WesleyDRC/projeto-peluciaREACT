@@ -4,6 +4,7 @@ start newNavBar
 .container {
   margin: 0 auto;
   max-width: 1240px;
+  min-width: 300px;
 }
 .newNavBar {
   display: none;
@@ -40,6 +41,7 @@ start newNavBar
     background: rgba(50, 92, 139, 0.836);
     z-index: 5;
     opacity: 1;
+    min-width: 300px;
   }
 
   .menu_section_menuActive .menu_toggle {

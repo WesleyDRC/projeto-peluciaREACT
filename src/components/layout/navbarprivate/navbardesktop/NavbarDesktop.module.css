@@ -1,6 +1,7 @@
 .container {
   margin: 0 auto;
   max-width: 1240px;
+  min-width: 300px;
 }
 .firstNavbar {
   width: 100%;

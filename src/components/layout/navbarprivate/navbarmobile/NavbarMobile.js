@@ -129,7 +129,7 @@ function NavbarMobile() {
                       className={styles.btn}
                       onClick={() => [SignOut(), navigate("/my-account")]}
                     >
-                    SignOut
+                    Sair
                   </button>
               </div>
             </nav>

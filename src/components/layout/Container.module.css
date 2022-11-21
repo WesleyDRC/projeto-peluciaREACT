@@ -5,6 +5,7 @@
     margin: 0 auto;
     background-color: #F7F7F7;
     flex-wrap: wrap;
+    min-width: 300px;
 }
 
 .min-height {
