@@ -77,12 +77,13 @@
   white-space: nowrap;
 }
 
+.cart {
+  font-size: 2.5em;
+  margin-right: 15px;
+}
 .auth {
   font-size: 1.6em;
 }
-
-
-
 
 .secondNavBar {
   display: flex;

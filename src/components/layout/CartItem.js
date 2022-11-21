@@ -6,17 +6,22 @@ import { RiSubtractFill } from 'react-icons/ri';
 import { IoAddOutline } from 'react-icons/io5';
 
 import useBuy from '../../hooks/useBuyFlow';
+import useAuth from '../../hooks/useAuth';
 
 export default function CartItem({id, name, price, imageUrl, size, measure, quantity, handleProductDecrement,handleProductIncrement }) {
 
-	const { handleRemoveItemFromCart, availableProducts, selectedItemToBuy} = useBuy()
+	const { handleRemoveItemFromCart, availableProducts, selectedItemToBuy} = useBuy();
+	const { signed } = useAuth()
 
 	const navigate = useNavigate()
 
 	async function handleSubmit(id) {
+
 		const item =  await selectedItemToBuy(id)
 		if(item){
+			signed ?
 			navigate('/finalize-order')
+			: navigate('/my-account')
 		}
 
 	}

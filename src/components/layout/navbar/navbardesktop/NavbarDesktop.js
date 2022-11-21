@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { RiBearSmileLine } from "react-icons/ri";
 import { GiRabbitHead } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
+import { IoMdCart } from "react-icons/io";
 
 import { useEffect, useState } from "react";
 
@@ -100,7 +101,11 @@ function NavbarDesktop() {
                 </ul>
               </div>
             </div>
-
+            <div className={styles.cart}>
+              <Link to="/cart">
+                <p> <IoMdCart /> </p>
+              </Link>
+            </div>
             <div className={styles.auth}>
               <Link to="/my-account">
                 <FaUser />
