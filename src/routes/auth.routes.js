@@ -8,6 +8,7 @@ import Navbar from "../components/layout/navbar/index";
 import NotFound from "../components/pages/NotFound";
 import Auth from "../components/pages/signin/Auth";
 import ProductPage from "../components/pages/ProductPage";
+import CartPage from "../components/pages/CartPage";
 
 function AuthRoutes() {
   return (
@@ -18,9 +19,10 @@ function AuthRoutes() {
               <Route exact path="/" element={<Home />}></Route>
               <Route path="/contact" element={<Contato />}></Route>
               <Route path="filtro/:filtro" element={<Products />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
               <Route path="/my-account" element={<Auth />}></Route>
               <Route path="/product/:id" element={<ProductPage />}></Route>
+              <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </Container>
           <Footer />

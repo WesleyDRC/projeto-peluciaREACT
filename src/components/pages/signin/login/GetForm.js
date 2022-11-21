@@ -22,7 +22,7 @@ function GetForm() {
       setError(response);
       return;
     }
-    navigate("/");
+    navigate("");
   }
 
   return (

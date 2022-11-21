@@ -28,7 +28,6 @@ function AppRoutes() {
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/contact" element={<Contato />}></Route>
               <Route exact path="filtro/:filtro" element={<Products />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
               <Route exact path="/my-account/profile" element={<MyAccount />}></Route>
               <Route exact path="/my-account/address" element={<Address />}></Route>
               <Route exact path="/my-account/password" element={<Password />}></Route>
@@ -38,6 +37,7 @@ function AppRoutes() {
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/finalize-order" element={<FinalizeOrder />}></Route>
               <Route path="/ordersuccess" element={<Success />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </Container>
           <Footer />

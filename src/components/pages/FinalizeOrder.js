@@ -4,7 +4,6 @@ import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineWarning } from "react-icons/ai";
 
 import InputAddres from "../layout/InputAddres";
-import Loading from "../layout/Loading";
 import Warning from "../layout/Warning";
 
 import PayPal from "../layout/PayPal";

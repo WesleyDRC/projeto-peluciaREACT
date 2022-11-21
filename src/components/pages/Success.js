@@ -2,6 +2,7 @@ import { BsCheck2Circle } from 'react-icons/bs'
 import styles from './Success.module.css'
 
 export default function Success() {
+
 	return (
 		<div className={styles.container}>
 			<h1> Pedido confirmado </h1>

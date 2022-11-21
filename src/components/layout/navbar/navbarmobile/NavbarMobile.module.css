@@ -12,7 +12,7 @@ start newNavBar
 @media (max-width: 900px) {
   .newNavBar {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr ;
     color: black;
     align-items: center;
     padding: 0 10px;
@@ -25,30 +25,21 @@ start newNavBar
     max-width: 200px;
     display: block;
     margin: auto;
+    width: 100%;
   }
   .newNavBar .logo img {
     height: 100%;
     width: 100%;
   }
-
-  .conteinerNavBar {
-    display: flex;
-    justify-content: flex-start;
-    padding: 3px;
-  }
-
   .menu_section_menuActive {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
     background: rgba(50, 92, 139, 0.836);
     z-index: 5;
     opacity: 1;
-    overflow-y: auto;
   }
 
   .menu_section_menuActive .menu_toggle {
@@ -100,32 +91,32 @@ start newNavBar
     display: block;
     justify-content: flex-start;
     padding-top: 40px;
-  }
-  .menu_menuOpen {
+    height: calc(100vh - 60px);
     width: 70%;
-    height: 100vh;
     box-shadow: 7px 5px 20px 1px rgba(0, 0, 0, 0.47);
     background-color: white;
   }
-
+  .conteinerNavBar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 30%;
+  }
   .conteinerNavBar a {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 1em;
     text-align: center;
     line-height: 2em;
     color: black;
     transition: transform 0.3s ease-out;
   }
-
-  .svg {
-    font-size: 6em;
-    transition: transform 0.3s ease-out;
-  }
   .conteinerNavBar a:hover {
     transform: translateY(10px);
     color: gray;
+  }
+  .svg {
+    font-size: 6em;
+    transition: transform 0.3s ease-out;
   }
 
   .nameP {
@@ -140,14 +131,33 @@ start newNavBar
 
   .list {
     display: flex;
-    padding-top: 40px;
     flex-direction: column;
+    height: 30%;
+    overflow-y:scroll;
   }
   .list .item a {
     margin-left: 10px;
     font-size: 1.9em;
     font-weight: bold;
     color: rgb(50, 92, 139);
+  }
+
+  .authenticator {
+    height: 40%;
+    min-height: 40%;
+    width: 80%;
+    margin: auto;
+
+  }
+  .btn {
+    display: block;
+    padding: 15px;
+    font-size: 1.6em;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    width: 100%;
   }
 
   .search_searchClose {
@@ -236,15 +246,6 @@ start newNavBar
   }
   .container_listOff {
     display: none;
-  }
-  .auth {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-  .auth a {
-    color: black;
-    font-size: 1.9em;
   }
 }
 

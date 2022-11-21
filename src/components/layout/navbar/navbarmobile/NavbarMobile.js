@@ -7,7 +7,7 @@ import { GiRabbitHead } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../../../../img/ursologo1.jpg";
 
@@ -15,6 +15,8 @@ import graphqlRepository from "../../../../repository/graphqlRepository";
 import { useQuery } from "@apollo/client";
 
 import PlushWanted from "../../../PeluciaCard/PlushWanted";
+
+import useAuth from "../../../../hooks/useAuth";
 
 function NavbarMobile() {
   const [activatedButton, setActivatedButton] = useState(false);
@@ -25,6 +27,7 @@ function NavbarMobile() {
   const [erro, setErro] = useState(false);
   const GET_PLUSH = graphqlRepository.findAll();
   const { data, error } = useQuery(GET_PLUSH);
+  const navigate = useNavigate();
 
   const toggleActive = () => {
     setActivatedButton(!activatedButton);
@@ -91,9 +94,7 @@ function NavbarMobile() {
                     </div>
                   </div>
                 </Link>
-              </div>
 
-              <div className={styles.conteinerNavBar}>
                 <Link to="/filtro/coelho">
                   <div className={styles.items_navbar}>
                     <div className={styles.svg}>
@@ -113,7 +114,22 @@ function NavbarMobile() {
                 <li className={styles.item}>
                   <Link to="/contact"> Contato </Link>
                 </li>
+                <li className={styles.item}>
+                  <Link to="/cart"> Carrinho </Link>
+                </li>
               </ul>
+
+              <div className={styles.authenticator}>
+                  <button
+                      title="Autenticar"
+                      type="submit"
+                      className={styles.btn}
+                      onClick={() => navigate("/my-account")}
+                    >
+                    Entrar / Cadastrar
+                  </button>
+              </div>
+
             </nav>
           </div>
 
@@ -182,13 +198,6 @@ function NavbarMobile() {
                 </ul>
               </div>
             </div>
-          </div>
-
-          <div className={styles.auth}>
-            <Link to="/my-account">
-              <FaUser />
-              <span> Entrar </span>
-            </Link>
           </div>
         </nav>
       </div>
