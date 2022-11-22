@@ -63,6 +63,12 @@
 	gap: 15px;
 	width: 100%;
 }
+.item a {
+	color: #404E65;
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: underline;
+}
 .tag {
 	width: 30%;
 	text-align: right;
@@ -114,6 +120,10 @@
 }
 .labelSendImage:hover {
 	background-color: rgba(163, 163, 163, 0.301);
+}
+
+.link {
+	color: #404E65;
 }
 
 @media(max-width: 1030px) {

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 import styles from "./MyAccount.module.css";
 
 import avatar from "../layout/img/avatar.png";
@@ -39,7 +41,7 @@ export default function MyAccount() {
 
                 <div className={styles.item}>
                   <div className={styles.tag}>CPF</div>
-                  <div className={styles.contentTag}>999.999.918.82</div>
+                  <div className={styles.contentTag}>999.999.918.82 <Link to="/">Trocar</Link> </div>
                 </div>
 
                 <div className={styles.item}>
@@ -55,13 +57,13 @@ export default function MyAccount() {
                 <div className={styles.item}>
                   <div className={styles.tag}>Email</div>
                   <div className={styles.contentTag}>
-                    <span className={styles.email}> wesleymiranda04b@gmail.com </span>
+                    <span className={styles.email}> wesleymiranda04b@gmail.com <Link to="/">Trocar</Link> </span>
                   </div>
                 </div>
 
                 <div className={styles.item}>
                   <div className={styles.tag}>Número de telefone</div>
-                  <div className={styles.contentTag}>(12) 4002-8992</div>
+                  <div className={styles.contentTag}>(12) 4002-8992 <Link to="/">Trocar</Link> </div>
                 </div>
 
                 <div className={styles.item}>
