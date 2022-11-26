@@ -24,7 +24,7 @@ function PostForm() {
       return;
     }
 
-    const response = await SignUp(name, email, password) ;
+    const response = await SignUp(name, email, password);
 
     if (response) {
       setError(response);
@@ -56,7 +56,6 @@ function PostForm() {
 
         <div className={styles.formInput}>
           <label className={styles.labelForm}>
-            {" "}
             <span>Email </span>
             <input
               type="email"

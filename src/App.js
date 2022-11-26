@@ -4,21 +4,21 @@ import clientGQL from "./services/clientGQL";
 import { ApolloProvider } from "@apollo/client";
 import { AuthProvider } from "./contexts/auth";
 import { BuyProvider } from "./contexts/buyFlow";
-import { DashboardProvider } from './contexts/dashboard'
+import { DashboardProvider } from "./contexts/dashboard";
 
 function App() {
   return (
     <>
+      <AuthProvider>
         <ApolloProvider client={clientGQL}>
           <DashboardProvider>
-            <AuthProvider>
-              <BuyProvider>
-                <WhatsApp />
-                <Routes />
-              </BuyProvider>
-            </AuthProvider>
+            <BuyProvider>
+              <WhatsApp />
+              <Routes />
+            </BuyProvider>
           </DashboardProvider>
         </ApolloProvider>
+      </AuthProvider>
     </>
   );
 }

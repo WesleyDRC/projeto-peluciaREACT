@@ -149,10 +149,11 @@ start newNavBar
     min-height: 40%;
     width: 80%;
     margin: auto;
-
+    position: relative;
   }
-  .btn {
-    display: block;
+  .authenticator button {
+    position: absolute;
+    bottom: 10px;
     padding: 15px;
     font-size: 1.6em;
     border: none;

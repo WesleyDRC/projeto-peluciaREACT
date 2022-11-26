@@ -101,6 +101,18 @@ export const BuyProvider = ({ children }) => {
     }
   }
 
+  function handleBuyItem(id, name, price, size, measure, quantity) {
+    const itemModelObject = {
+      id,
+      name,
+      price,
+      size,
+      measure,
+      quantity
+    }
+    setSelectedItem(itemModelObject)
+  }
+
   async function updateProductAmount ({id, quantity}) {
     try {
       if (quantity <= 0) {
@@ -239,7 +251,7 @@ export const BuyProvider = ({ children }) => {
 
 	return (
     <BuyContext.Provider
-      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage, selectedItemToBuy, selectedItem, total, priceTotalOrder, subTotalProducts, valueFrete, finalizingOrder, shippingOption, checkout, searchCEP,dataCEP, loadingDataCep, loadingDataFrete, frete, dataFrete}}
+      value={{ cart, handleAddItemToCard, handleRemoveItemFromCart, handleRemoveAll, availableProducts, updateProductAmount, visibleToast, activity, messageWarning, errorMessage, selectedItemToBuy, selectedItem, total, priceTotalOrder, subTotalProducts, valueFrete, finalizingOrder, shippingOption, checkout, searchCEP,dataCEP, loadingDataCep, loadingDataFrete, frete, dataFrete, setSelectedItem, handleBuyItem}}
     >
       {children}
     </BuyContext.Provider>

@@ -9,14 +9,18 @@ import { useParams } from "react-router-dom";
 export default function ProductPage() {
 
   const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      AxiosRepository.findAll().then((resp) => setProduct(resp.data));
+    let cancel = false;
+    AxiosRepository.findAll().then((resp) => {
+      if (cancel) return;
+      setProduct(resp.data)
       setLoading(false)
-    } catch (error) {
-      console.log(error);
+    })
+
+    return () => {
+      cancel = true;
     }
   }, []);
 

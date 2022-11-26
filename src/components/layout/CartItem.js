@@ -16,14 +16,12 @@ export default function CartItem({id, name, price, imageUrl, size, measure, quan
 	const navigate = useNavigate()
 
 	async function handleSubmit(id) {
-
 		const item =  await selectedItemToBuy(id)
 		if(item){
 			signed ?
 			navigate('/finalize-order')
 			: navigate('/my-account')
 		}
-
 	}
 
 	return (

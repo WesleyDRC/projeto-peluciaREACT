@@ -126,7 +126,6 @@ function NavbarMobile() {
                   <button
                       title="SignOut"
                       type="submit"
-                      className={styles.btn}
                       onClick={() => [SignOut(), navigate("/my-account")]}
                     >
                     Sair

@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Container from "../components/layout/Container";
 import Home from "../components/pages/Home";
@@ -26,18 +25,18 @@ function AppRoutes() {
           <Container customClass="min-height">
             <Routes>
               <Route exact path="/" element={<Home />}></Route>
-              <Route exact path="/contact" element={<Contato />}></Route>
-              <Route exact path="filtro/:filtro" element={<Products />}></Route>
-              <Route exact path="/my-account/profile" element={<MyAccount />}></Route>
-              <Route exact path="/my-account/address" element={<Address />}></Route>
-              <Route exact path="/my-account/password" element={<Password />}></Route>
-              <Route exact path="/my-account/purchase" element={<Purchase />}></Route>
-              <Route exact path="/my-account/purchase/all" element={<PurchaseAll />}></Route>
+              <Route path="/contact" element={<Contato />}></Route>
+              <Route path="/filtro/:filtro" element={<Products />}></Route>
+              <Route path="/my-account/profile" element={<MyAccount />}></Route>
+              <Route path="/my-account/address" element={<Address />}></Route>
+              <Route path="/my-account/password" element={<Password />}></Route>
+              <Route path="/my-account/purchase" element={<Purchase />}></Route>
+              <Route path="/my-account/purchase/all" element={<PurchaseAll />}></Route>
               <Route path="/product/:id" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/finalize-order" element={<FinalizeOrder />}></Route>
               <Route path="/ordersuccess" element={<Success />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
+              <Route path="/*" element={<NotFound />}></Route>
             </Routes>
           </Container>
           <Footer />

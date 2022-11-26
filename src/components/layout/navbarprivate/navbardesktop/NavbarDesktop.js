@@ -2,13 +2,16 @@ import styles from "./NavbarDesktop.module.css";
 import "../navbarmobile/NavbarMobile.module.css";
 import logo from "../../../../img/ursologo1.jpg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiBearSmileLine } from "react-icons/ri";
 import { GiRabbitHead } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
+import { MdOutlineKeyboardArrowDown} from 'react-icons/md'
 
 import { useEffect, useState } from "react";
+
+import useAuth from '../../../../hooks/useAuth';
 
 import PlushWanted from "../../../PeluciaCard/PlushWanted";
 import graphqlRepository from "../../../../repository/graphqlRepository";
@@ -16,12 +19,17 @@ import graphqlRepository from "../../../../repository/graphqlRepository";
 import { useQuery } from "@apollo/client";
 
 function NavbarDesktop() {
+  const [menu, setMenu] = useState(false);
   const [text, setText] = useState("");
   const [product, setProduct] = useState([]);
   const [erro, setErro] = useState(false);
 
   const GET_PLUSH = graphqlRepository.findAll();
   const { data, error } = useQuery(GET_PLUSH);
+
+  const navigate = useNavigate();
+
+  const { SignOut } = useAuth();
 
   useEffect(() => {
     try {
@@ -47,6 +55,18 @@ function NavbarDesktop() {
       btn.click();
     }
   };
+
+  const mouseDownMenu = () => {
+    setMenu(true)
+  }
+  const mouseUpMenu = () => {
+    setMenu(false)
+  }
+
+  const logout = () => {
+    SignOut()
+    navigate("/my-account")
+  }
 
   return (
     <header>
@@ -106,11 +126,19 @@ function NavbarDesktop() {
                 <p> <IoMdCart /> </p>
               </Link>
             </div>
-            <div className={styles.auth}>
+            <div onMouseOver={mouseDownMenu} onMouseLeave={mouseUpMenu} className={styles.auth}>
               <Link to="/my-account/profile">
                 <FaUser />
                 <span> Minha conta </span>
+                <MdOutlineKeyboardArrowDown />
               </Link>
+              <div className={ menu ? styles.menuOn : styles.menuOff}>
+                <ul>
+                  <li className={styles.item}> <Link to="/my-account/profile"> Perfil </Link></li>
+                  <li className={styles.item}> <Link to="/my-account/purchase"> Minhas compras </Link></li>
+                  <li className={styles.item} onClick={logout}> Sair </li>
+                </ul>
+              </div>
             </div>
           </nav>
         </div>

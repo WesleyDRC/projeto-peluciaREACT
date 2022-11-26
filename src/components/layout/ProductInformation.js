@@ -7,6 +7,9 @@ import { IoAddOutline } from "react-icons/io5";
 import { IoMdCart } from "react-icons/io";
 
 import useBuy from "../../hooks/useBuyFlow";
+import useAuth from "../../hooks/useAuth";
+
+import { useNavigate } from "react-router-dom";
 
 import Warning from "./Warning";
 
@@ -25,12 +28,24 @@ export default function ProductInformation({
 
   const [quantity, setQuantity] = useState(1);
 
+  const navigate = useNavigate();
+
+  const { signed } = useAuth();
+
   const {
     handleAddItemToCard,
     availableProducts,
     messageWarning,
     errorMessage,
+    handleBuyItem,
   } = useBuy();
+
+  async function handleSubmit() {
+    if(quantity > 0) handleBuyItem(id, name, price, size, measure, quantity);
+		signed ?
+		navigate('/finalize-order')
+		: navigate('/my-account')
+  }
 
   return (
     <main>
@@ -93,7 +108,9 @@ export default function ProductInformation({
 
               <div className={styles.addToCartOrBuy}>
                 <div className={styles.buy}>
-                  <button type="button">Comprar</button>
+                  <button onClick={handleSubmit} type="button">
+                    Comprar
+                  </button>
                 </div>
 
                 <div className={styles.addCart}>
