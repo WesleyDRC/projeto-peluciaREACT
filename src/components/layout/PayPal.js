@@ -33,8 +33,8 @@ export default function PayPal() {
           var userToken = localStorage.getItem('user_token')
 
           const AuthStr = `Bearer ${JSON.parse(userToken)}`;
-          console.log("TOKEN" + AuthStr);
-          const response = await api.post(
+
+          await api.post(
             "/order",
             {
               products: [selectedItem.id],
@@ -45,11 +45,8 @@ export default function PayPal() {
               },
             }
           );
-
-          console.log(response);
-          const order = await actions.order.capture();
+          await actions.order.capture();
           navigate("/ordersuccess");
-          console.log(order);
         },
         onError: (err) => {
           console.log(err);
